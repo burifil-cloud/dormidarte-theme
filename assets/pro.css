@@ -489,6 +489,16 @@ h3, h4, .h3, .h4 {
   background: #E95F5C !important; color: #fff !important; border: 0 !important;
   font-weight: 800 !important; letter-spacing: .02em; box-shadow: 0 4px 12px rgba(233, 95, 92, .4);
 }
+.badge.lastunits {
+  background: #1d2b36 !important; color: #fff !important; border: 0 !important;
+  font-weight: 700 !important; font-size: 1.05rem; letter-spacing: .01em;
+}
+/* Tarjetas de producto: colchón más grande y limpio (estilo Apple) */
+.card-wrapper .card__media,
+.card-wrapper .card__inner .card__media { background: #f6f4f0; }
+.card-wrapper .card__media img,
+.card-wrapper .card__media .media img { object-fit: contain !important; padding: 1.2rem; }
+.card-wrapper .card__media .media { padding-bottom: 92% !important; }
 
 /* ---------- Migas de pan (breadcrumbs) ---------- */
 .pro-crumb { padding: 1.8rem 1.5rem .2rem; font-size: 1.3rem; }
