@@ -466,14 +466,23 @@ h3, h4, .h3, .h4 {
   backdrop-filter: saturate(1.1);
 }
 /* "Ofertas" destacado en naranja como el "VER REBAJAS" de Emma */
-#HeaderMenu-ofertas,
-.header__menu-item[href$="/collections/colchones"]:first-of-type {
-  color: #ef8b34 !important;
-  font-weight: 700 !important;
-  text-transform: uppercase;
-  letter-spacing: .02em;
+/* Menú LIQUIDACIÓN en llamas */
+.header__inline-menu a[href="/collections/liquidacion"],
+.menu-drawer__menu-item[href="/collections/liquidacion"] {
+  font-weight: 900 !important; text-transform: uppercase; letter-spacing: .03em;
 }
-#HeaderMenu-ofertas span { color: #ef8b34 !important; }
+.header__inline-menu a[href="/collections/liquidacion"] span,
+.header__inline-menu a[href="/collections/liquidacion"],
+.menu-drawer__menu-item[href="/collections/liquidacion"] {
+  background: linear-gradient(0deg, #7a1010 0%, #b01e1e 60%, #c8382a 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: #b01e1e !important;
+  animation: liq-flame 2s ease-in-out infinite alternate;
+}
+@keyframes liq-flame {
+  0% { filter: brightness(1); }
+  100% { filter: brightness(1.12); }
+}
 .header__heading-logo { max-height: 4.4rem; width: auto; }
 /* ---------- Badge de liquidación en tarjetas ---------- */
 .badge.dropbadge {
@@ -494,12 +503,24 @@ h3, h4, .h3, .h4 {
 .header__inline-menu .list-menu--inline { gap: 2.8rem; }
 .header__inline-menu .header__menu-item {
   position: relative;
+  display: inline-flex !important;
+  align-items: center;
+  gap: .5rem;
+  white-space: nowrap;
   font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: .005em;
   color: #3a4750;
   padding: .5rem 0;
   transition: color .2s ease;
+}
+.header__inline-menu .header__menu-item .icon-caret,
+.header__inline-menu .header__menu-item > svg {
+  position: static;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin: 0;
+  flex: 0 0 auto;
 }
 .header__inline-menu .header__menu-item:hover { color: #314855; }
 .header__inline-menu .header__menu-item::after {

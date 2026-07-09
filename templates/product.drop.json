@@ -125,7 +125,13 @@
         "drop_stock": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div style=\"margin:0 0 14px\"><div style=\"display:flex;justify-content:space-between;align-items:center;font-size:1.25rem;color:#a12f2c;font-weight:700;margin-bottom:6px\"><span>🔥 ¡Quedan pocas unidades!</span><span>85% vendido</span></div><div style=\"height:9px;background:#eee2d5;border-radius:99px;overflow:hidden\"><div style=\"width:85%;height:100%;background:linear-gradient(90deg,#ef8b34,#E95F5C);border-radius:99px\"></div></div></div>"
+            "custom_liquid": "<div style=\"margin:0 0 14px\"><div style=\"display:flex;justify-content:space-between;align-items:center;font-size:1.25rem;color:#a12f2c;font-weight:700;margin-bottom:6px\"><span>🔥 ¡Quedan pocas unidades!</span><span class=\"dstock-pct\">86% vendido</span></div><div style=\"height:9px;background:#eee2d5;border-radius:99px;overflow:hidden\"><div class=\"dstock-bar\" style=\"width:86%;height:100%;background:linear-gradient(90deg,#ef8b34,#E95F5C);border-radius:99px;transition:width .6s ease\"></div></div></div><script>(function(){var s=document.currentScript,box=s.previousElementSibling;var pctEl=box.querySelector(\".dstock-pct\"),bar=box.querySelector(\".dstock-bar\");var p=86;function up(){if(p<99){p++;pctEl.textContent=p+\"% vendido\";bar.style.width=p+\"%\";}}setInterval(up,60000);})();</script>"
+          }
+        },
+        "drop_price_style": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<style>.product__info-container .price{font-size:1.18em}.product__info-container .price-item--sale{color:#E11D2A!important;font-weight:800;display:inline-block;animation:dpp 1.05s ease-in-out infinite}.product__info-container .price--on-sale .price-item--regular{color:#c0392b!important}@keyframes dpp{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.12);opacity:.72}}</style>"
           }
         }
       },
@@ -134,6 +140,7 @@
         "title",
         "rating",
         "price",
+        "drop_price_style",
         "drop_banner",
         "drop_countdown",
         "rating_static",

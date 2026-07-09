@@ -14,6 +14,15 @@
         "enable_language_selector": false
       },
       "blocks": {
+        "a0": {
+          "type": "announcement",
+          "settings": {
+            "text": "🔥 LIQUIDACIÓN · Hasta −80% en colchones · Últimas unidades",
+            "text_alignment": "center",
+            "color_scheme": "scheme-5",
+            "link": "/collections/liquidacion"
+          }
+        },
         "a1": {
           "type": "announcement",
           "settings": {
@@ -42,7 +51,7 @@
           }
         }
       },
-      "block_order": ["a1", "a2", "a3"]
+      "block_order": ["a0", "a1", "a2", "a3"]
     },
     "header": {
       "type": "header",
