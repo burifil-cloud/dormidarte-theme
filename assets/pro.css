@@ -475,6 +475,12 @@ h3, h4, .h3, .h4 {
 }
 #HeaderMenu-ofertas span { color: #ef8b34 !important; }
 .header__heading-logo { max-height: 4.4rem; width: auto; }
+/* ---------- Badge de liquidación en tarjetas ---------- */
+.badge.dropbadge {
+  background: #E95F5C !important; color: #fff !important; border: 0 !important;
+  font-weight: 800 !important; letter-spacing: .02em; box-shadow: 0 4px 12px rgba(233, 95, 92, .4);
+}
+
 /* ---------- Migas de pan (breadcrumbs) ---------- */
 .pro-crumb { padding: 1.8rem 1.5rem .2rem; font-size: 1.3rem; }
 .pro-crumb ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; }

@@ -1,0 +1,56 @@
+{
+  "sections": {
+    "urgency": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div style=\"max-width:1200px;margin:0 auto;padding:18px 16px 0;text-align:center\"><div style=\"display:inline-flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px;background:linear-gradient(90deg,#E95F5C,#ef8b34);color:#fff;border-radius:16px;padding:15px 24px;font-weight:800;font-size:1.6rem;letter-spacing:.02em;box-shadow:0 10px 26px rgba(233,95,92,.3)\"><span style=\"font-size:24px\">🔥</span> LIQUIDACIÓN · Precios de derribo, últimas unidades <span style=\"background:rgba(255,255,255,.22);border-radius:99px;padding:5px 15px;font-weight:700\">Termina en <b class=\"dropc\" style=\"font-variant-numeric:tabular-nums\">--:--:--</b></span></div></div><script>(function(){var s=document.currentScript;var el=s.previousElementSibling.querySelector(\".dropc\");if(!el)return;function t(){var n=new Date();var e=new Date(n.getFullYear(),n.getMonth(),n.getDate(),23,59,59);var x=Math.max(0,Math.floor((e-n)/1000));var h=Math.floor(x/3600),m=Math.floor(x%3600/60),c=x%60;el.textContent=(h<10?\"0\":\"\")+h+\":\"+(m<10?\"0\":\"\")+m+\":\"+(c<10?\"0\":\"\")+c;}t();setInterval(t,1000);})();</script>",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "standard",
+        "enable_filtering": true,
+        "filter_type": "horizontal",
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "padding_top": 24,
+        "padding_bottom": 36
+      }
+    },
+    "reassurance": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": { "type": "heading", "settings": { "heading": "Liquidación, pero con las mismas garantías", "heading_size": "h1" } },
+        "text": { "type": "text", "settings": { "text": "<p>🌙 30 noches de prueba · 🛡️ 3 años de garantía · 🚚 Envío gratis 24-72h · 💳 Paga a plazos con Klarna o Pepper. Precio de liquidación, seguridad de siempre.</p>" } }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": ["urgency", "banner", "product-grid", "reassurance"]
+}
