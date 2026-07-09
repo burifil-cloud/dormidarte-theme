@@ -385,11 +385,26 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "lifestyle": {
+      "type": "drop-lifestyle",
+      "settings": {
+        "eyebrow": "Cómo queda en casa",
+        "heading": "Así queda en tu dormitorio",
+        "subheading": "Descanso premium que además viste tu habitación.",
+        "captions": "Descanso que se nota|Diseño que combina",
+        "body_text": "Un colchón pensado para verse y sentirse de lujo en tu dormitorio.",
+        "max_photos": 2,
+        "color_scheme": "scheme-1",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
     }
   },
   "order": [
     "main",
     "specs",
+    "lifestyle",
     "trust_signals",
     "comparison",
     "faq",
