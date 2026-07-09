@@ -1,0 +1,94 @@
+{{ 'section-pro-addon.css' | asset_url | stylesheet_tag }}
+
+{%- assign p = all_products[section.settings.product] -%}
+{%- if p != blank -%}
+  {%- assign v = p.selected_or_first_available_variant -%}
+  <div class="color-{{ section.settings.color_scheme }} gradient">
+    <div class="addon page-width section-{{ section.id }}-padding">
+      <div class="addon__card" id="addon-{{ section.id }}">
+        <a href="{{ p.url }}" class="addon__media">
+          {%- if p.featured_image != blank -%}
+            <img src="{{ p.featured_image | image_url: width: 500 }}" alt="{{ p.title | escape }}" width="500" height="500" loading="lazy">
+          {%- endif -%}
+        </a>
+        <div class="addon__body">
+          <span class="addon__eyebrow">🎁 {{ section.settings.eyebrow }}</span>
+          <h3 class="addon__title">{{ p.title }}</h3>
+          <p class="addon__text">{{ section.settings.subtext }}</p>
+          <div class="addon__row">
+            <span class="addon__price">{{ v.price | money }}</span>
+            <button type="button" class="button button--primary addon__btn" data-addon-add data-variant="{{ v.id }}" {% unless v.available %}disabled{% endunless %}>
+              {{ section.settings.button_label }}
+            </button>
+            <a href="/cart" class="addon__cartlink" data-addon-cart hidden>Ver carrito &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var card = document.getElementById('addon-{{ section.id }}');
+      if (!card) return;
+      var btn = card.querySelector('[data-addon-add]');
+      var link = card.querySelector('[data-addon-cart]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var id = btn.getAttribute('data-variant');
+        btn.disabled = true;
+        var original = btn.textContent;
+        btn.textContent = 'Añadiendo...';
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ items: [{ id: Number(id), quantity: 1 }] })
+        }).then(function (r) { return r.json(); }).then(function () {
+          btn.textContent = '✓ Añadido al carrito';
+          if (link) link.hidden = false;
+          document.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
+          fetch('/cart.js').then(function(r){return r.json();}).then(function(cart){
+            var bubble = document.querySelector('.cart-count-bubble span[aria-hidden="true"]');
+            if (bubble) bubble.textContent = cart.item_count;
+          }).catch(function(){});
+        }).catch(function () {
+          btn.disabled = false;
+          btn.textContent = original;
+        });
+      });
+    })();
+  </script>
+{%- endif -%}
+
+{% style %}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Add-on canapé (rápido)",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "product", "label": "Producto (handle)", "default": "canape-noblia" },
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Añádelo y ahorra un 10%" },
+    { "type": "text", "id": "subtext", "label": "Texto", "default": "Llévate también el Canapé Noblia y consigue un 10% de descuento automático en tu colchón." },
+    { "type": "text", "id": "button_label", "label": "Texto del botón", "default": "Añadir canapé Noblia" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Esquema de color", "default": "scheme-2" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Espaciado superior", "default": 24 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Espaciado inferior", "default": 24 }
+  ],
+  "presets": [
+    { "name": "Add-on canapé (rápido)" }
+  ]
+}
+{% endschema %}

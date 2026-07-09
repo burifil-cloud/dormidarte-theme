@@ -1,0 +1,476 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "Dormidarte ®",
+            "text_style": "uppercase"
+          }
+        },
+        "title": {
+          "type": "title"
+        },
+        "rating": {
+          "type": "rating"
+        },
+        "price": {
+          "type": "price"
+        },
+        "highlight": {
+          "type": "text",
+          "settings": {
+            "text": "Muelles ensacados 7 zonas + topper viscoelástico · 28 cm · Viscon Fabric transpirable",
+            "text_style": "body"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector"
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "guarantee": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"display:flex;gap:12px;align-items:center;border:1px solid rgba(92,195,232,.5);border-radius:14px;padding:14px 16px;margin-top:14px;background:rgba(92,195,232,.12)\"><span style=\"font-size:26px;line-height:1\">🌙</span><span style=\"font-size:1.4rem;line-height:1.4\"><strong>30 noches de prueba en casa.</strong> Si no es tu colchón, lo recogemos gratis y te devolvemos el 100%.</span></div>"
+          }
+        },
+        "promo": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div class=\"cbundle\" data-colchon-variants='[{% for v in product.variants %}{\"id\":{{ v.id }},\"t\":{{ v.title | json }}}{% unless forloop.last %},{% endunless %}{% endfor %}]'>\n<p class=\"cbundle__head\"><span class=\"cbundle__ico\">🎁</span><span><strong>Colchón + canapé = 10% de descuento.</strong> Elige tu canapé y la medida; añadimos los dos al carrito y el 10% se aplica solo.</span></p>\n<div class=\"cbundle__step\">1 · Elige tu canapé</div>\n<div class=\"cbundle__canapes\">\n{% assign cbh = 'canape-noblia,canape-magna,canape-imperial' | split: ',' %}\n{% for h in cbh %}{% assign cp = all_products[h] %}{% if cp != blank %}\n<label class=\"cbundle__canape\">\n<input type=\"radio\" name=\"cbundle-canape\" value=\"{{ h }}\" data-variants='[{% for v in cp.variants %}{\"id\":{{ v.id }},\"t\":{{ v.title | json }},\"p\":{{ v.price | money | json }}}{% unless forloop.last %},{% endunless %}{% endfor %}]'{% if forloop.first %} checked{% endif %}>\n<span class=\"cbundle__canape-media\">{% if cp.featured_image != blank %}<img src=\"{{ cp.featured_image | image_url: width: 260 }}\" alt=\"{{ cp.title | escape }}\" loading=\"lazy\">{% endif %}</span>\n<span class=\"cbundle__canape-name\">{{ cp.title | remove: 'Canapé ' | remove: 'Canapé' }}</span>\n</label>\n{% endif %}{% endfor %}\n</div>\n<div class=\"cbundle__step\">2 · Elige la medida</div>\n<select class=\"cbundle__size\"><option value>Selecciona medida…</option></select>\n<p class=\"cbundle__note\" hidden></p>\n<button type=\"button\" class=\"button cbundle__add\" disabled>Añadir al carrito</button>\n<a href=\"/cart\" class=\"cbundle__cart\" hidden>Ver carrito &rarr;</a>\n<script>(function(){var s=document.currentScript,box=s.closest('.cbundle');if(!box)return;var colchon=[];try{colchon=JSON.parse(box.getAttribute('data-colchon-variants')||'[]');}catch(e){}var radios=box.querySelectorAll('input[name=\"cbundle-canape\"]'),sizeSel=box.querySelector('.cbundle__size'),note=box.querySelector('.cbundle__note'),addBtn=box.querySelector('.cbundle__add'),cartLink=box.querySelector('.cbundle__cart');function ps(x){var m=(x||'').match(/\\d+/g);return (m&&m.length>=2)?m[0]+'x'+m[1]:null;}function selCan(){for(var i=0;i<radios.length;i++){if(radios[i].checked)return radios[i];}return radios[0];}function upd(){var r=selCan();if(!r)return;var cv=[];try{cv=JSON.parse(r.getAttribute('data-variants')||'[]');}catch(e){}var cm={};colchon.forEach(function(v){var k=ps(v.t);if(k)cm[k]=v.id;});sizeSel.innerHTML='<option value>Selecciona medida…</option>';cv.forEach(function(x){var k=ps(x.t);if(k&&cm[k]){var o=document.createElement('option');o.value=k;o.textContent=x.t;o.setAttribute('data-col',cm[k]);o.setAttribute('data-can',x.id);o.setAttribute('data-price',x.p||'');sizeSel.appendChild(o);}});note.hidden=true;addBtn.disabled=true;}sizeSel.addEventListener('change',function(){var o=sizeSel.options[sizeSel.selectedIndex];if(o&&o.value){addBtn.disabled=false;var p=o.getAttribute('data-price');if(p){note.hidden=false;note.textContent='Canapé '+p+' · y un 10% en tu colchón al comprarlos juntos.';}}else{addBtn.disabled=true;note.hidden=true;}});for(var i=0;i<radios.length;i++){radios[i].addEventListener('change',upd);}addBtn.addEventListener('click',function(){var o=sizeSel.options[sizeSel.selectedIndex];if(!o||!o.value)return;var col=o.getAttribute('data-col'),can=o.getAttribute('data-can');addBtn.disabled=true;var t=addBtn.textContent;addBtn.textContent='Añadiendo...';fetch('/cart/add.js',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items:[{id:Number(col),quantity:1},{id:Number(can),quantity:1}]})}).then(function(r){return r.json();}).then(function(){addBtn.textContent='✓ Añadidos al carrito';if(window.dormiToast)window.dormiToast('Colchón + canapé añadidos · 10% aplicado',{icon:'🎁'});if(cartLink)cartLink.hidden=false;fetch('/cart.js').then(function(r){return r.json();}).then(function(c){var b=document.querySelector('.cart-count-bubble span');if(b)b.textContent=c.item_count;}).catch(function(){});}).catch(function(){addBtn.disabled=false;addBtn.textContent=t;});});upd();})();</script>\n</div>"
+          }
+        },
+        "trust_icons": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "horizontal",
+            "icon_1": "stopwatch",
+            "heading_1": "30 noches de prueba",
+            "icon_2": "truck",
+            "heading_2": "Envío gratis 24-72h",
+            "icon_3": "lock",
+            "heading_3": "3 años de garantía"
+          }
+        },
+        "description": {
+          "type": "description"
+        },
+        "complementary": {
+          "type": "complementary",
+          "settings": {
+            "product_list_heading": "Complétalo con",
+            "make_collapsible_row": true,
+            "icon": "star",
+            "products_to_show": 3,
+            "pagination_style": "dots"
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Compartir"
+          }
+        },
+        "size_warn": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"display:flex;gap:8px;align-items:flex-start;border:1px solid rgba(239,139,52,.45);border-radius:10px;padding:9px 11px;margin-top:12px;background:rgba(239,139,52,.09)\"><span style=\"font-size:15px;line-height:1.3\">⚠️</span><span style=\"font-size:1.15rem;line-height:1.35;color:#8a5a1c\"><strong style=\"color:#c9761f\">Asegúrate de elegir el tamaño correcto.</strong> 1 de cada 4 clientes se equivoca al escogerlo.</span></div>"
+          }
+        },
+        "whatsapp_help": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<a href=\"https://wa.me/34614414925?text=Hola%2C%20tengo%20una%20duda%20sobre%20un%20producto%20de%20Dormidarte.\" target=\"_blank\" rel=\"noopener\" style=\"display:flex;gap:14px;align-items:center;border:1px solid #e6e0d6;border-radius:16px;padding:15px 17px;margin-top:16px;background:#fff;text-decoration:none\"><span style=\"flex:0 0 auto;width:46px;height:46px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center\"><svg width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"#fff\"><path d=\"M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.14c-.24.68-1.42 1.32-1.95 1.36-.5.04-.5.4-3.16-.66-2.66-1.06-4.35-3.8-4.48-3.98-.13-.18-1.08-1.44-1.08-2.75s.69-1.95.93-2.22c.24-.26.53-.33.7-.33.18 0 .35 0 .5.01.16.01.38-.06.59.45.24.58.82 2 .89 2.14.07.14.12.31.02.49-.09.18-.14.29-.28.45-.14.16-.29.36-.42.48-.14.14-.28.29-.12.57.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.18.69-.8.87-1.08.18-.28.36-.23.6-.14.24.09 1.55.73 1.81.86.26.13.44.2.5.31.06.11.06.64-.18 1.32Z\"/></svg></span><span style=\"line-height:1.4\"><strong style=\"font-size:1.5rem;color:#314855\">¿Tienes dudas?</strong><br><span style=\"font-size:1.35rem;color:#5b6a72\">Habla con un asesor por <strong style=\"color:#25D366\">WhatsApp</strong>: te ayudamos gratis y sin compromiso.</span></span></a>"
+          }
+        },
+        "financing_badge": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"margin-top:14px\"><div style=\"display:flex;align-items:center;gap:9px;flex-wrap:wrap\"><span style=\"font-size:1.3rem;color:#5b6a72;font-weight:600\">Paga a plazos con</span><span style=\"display:inline-flex;align-items:center;background:#FFB3C7;color:#17120f;border-radius:7px;padding:3px 11px;font-weight:800;font-size:1.35rem\">Klarna</span><span style=\"color:#F5333F;font-weight:800;font-size:1.6rem;letter-spacing:-.03em;line-height:1\">pepper</span></div><div style=\"font-size:1.25rem;color:#8a8378;margin-top:6px\"><strong style=\"color:#314855\">3 meses sin intereses</strong> con Klarna &middot; o hasta <strong style=\"color:#314855\">12 meses</strong> con Pepper</div></div>"
+          }
+        },
+        "rating_static": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"display:flex;align-items:center;gap:8px;margin:8px 0 2px\"><span style=\"color:#f5a623;font-size:1.6rem;letter-spacing:1px;line-height:1\">★★★★★</span><span style=\"font-size:1.3rem;color:#5b6a72\"><strong style=\"color:#1d1d1f\">4,8</strong> · <a href=\"#\" style=\"color:#5b6a72;text-decoration:underline\">213 opiniones</a></span></div>"
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "rating",
+        "price",
+        "rating_static",
+        "highlight",
+        "variant_picker",
+        "size_warn",
+        "quantity_selector",
+        "buy_buttons",
+        "financing_badge",
+        "promo",
+        "guarantee",
+        "trust_icons",
+        "whatsapp_help",
+        "description",
+        "complementary",
+        "share"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_position": "left",
+        "gallery_layout": "stacked",
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "image_zoom": "lightbox",
+        "mobile_thumbnails": "show",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "strong": {
+      "type": "pro-features",
+      "blocks": {
+        "sp1": {
+          "type": "feature",
+          "settings": {
+            "icon": "coil",
+            "title": "Muelles ensacados 7 zonas",
+            "text": "Soporte ergonómico por zonas"
+          }
+        },
+        "sp2": {
+          "type": "feature",
+          "settings": {
+            "icon": "feather",
+            "title": "Topper viscoelástico",
+            "text": "Capa extra de acogida mullida"
+          }
+        },
+        "sp3": {
+          "type": "feature",
+          "settings": {
+            "icon": "thermometer",
+            "title": "Viscon Fabric",
+            "text": "Tejido transpirable, siempre fresco"
+          }
+        },
+        "sp4": {
+          "type": "feature",
+          "settings": {
+            "icon": "layers",
+            "title": "28 cm de altura",
+            "text": "Más colchón, más confort"
+          }
+        }
+      },
+      "block_order": [
+        "sp1",
+        "sp2",
+        "sp3",
+        "sp4"
+      ],
+      "settings": {
+        "eyebrow": "Lo que lo hace especial",
+        "heading": "Puntos fuertes del Prestance Plus",
+        "subheading": "",
+        "layout": "cards",
+        "columns": 4,
+        "color_scheme": "scheme-1",
+        "padding_top": 56,
+        "padding_bottom": 24
+      }
+    },
+    "specs": {
+      "type": "pro-colchon-specs",
+      "settings": {
+        "heading": "Características de un vistazo",
+        "color_scheme": "scheme-2",
+        "padding_top": 40,
+        "padding_bottom": 48
+      }
+    },
+    "capas": {
+      "type": "home-feature",
+      "settings": {
+        "image_asset": "capas-prestance-plus.png",
+        "image_position": "left",
+        "eyebrow": "Composición",
+        "heading": "Cómo está hecho el Prestance Plus",
+        "text": "<ul><li><strong>Muelles ensacados</strong> con 7 zonas de confort.</li><li><strong>Topper viscoelástico integrado</strong> para una acogida extra.</li><li><strong>Tejido Viscon Fabric</strong> transpirable que te mantiene fresco.</li></ul><p>Altura total: <strong>28 cm</strong>.</p>",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 40,
+        "padding_bottom": 56
+      }
+    },
+    "lifestyle": {
+      "type": "pro-lifestyle",
+      "blocks": {
+        "s1": {
+          "type": "scene",
+          "settings": {
+            "image_asset": "life-prestance-plus-1.jpg",
+            "kicker": "En tu dormitorio",
+            "title": "Muelles ensacados 7 zonas",
+            "text": "<p>Soporte ergonómico por zonas. Un descanso premium que además viste tu habitación.</p>"
+          }
+        },
+        "s2": {
+          "type": "scene",
+          "settings": {
+            "image_asset": "life-prestance-plus-2.jpg",
+            "kicker": "Detalle",
+            "title": "Topper viscoelástico",
+            "text": "<p>Capa extra de acogida mullida.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2"
+      ],
+      "settings": {
+        "eyebrow": "Cómo queda en casa",
+        "heading": "El Prestance Plus en tu dormitorio",
+        "subheading": "",
+        "color_scheme": "scheme-2",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "trust_signals": {
+      "type": "trust-signals",
+      "blocks": {
+        "t1": {
+          "type": "badge",
+          "settings": {
+            "emoji": "🌙",
+            "title": "30 noches de prueba",
+            "text": "Devolución gratis si no te convence"
+          }
+        },
+        "t2": {
+          "type": "badge",
+          "settings": {
+            "emoji": "🛡️",
+            "title": "3 años de garantía",
+            "text": "Respaldamos su durabilidad"
+          }
+        },
+        "t3": {
+          "type": "badge",
+          "settings": {
+            "emoji": "🚚",
+            "title": "Envío gratis 24-72h",
+            "text": "Con seguimiento a tu casa"
+          }
+        },
+        "t4": {
+          "type": "badge",
+          "settings": {
+            "emoji": "💳",
+            "title": "Paga a plazos",
+            "text": "Financiación sin intereses"
+          }
+        },
+        "t5": {
+          "type": "badge",
+          "settings": {
+            "emoji": "🇪🇺",
+            "title": "Fabricación europea",
+            "text": "Materiales certificados"
+          }
+        },
+        "t6": {
+          "type": "badge",
+          "settings": {
+            "emoji": "↩️",
+            "title": "Recogida gratuita",
+            "text": "Sin empaquetar nada"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5",
+        "t6"
+      ],
+      "settings": {
+        "heading": "Comprar en Dormidarte es fácil y seguro",
+        "show_rating": true,
+        "rating_score": "4,8",
+        "rating_count": "basado en +1.200 reseñas verificadas",
+        "show_payments": true,
+        "payment_text": "Pago 100% seguro y cifrado",
+        "color_scheme": "scheme-2",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "comparison": {
+      "type": "comparison-table",
+      "blocks": {
+        "c1": {
+          "type": "row",
+          "settings": {
+            "feature": "Precio",
+            "us_text": "De fábrica",
+            "them_text": "Con sobreprecio"
+          }
+        },
+        "c2": {
+          "type": "row",
+          "settings": {
+            "feature": "Prueba en casa",
+            "us_text": "30 noches",
+            "them_text": "Sin prueba"
+          }
+        },
+        "c3": {
+          "type": "row",
+          "settings": {
+            "feature": "Garantía",
+            "us_text": "3 años",
+            "them_text": "2 años"
+          }
+        },
+        "c4": {
+          "type": "row",
+          "settings": {
+            "feature": "Envío",
+            "us_text": "Gratis 24-72h",
+            "them_text": "De pago / lento"
+          }
+        },
+        "c5": {
+          "type": "row",
+          "settings": {
+            "feature": "Paga a plazos",
+            "us_text": "Sin intereses",
+            "them_text": "No siempre"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5"
+      ],
+      "settings": {
+        "heading": "¿Por qué comprar en Dormidarte?",
+        "subheading": "La misma calidad que las grandes marcas, sin pagar de más.",
+        "us_label": "Dormidarte",
+        "them_label": "Tienda tradicional",
+        "color_scheme": "scheme-1",
+        "padding_top": 24,
+        "padding_bottom": 48
+      }
+    },
+    "faq": {
+      "type": "collapsible-content",
+      "blocks": {
+        "f1": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "¿Sobre qué base puedo usarlo?",
+            "row_content": "<p>Sobre cualquier base firme y plana: somier de láminas, canapé o base tapizada.</p>"
+          }
+        },
+        "f2": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "¿Cómo funciona la prueba de 30 noches?",
+            "row_content": "<p>Duerme en él hasta 30 noches. Si no te convence, lo recogemos gratis y te devolvemos el 100%.</p>"
+          }
+        },
+        "f3": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "¿Cuánto tarda en recuperar su forma?",
+            "row_content": "<p>Empieza a expandirse enseguida; alcanza su firmeza óptima en 24-72h.</p>"
+          }
+        },
+        "f4": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "¿Cuánto tarda el envío?",
+            "row_content": "<p>Envío gratuito en 24-72h a península, con seguimiento.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4"
+      ],
+      "settings": {
+        "caption": "",
+        "heading": "Preguntas frecuentes",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "row",
+        "color_scheme": "scheme-1",
+        "container_color_scheme": "scheme-2",
+        "open_first_collapsible_row": false,
+        "padding_top": 24,
+        "padding_bottom": 40
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "Otros colchones que te pueden gustar",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "main",
+    "specs",
+    "strong",
+    "capas",
+    "lifestyle",
+    "trust_signals",
+    "comparison",
+    "faq",
+    "related-products"
+  ]
+}

@@ -1,0 +1,164 @@
+{%- comment -%} Notificación tipo iOS (toast) + interceptor de añadir al carrito. Uso: window.dormiToast('Mensaje', {icon:'🛒', title:'...', href:'/cart'}) {%- endcomment -%}
+<div id="dormi-toast-wrap" aria-live="polite"></div>
+<script>
+  var DORMI_LOGO = {% if settings.logo != blank %}{{ settings.logo | image_url: width: 120 | json }}{% else %}""{% endif %};
+  window.dormiToast = function (msg, opts) {
+    opts = opts || {};
+    var wrap = document.getElementById('dormi-toast-wrap');
+    if (!wrap) return;
+    var t = document.createElement('div');
+    t.className = 'dormi-toast';
+    var title = opts.title || 'Dormidarte';
+    var timeLbl = opts.time || 'ahora';
+    var appHTML = DORMI_LOGO ? '<img src="' + DORMI_LOGO + '" alt="Dormidarte">' : '<span class="dormi-toast__mono">D</span>';
+    t.innerHTML = '<span class="dormi-toast__app">' + appHTML + '</span>' +
+      '<span class="dormi-toast__body">' +
+        '<span class="dormi-toast__title">' + title + '</span>' +
+        '<span class="dormi-toast__msg">' + msg + '</span>' +
+      '</span>' +
+      '<span class="dormi-toast__now">' + timeLbl + '</span>';
+    wrap.appendChild(t);
+    requestAnimationFrame(function () { t.classList.add('is-show'); });
+
+    // Cuenta regresiva (MM:SS) si se pasa opts.countdownTo (timestamp)
+    var ctInt = null;
+    if (opts.countdownTo) {
+      var cEl = t.querySelector('.dormi-toast__count');
+      var tick = function () {
+        var ms = opts.countdownTo - Date.now(); if (ms < 0) ms = 0;
+        var m = Math.floor(ms / 60000), s = Math.floor((ms % 60000) / 1000);
+        if (cEl) cEl.textContent = m + ':' + (s < 10 ? '0' : '') + s;
+      };
+      tick(); ctInt = setInterval(tick, 1000);
+    }
+
+    var removed = false, timer = null;
+    function dismiss(up) {
+      if (removed) return; removed = true;
+      if (timer) clearTimeout(timer);
+      if (ctInt) clearInterval(ctInt);
+      t.style.transition = 'transform .38s cubic-bezier(.4,0,.2,1), opacity .3s ease';
+      t.style.transform = up ? 'translateY(-150%)' : 'translateY(-2.4rem) scale(.96)';
+      t.style.opacity = '0';
+      setTimeout(function () { if (t.parentNode) t.parentNode.removeChild(t); }, 400);
+    }
+    timer = setTimeout(function () { dismiss(false); }, opts.duration || 3600);
+
+    // Gesto: deslizar hacia arriba para descartar · tocar para acción/enlace
+    if (opts.href || opts.onTap) t.style.cursor = 'pointer';
+    var startY = null, dy = 0, dragging = false;
+    t.addEventListener('pointerdown', function (e) {
+      startY = e.clientY; dy = 0; dragging = true;
+      t.style.transition = 'none';
+      try { t.setPointerCapture(e.pointerId); } catch (_) {}
+    });
+    t.addEventListener('pointermove', function (e) {
+      if (!dragging || startY === null) return;
+      dy = e.clientY - startY;
+      if (dy < 0) t.style.transform = 'translateY(' + dy + 'px)';
+    });
+    function endDrag() {
+      if (!dragging) return; dragging = false;
+      if (dy < -40) { dismiss(true); return; }        // deslizó hacia arriba -> cerrar
+      t.style.transition = 'transform .25s ease';
+      t.style.transform = 'translateY(0)';
+      if (Math.abs(dy) < 8) {                          // toque -> acción o enlace
+        if (opts.onTap) { dismiss(false); opts.onTap(); }
+        else if (opts.href) { dismiss(false); window.location.href = opts.href; }
+      }
+    }
+    t.addEventListener('pointerup', endDrag);
+    t.addEventListener('pointercancel', function () { dragging = false; t.style.transition = 'transform .25s ease'; t.style.transform = 'translateY(0)'; });
+  };
+
+  // Toast que sobrevive a una recarga
+  try {
+    var pending = sessionStorage.getItem('dormiToast');
+    if (pending) {
+      sessionStorage.removeItem('dormiToast');
+      var d = JSON.parse(pending);
+      setTimeout(function () { window.dormiToast(d.msg, { icon: d.icon, title: d.title, href: d.href }); }, 350);
+    }
+  } catch (e) {}
+
+  // ---- Oferta flash 5% (solo se muestra al TOCAR la notificación de añadido) ----
+  window.dormiFlashOffer = function () {
+    window.dormiToast(
+      '5% extra si compras ya · Código <b>COMPRAYA5</b>. Termina en <b class="dormi-toast__count">20:00</b>. Toca para aplicarlo.',
+      { title: 'Solo para ti · 5% extra 🎁', href: '/discount/COMPRAYA5?redirect=/checkout', duration: 12000, countdownTo: Date.now() + 20 * 60 * 1000 }
+    );
+  };
+
+  // ---- Interceptor: al añadir al carrito NO abrir el cajón, mostrar notificación ----
+  (function () {
+    function refreshCartIcon() {
+      try {
+        var anchor = document.getElementById('cart-icon-bubble');
+        var section = anchor && anchor.closest('.shopify-section');
+        if (!section) return;
+        var id = section.id.replace('shopify-section-', '');
+        fetch('/?section_id=' + encodeURIComponent(id))
+          .then(function (r) { return r.text(); })
+          .then(function (html) {
+            var tmp = document.createElement('div'); tmp.innerHTML = html;
+            var fresh = tmp.querySelector('#cart-icon-bubble');
+            var cur = document.getElementById('cart-icon-bubble');
+            if (fresh && cur) cur.innerHTML = fresh.innerHTML;
+          }).catch(function () {});
+      } catch (e) {}
+    }
+    document.addEventListener('submit', function (e) {
+      var form = e.target;
+      if (!form || form.nodeName !== 'FORM') return;
+      var action = form.getAttribute('action') || '';
+      if (action.indexOf('/cart/add') === -1) return;
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      var btn = form.querySelector('[name="add"]');
+      if (btn) { btn.setAttribute('aria-disabled', 'true'); btn.classList.add('loading'); }
+      var fd = new FormData(form);
+      fetch('/cart/add.js', { method: 'POST', headers: { 'Accept': 'application/json' }, body: fd })
+        .then(function (r) { return r.json(); })
+        .then(function (item) {
+          if (btn) { btn.removeAttribute('aria-disabled'); btn.classList.remove('loading'); }
+          refreshCartIcon();
+          var name = (item && item.product_title) ? item.product_title : 'Producto';
+          // 1) Notificación de añadido (4 s) · 2) tras desaparecer, 1 s después salta la oferta del 5%
+          window.dormiToast(name, { title: 'Añadido al carrito', href: '/cart', duration: 4000 });
+          setTimeout(function () { window.dormiFlashOffer(); }, 5000);
+        })
+        .catch(function () {
+          if (btn) { btn.removeAttribute('aria-disabled'); btn.classList.remove('loading'); }
+        });
+    }, true); // fase de captura: se ejecuta antes que el tema y evita que abra el cajón
+  })();
+
+  // ---- Precio dentro del botón "Agregar al carrito" (estilo Sklum) ----
+  (function () {
+    function currentPrice() {
+      var pw = document.querySelector('.product__info-container .price') || document.querySelector('.price');
+      if (!pw) return '';
+      var onSale = pw.classList.contains('price--on-sale');
+      var el = (onSale && pw.querySelector('.price-item--sale')) ? pw.querySelector('.price-item--sale') : pw.querySelector('.price-item--regular');
+      return el ? el.textContent.replace(/\s+/g, ' ').trim() : '';
+    }
+    function sync() {
+      var btn = document.querySelector('.product-form__submit');
+      if (!btn) return;
+      var span = btn.querySelector('span');
+      if (!span) return;
+      if (!span.dataset.base) span.dataset.base = span.textContent.replace(/\s*\(.*\)\s*$/, '').trim();
+      if (btn.hasAttribute('disabled')) { span.textContent = span.dataset.base; return; }
+      var p = currentPrice();
+      span.textContent = span.dataset.base + (p ? ' ( ' + p + ' )' : '');
+    }
+    function init() {
+      var info = document.querySelector('.product__info-container');
+      if (!info || !document.querySelector('.product-form__submit')) return;
+      sync();
+      var t; var mo = new MutationObserver(function () { clearTimeout(t); t = setTimeout(sync, 60); });
+      mo.observe(info, { childList: true, subtree: true, characterData: true });
+    }
+    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); } else { init(); }
+  })();
+</script>

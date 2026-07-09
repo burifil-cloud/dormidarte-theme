@@ -1,0 +1,40 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "faq": {
+      "type": "collapsible-content",
+      "blocks": {
+        "p1": { "type": "collapsible_row", "settings": { "heading": "¿Qué firmeza tienen vuestros colchones?", "row_content": "<p>Tenemos modelos desde acogedor (mullido) hasta firme. Si no sabes cuál elegir, usa nuestro test «Encuentra tu colchón» y te recomendamos el ideal según tu postura, peso y preferencias.</p>" } },
+        "p2": { "type": "collapsible_row", "settings": { "heading": "¿Sobre qué base puedo usarlo?", "row_content": "<p>Sobre cualquier base firme y plana: somier de láminas, canapé abatible o base tapizada. Evita láminas muy separadas para un soporte uniforme.</p>" } },
+        "p3": { "type": "collapsible_row", "settings": { "heading": "¿Cuánto tarda en recuperar su forma?", "row_content": "<p>Al desenrollarlo empieza a expandirse enseguida. En pocas horas está listo y alcanza su firmeza óptima en 24-72h.</p>" } },
+        "p4": { "type": "collapsible_row", "settings": { "heading": "¿Hay que darle la vuelta?", "row_content": "<p>No es necesario. Recomendamos rotarlo cabeza-pies cada 3-4 meses para un desgaste uniforme.</p>" } },
+        "p5": { "type": "collapsible_row", "settings": { "heading": "¿Cómo lo limpio?", "row_content": "<p>La mayoría de nuestras fundas son desenfundables y lavables a máquina en frío. Aspira la superficie de vez en cuando y ventila la habitación.</p>" } },
+        "p6": { "type": "collapsible_row", "settings": { "heading": "¿Cómo funciona la prueba de 30 noches?", "row_content": "<p>Duerme en tu colchón hasta 30 noches. Si no te convence, lo recogemos gratis y te devolvemos el 100%. Más info en Devoluciones y garantía.</p>" } },
+        "p7": { "type": "collapsible_row", "settings": { "heading": "¿Cuánto tarda el envío?", "row_content": "<p>Envío gratuito en 24-72h a península, con seguimiento. Llega enrollado en una caja fácil de manejar.</p>" } },
+        "p8": { "type": "collapsible_row", "settings": { "heading": "¿Puedo pagar a plazos?", "row_content": "<p>Sí. En el momento del pago podrás financiar tu compra en cómodos plazos, según las opciones disponibles en el checkout.</p>" } },
+        "p9": { "type": "collapsible_row", "settings": { "heading": "¿Vendéis también almohadas y canapés?", "row_content": "<p>Sí. Además de colchones tenemos almohadas, canapés y cabeceros, muebles de dormitorio y textil de hogar. Échales un vistazo en la tienda.</p>" } },
+        "p10": { "type": "collapsible_row", "settings": { "heading": "¿Cómo os contacto?", "row_content": "<p>A través de nuestra página de Contacto. Te respondemos lo antes posible, normalmente en menos de 24h laborables.</p>" } }
+      },
+      "block_order": ["p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8", "p9", "p10"],
+      "settings": {
+        "caption": "",
+        "heading": "Preguntas frecuentes",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "row",
+        "color_scheme": "scheme-1",
+        "container_color_scheme": "scheme-2",
+        "open_first_collapsible_row": false,
+        "padding_top": 24,
+        "padding_bottom": 48
+      }
+    }
+  },
+  "order": ["main", "faq"]
+}

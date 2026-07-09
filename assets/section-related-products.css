@@ -1,0 +1,41 @@
+.related-products {
+  display: block;
+}
+
+.related-products__heading {
+  margin: 0 0 3rem;
+}
+
+/* ---- Relacionados estilo Apple ---- */
+.apbf-rel__heading {
+  font-size: clamp(2.2rem, 2.6vw, 3rem);
+  font-weight: 700; letter-spacing: -.01em; color: #1d1d1f; margin: 0 0 2.4rem;
+}
+.apbf-rel__row {
+  list-style: none; margin: 0; padding: .4rem .4rem 1.6rem;
+  display: flex; gap: 1.6rem; overflow-x: auto;
+  scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch;
+}
+.apbf-rel__row::-webkit-scrollbar { height: 6px; }
+.apbf-rel__row::-webkit-scrollbar-thumb { background: rgba(0,0,0,.14); border-radius: 99px; }
+.apbf-rel__item { flex: 0 0 auto; width: 24rem; scroll-snap-align: start; }
+.apbf-rel__card { display: flex; flex-direction: column; text-decoration: none; }
+.apbf-rel__media {
+  display: flex; align-items: center; justify-content: center;
+  background: transparent; border-radius: 18px; aspect-ratio: 1 / 1;
+  overflow: hidden; padding: .8rem; margin-bottom: 1.2rem;
+  transition: transform .22s ease;
+}
+.apbf-rel__card:hover .apbf-rel__media { transform: translateY(-4px); }
+.apbf-rel__img, .apbf-rel__media img { mix-blend-mode: multiply; }
+.apbf-rel__media img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
+.apbf-rel__eyebrow { font-size: 1.2rem; font-weight: 600; color: #2fae7a; margin-bottom: .5rem; }
+.apbf-rel__eyebrow--sale { color: #E95F5C; }
+.apbf-rel__name { font-size: 1.6rem; font-weight: 700; color: #1d1d1f; line-height: 1.25; margin-bottom: .6rem; }
+.apbf-rel__price { font-size: 1.5rem; color: #1d1d1f; }
+.apbf-rel__price s { color: #a0a0a0; margin-right: .4rem; font-weight: 400; }
+.apbf-rel__price strong { font-weight: 600; }
+@media (min-width: 990px) {
+  .apbf-rel__row { flex-wrap: wrap; }
+  .apbf-rel__item { flex: 1 1 0; width: auto; min-width: 20rem; }
+}

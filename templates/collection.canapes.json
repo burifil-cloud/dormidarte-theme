@@ -1,0 +1,48 @@
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "scheme-2"
+      }
+    },
+    "gallery": {
+      "type": "pro-colchones",
+      "blocks": {
+        "k1": { "type": "colchon", "settings": { "product": "canape-noblia", "tagline": "Recomendado" } },
+        "k2": { "type": "colchon", "settings": { "product": "canape-magna", "tagline": "" } },
+        "k3": { "type": "colchon", "settings": { "product": "canape-imperial", "tagline": "" } }
+      },
+      "block_order": ["k1", "k2", "k3"],
+      "settings": {
+        "eyebrow": "",
+        "heading": "",
+        "columns": 3,
+        "button_label": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 32,
+        "padding_bottom": 24
+      }
+    },
+    "promo": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": { "type": "heading", "settings": { "heading": "Colchón + canapé = 10% de descuento", "heading_size": "h1" } },
+        "text": { "type": "text", "settings": { "text": "<p>Añade un canapé y un colchón a tu carrito y el 10% de descuento se aplica automáticamente. Descanso completo, mejor precio.</p>" } },
+        "button": { "type": "button", "settings": { "button_label": "Ver colchones", "button_link": "/collections/colchones", "button_style_secondary": false } }
+      },
+      "block_order": ["heading", "text", "button"],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-4",
+        "full_width": true,
+        "padding_top": 52,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": ["banner", "gallery", "promo"]
+}

@@ -1,0 +1,144 @@
+{{ 'section-pro-colchon-specs.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign h = product.handle
+  case h
+    when 'prestance'
+      assign firm = 'Media' | append: ''
+      assign core = 'Muelles ensacados'
+      assign height = '25 cm'
+      assign extra = '7 zonas de confort'
+      assign bars = '60,70,65,60' | split: ','
+    when 'colchon-iris-muelles-ensacados'
+      assign firm = 'Media'
+      assign core = 'Muelles + viscoelástica'
+      assign height = 'Todas las medidas'
+      assign extra = 'Sin transferencia'
+      assign bars = '60,75,85,55' | split: ','
+    when 'prestance-plus'
+      assign firm = 'Media'
+      assign core = 'Muelles ensacados'
+      assign height = '28 cm'
+      assign extra = 'Topper viscoelástico'
+      assign bars = '60,80,70,72' | split: ','
+    when 'carbon'
+      assign firm = 'Blanda'
+      assign core = 'Alta resiliencia'
+      assign height = '27 cm'
+      assign extra = 'Tecnología de carbono'
+      assign bars = '40,55,85,68' | split: ','
+    when 'aloevera-doble-cara'
+      assign firm = 'Firme'
+      assign core = 'Soporte equilibrado'
+      assign height = 'Doble cara'
+      assign extra = 'Tejido Aloe Vera'
+      assign bars = '85,65,75,55' | split: ','
+    when 'beginn'
+      assign firm = 'Media'
+      assign core = 'Natural: lana y coco'
+      assign height = 'Doble cara'
+      assign extra = 'Algodón, lana y coco'
+      assign bars = '65,60,90,55' | split: ','
+    when 'craft-deluxe'
+      assign firm = 'Media'
+      assign core = 'Muelles ensacados'
+      assign height = '35 cm'
+      assign extra = 'Composición multicapa'
+      assign bars = '45,85,70,100' | split: ','
+    when 'sahara-dual'
+      assign firm = 'Media'
+      assign core = 'Doble cara'
+      assign height = '27 cm'
+      assign extra = 'Algodón / Lana'
+      assign bars = '60,60,80,68' | split: ','
+    when 'blue-vi'
+      assign firm = 'Media'
+      assign core = 'Muelles ensacados'
+      assign height = '27 cm'
+      assign extra = '7 zonas · Termorregulación'
+      assign bars = '60,70,85,68' | split: ','
+    else
+      assign firm = '—'
+      assign core = '—'
+      assign height = '—'
+      assign extra = '—'
+      assign bars = '60,60,60,60' | split: ','
+  endcase
+  assign barlabels = 'Firmeza,Adaptabilidad,Transpiración,Grosor' | split: ','
+-%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="cspecs page-width section-{{ section.id }}-padding">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="cspecs__heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+
+    <div class="cspecs__grid">
+      {%- comment -%} Spec tiles {%- endcomment -%}
+      <div class="cspecs__tiles">
+        <div class="cspecs__tile"><span class="cspecs__ico">{% render 'pro-icon', name: 'shield' %}</span><span class="cspecs__tile-label">Firmeza</span><span class="cspecs__tile-val">{{ firm }}</span></div>
+        <div class="cspecs__tile"><span class="cspecs__ico">{% render 'pro-icon', name: 'coil' %}</span><span class="cspecs__tile-label">Núcleo</span><span class="cspecs__tile-val">{{ core }}</span></div>
+        <div class="cspecs__tile"><span class="cspecs__ico">{% render 'pro-icon', name: 'ruler' %}</span><span class="cspecs__tile-label">Altura</span><span class="cspecs__tile-val">{{ height }}</span></div>
+        <div class="cspecs__tile"><span class="cspecs__ico">{% render 'pro-icon', name: 'check-circle' %}</span><span class="cspecs__tile-label">Confort</span><span class="cspecs__tile-val">{{ extra }}</span></div>
+      </div>
+
+      {%- comment -%} Rating bars {%- endcomment -%}
+      <div class="cspecs__bars">
+        {%- for b in bars -%}
+          <div class="cspecs__bar">
+            <span class="cspecs__bar-label">{{ barlabels[forloop.index0] }}</span>
+            <span class="cspecs__bar-track"><span class="cspecs__bar-fill" style="width: {{ b }}%;"></span></span>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    {%- comment -%} Sizes {%- endcomment -%}
+    {%- if product.variants.size > 1 or product.variants.first.title != 'Default Title' -%}
+      <div class="cspecs__sizes">
+        <span class="cspecs__sizes-label">Medidas disponibles</span>
+        <div class="cspecs__pills">
+          {%- for v in product.variants -%}<span class="cspecs__pill{% unless v.available %} is-out{% endunless %}">{{ v.title }}</span>{%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} Trust badges {%- endcomment -%}
+    <div class="cspecs__trust">
+      <div class="cspecs__trust-item"><span class="cspecs__ico">{% render 'pro-icon', name: 'moon' %}</span>30 noches de prueba</div>
+      <div class="cspecs__trust-item"><span class="cspecs__ico">{% render 'pro-icon', name: 'truck' %}</span>Envío gratis 24-72h</div>
+      <div class="cspecs__trust-item"><span class="cspecs__ico">{% render 'pro-icon', name: 'shield' %}</span>3 años de garantía</div>
+      <div class="cspecs__trust-item"><span class="cspecs__ico">{% render 'pro-icon', name: 'card' %}</span>Financiación hasta 12 meses</div>
+    </div>
+  </div>
+</div>
+
+{% style %}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Colchón · ficha visual",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Título", "default": "Características de un vistazo" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Esquema de color", "default": "scheme-2" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Espaciado superior", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Espaciado inferior", "default": 48 }
+  ],
+  "presets": [
+    { "name": "Colchón · ficha visual" }
+  ]
+}
+{% endschema %}

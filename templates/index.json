@@ -1,0 +1,286 @@
+{
+  "sections": {
+    "hero": {
+      "type": "home-hero",
+      "blocks": {
+        "slide1": {
+          "type": "slide",
+          "settings": {
+            "image_asset": "hero-blu.jpg",
+            "overlay_opacity": 40,
+            "content_alignment": "left",
+            "eyebrow": "Colchones premium · Precio justo",
+            "heading": "Duerme mejor desde la primera noche",
+            "subheading": "<p>Colchones de alta gama con materiales premium, al mejor precio. Pruébalo 30 noches en casa, sin riesgo.</p>",
+            "button_1_label": "Ver colchones",
+            "button_1_link": "/collections/colchones",
+            "button_2_label": "Encuentra tu colchón",
+            "button_2_link": "/#quiz"
+          }
+        },
+        "slide2": {
+          "type": "slide",
+          "settings": {
+            "image_asset": "life-carbon-1.jpg",
+            "overlay_opacity": 45,
+            "content_alignment": "left",
+            "eyebrow": "Sin intereses",
+            "heading": "Financia tu descanso hasta en 12 meses",
+            "subheading": "<p>Llévate tu colchón hoy y págalo cómodamente a plazos, sin intereses.</p>",
+            "button_1_label": "Ver colchones",
+            "button_1_link": "/collections/colchones",
+            "button_2_label": "Encuentra tu colchón",
+            "button_2_link": "/#quiz",
+            "show_pay": true
+          }
+        },
+        "slide3": {
+          "type": "slide",
+          "settings": {
+            "image_asset": "life-aloevera-1.jpg",
+            "overlay_opacity": 45,
+            "content_alignment": "left",
+            "eyebrow": "Compra sin riesgo",
+            "heading": "30 noches de prueba y 3 años de garantía",
+            "subheading": "<p>Envío gratis con seguro, reembolso del 100% y atención las 24h. Si no es tu colchón, lo recogemos gratis.</p>",
+            "button_1_label": "Ver colchones",
+            "button_1_link": "/collections/colchones",
+            "button_2_label": "Nuestras garantías",
+            "button_2_link": "/pages/devoluciones-y-garantia"
+          }
+        }
+      },
+      "block_order": ["slide2", "slide1", "slide3"],
+      "settings": {
+        "height": 75,
+        "interval": 4,
+        "color_scheme": "scheme-3",
+        "show_usp": false
+      }
+    },
+    "usp_bar": {
+      "type": "pro-features",
+      "blocks": {
+        "u1": { "type": "feature", "settings": { "icon": "moon", "title": "30 noches de prueba", "text": "Devolución gratis" } },
+        "u2": { "type": "feature", "settings": { "icon": "truck", "title": "Envío gratis 24-72h", "text": "Con seguimiento" } },
+        "u3": { "type": "feature", "settings": { "icon": "shield", "title": "3 años de garantía", "text": "Durabilidad garantizada" } },
+        "u4": { "type": "feature", "settings": { "icon": "card", "title": "Paga a plazos", "text": "Sin intereses" } }
+      },
+      "block_order": ["u1", "u2", "u3", "u4"],
+      "settings": {
+        "eyebrow": "",
+        "heading": "",
+        "subheading": "",
+        "layout": "bar",
+        "columns": 4,
+        "color_scheme": "scheme-1",
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "colchones": {
+      "type": "pro-colchones",
+      "blocks": {
+        "c1": { "type": "colchon", "settings": { "product": "prestance", "front_asset": "capas-prestance.png", "hover_asset": "life-prestance-1.jpg", "tagline": "Muelles ensacados" } },
+        "c2": { "type": "colchon", "settings": { "product": "colchon-iris-muelles-ensacados", "front_asset": "capas-iris.png", "hover_asset": "life-iris-1.jpg", "tagline": "Mejor precio" } },
+        "c3": { "type": "colchon", "settings": { "product": "prestance-plus", "front_asset": "capas-prestance-plus.png", "hover_asset": "life-prestance-plus-1.jpg", "tagline": "Con topper" } },
+        "c4": { "type": "colchon", "settings": { "product": "carbon", "front_asset": "capas-carbon.png", "hover_asset": "life-carbon-1.jpg", "tagline": "Termorregulación" } },
+        "c5": { "type": "colchon", "settings": { "product": "aloevera-doble-cara", "front_asset": "capas-aloevera.png", "hover_asset": "life-aloevera-1.jpg", "tagline": "Doble cara" } },
+        "c6": { "type": "colchon", "settings": { "product": "beginn", "front_asset": "capas-beginn.png", "hover_asset": "life-beginn-1.jpg", "tagline": "100% natural" } },
+        "c8": { "type": "colchon", "settings": { "product": "sahara-dual", "front_asset": "capas-sahara-dual.png", "hover_asset": "life-sahara-dual-1.jpg", "tagline": "Verano / Invierno" } },
+        "c9": { "type": "colchon", "settings": { "product": "blue-vi", "front_asset": "capas-blue-vi.png", "hover_asset": "life-blue-vi-1.jpg", "tagline": "7 zonas de confort" } }
+      },
+      "block_order": ["c1", "c2", "c3", "c4", "c5", "c6", "c8", "c9"],
+      "settings": {
+        "eyebrow": "Fabricación europea",
+        "heading": "Nuestros colchones",
+        "columns": 3,
+        "button_label": "Ver todos los colchones",
+        "button_link": "/collections/colchones",
+        "color_scheme": "scheme-1",
+        "padding_top": 48,
+        "padding_bottom": 24
+      }
+    },
+    "feature_materiales": {
+      "type": "home-feature",
+      "settings": {
+        "image_asset": "feature-dream.jpg",
+        "image_position": "left",
+        "eyebrow": "Calidad premium",
+        "heading": "Materiales de alta gama, a un precio justo",
+        "text": "<p>Muelles ensacados, viscoelástica adaptable, látex, materiales naturales... Cada colchón está fabricado en Europa con componentes de primer nivel y tejidos transpirables que regulan la temperatura. La misma calidad de las grandes marcas, sin pagar de más.</p>",
+        "button_label": "Ver colchones",
+        "button_link": "/collections/colchones",
+        "color_scheme": "scheme-1",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "porque": {
+      "type": "pro-features",
+      "blocks": {
+        "p1": { "type": "feature", "settings": { "icon": "tag", "title": "Precio justo", "text": "Calidad premium sin el sobreprecio de las grandes marcas." } },
+        "p2": { "type": "feature", "settings": { "icon": "medal", "title": "Calidad de fábrica", "text": "Materiales de alta gama, fabricación europea." } },
+        "p3": { "type": "feature", "settings": { "icon": "shield", "title": "Compra sin riesgo", "text": "30 noches de prueba y 3 años de garantía." } },
+        "p4": { "type": "feature", "settings": { "icon": "headset", "title": "Atención cercana", "text": "Te ayudamos a elegir el colchón ideal para ti." } }
+      },
+      "block_order": ["p1", "p2", "p3", "p4"],
+      "settings": {
+        "eyebrow": "Por qué Dormidarte",
+        "heading": "Descanso premium, sin pagar de más",
+        "subheading": "Miles de personas ya duermen mejor con nosotros.",
+        "layout": "cards",
+        "columns": 4,
+        "color_scheme": "scheme-1",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "feature_diseno": {
+      "type": "home-feature",
+      "settings": {
+        "image_asset": "feature-carbon.jpg",
+        "image_position": "right",
+        "eyebrow": "Diseño",
+        "heading": "Un colchón que eleva tu dormitorio",
+        "text": "<p>Acabados cuidados, tejidos elegantes y una estética que combina con cualquier habitación. Descanso premium que además se ve bien.</p>",
+        "button_label": "Ver colchones",
+        "button_link": "/collections/colchones",
+        "color_scheme": "scheme-1",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "quiz": {
+      "type": "quiz-colchon",
+      "settings": {
+        "eyebrow": "Test en 1 minuto",
+        "heading": "¿No sabes cuál elegir? Encuéntralo en 1 minuto",
+        "subheading": "Responde 4 preguntas y te recomendamos el colchón perfecto para ti.",
+        "start_label": "Empezar test",
+        "time_label": "Menos de 1 minuto · Sin registro",
+        "result_eyebrow": "Por tus respuestas, creemos que te encaja",
+        "lead_proxy_url": "https://little-king-8342.burifil.workers.dev"
+      }
+    },
+    "opiniones": {
+      "type": "multicolumn",
+      "blocks": {
+        "o1": { "type": "column", "settings": { "title": "★★★★★ María G.", "text": "<p>«Llevaba años durmiendo mal y ahora descanso de verdad. La prueba de 30 noches me dio la confianza para pedirlo.»</p>" } },
+        "o2": { "type": "column", "settings": { "title": "★★★★★ Javier R.", "text": "<p>«Calidad de marca cara a mitad de precio. Llegó en 2 días y súper fácil de colocar. Muy contento.»</p>" } },
+        "o3": { "type": "column", "settings": { "title": "★★★★★ Lucía M.", "text": "<p>«Ni calor ni dolores de espalda. Se nota que los materiales son buenos. Repetiré para la habitación de invitados.»</p>" } }
+      },
+      "block_order": ["o1", "o2", "o3"],
+      "settings": {
+        "title": "Lo que dicen nuestros clientes",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "faq": {
+      "type": "collapsible-content",
+      "blocks": {
+        "f1": { "type": "collapsible_row", "settings": { "heading": "¿Cómo funciona la prueba de 30 noches?", "row_content": "<p>Duerme en tu colchón hasta 30 noches. Si no te convence, lo recogemos gratis y te devolvemos el 100%.</p>" } },
+        "f2": { "type": "collapsible_row", "settings": { "heading": "¿Cuánto tarda el envío?", "row_content": "<p>Envío gratuito en 24-72h a península. Llega enrollado en una caja fácil de manejar.</p>" } },
+        "f3": { "type": "collapsible_row", "settings": { "heading": "¿Sobre qué base puedo usarlo?", "row_content": "<p>Sobre cualquier base firme y plana: somier de láminas, canapé o base tapizada.</p>" } },
+        "f4": { "type": "collapsible_row", "settings": { "heading": "¿Qué garantía tiene?", "row_content": "<p>3 años de garantía frente a defectos de fabricación, además de las 30 noches de prueba.</p>" } },
+        "f5": { "type": "collapsible_row", "settings": { "heading": "¿Puedo pagar a plazos?", "row_content": "<p>Sí, en el checkout puedes financiar tu compra en cómodos plazos.</p>" } }
+      },
+      "block_order": ["f1", "f2", "f3", "f4", "f5"],
+      "settings": {
+        "caption": "",
+        "heading": "Preguntas frecuentes",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "row",
+        "color_scheme": "scheme-1",
+        "container_color_scheme": "scheme-2",
+        "open_first_collapsible_row": false,
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "blocks": {
+        "heading": { "type": "heading", "settings": { "heading": "10% de descuento en tu primer pedido" } },
+        "paragraph": { "type": "paragraph", "settings": { "text": "<p>Suscríbete y recibe consejos de descanso y ofertas exclusivas.</p>" } },
+        "email_form": { "type": "email_form" }
+      },
+      "block_order": ["heading", "paragraph", "email_form"],
+      "settings": {
+        "color_scheme": "scheme-3",
+        "full_width": true,
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "showcase": {
+      "type": "showcase-cards",
+      "blocks": {
+        "c1": { "type": "card", "settings": { "product": "carbon", "image_asset": "life-carbon-1.jpg", "badge": "Oferta" } },
+        "c2": { "type": "card", "settings": { "product": "blue-vi", "image_asset": "life-blue-vi-1.jpg", "badge": "Oferta" } },
+        "c3": { "type": "card", "settings": { "product": "aloevera-doble-cara", "image_asset": "life-aloevera-1.jpg", "badge": "Oferta" } },
+        "c4": { "type": "card", "settings": { "product": "prestance-plus", "image_asset": "life-prestance-plus-1.jpg", "badge": "Oferta" } }
+      },
+      "block_order": ["c1", "c2", "c3", "c4"],
+      "settings": {
+        "eyebrow": "NUESTROS COLCHONES",
+        "heading": "Diseñados para tu mejor descanso.",
+        "heading_sub": "Encuentra el tuyo.",
+        "color_scheme": "scheme-1",
+        "padding_top": 48,
+        "padding_bottom": 32
+      }
+    },
+    "ventajas_apple": {
+      "type": "apple-benefits",
+      "blocks": {
+        "b1": { "type": "benefit", "settings": { "icon": "shield", "color": "bluewood", "text": "<p><strong>3 años de garantía</strong> frente a defectos de fabricación.</p>" } },
+        "b2": { "type": "benefit", "settings": { "icon": "truck", "color": "verde", "text": "<p><strong>Envío gratis en 24-72h</strong> con seguro de mercancía.</p>" } },
+        "b3": { "type": "benefit", "settings": { "icon": "card", "color": "turquesa", "text": "<p>Paga en <strong>3 plazos sin intereses</strong>, o hasta 12 meses.</p>" } },
+        "b4": { "type": "benefit", "settings": { "icon": "moon", "color": "coral", "text": "<p><strong>30 noches de prueba</strong> en casa. Si no es tu colchón, lo recogemos gratis.</p>" } },
+        "b5": { "type": "benefit", "settings": { "icon": "check-circle", "color": "naranja", "text": "<p><strong>Reembolso del 100%</strong> si cambias de opinión, sin preguntas.</p>" } },
+        "b6": { "type": "benefit", "settings": { "icon": "headset", "color": "morado", "text": "<p><strong>Atención cercana</strong> y servicio las 24h.</p>" } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4", "b5", "b6"],
+      "settings": {
+        "eyebrow": "COMPRA SIN RIESGO",
+        "heading": "Descansa con",
+        "heading_highlight": "total tranquilidad.",
+        "subheading": "Todo lo que necesitas para comprar tu colchón sin preocuparte por nada.",
+        "button_label": "Ver colchones",
+        "button_link": "/collections/colchones",
+        "image_asset": "hero-blu.jpg",
+        "color_scheme": "scheme-1",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "usp_bar",
+    "showcase",
+    "colchones",
+    "feature_materiales",
+    "porque",
+    "feature_diseno",
+    "quiz",
+    "opiniones",
+    "ventajas_apple",
+    "faq",
+    "newsletter"
+  ]
+}

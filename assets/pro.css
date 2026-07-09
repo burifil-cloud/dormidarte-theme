@@ -1,0 +1,512 @@
+/* ============================================================
+   Dormidarte · Capa de diseño profesional
+   ============================================================ */
+
+:root {
+  --pro-radius: 16px;
+  --pro-radius-sm: 12px;
+  --pro-shadow: 0 4px 24px rgba(28, 40, 55, 0.08);
+  --pro-shadow-lg: 0 18px 50px rgba(28, 40, 55, 0.12);
+  --pro-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---------- Notificaciones tipo Apple (toast) ---------- */
+#dormi-toast-wrap {
+  position: fixed; top: calc(env(safe-area-inset-top, 0px) + 3rem); left: 0; right: 0; z-index: 100000;
+  display: flex; flex-direction: column; align-items: center; gap: .8rem;
+  padding: 0 1.5rem; pointer-events: none;
+}
+.dormi-toast {
+  display: flex; align-items: center; gap: 1.1rem; width: 100%; max-width: 40rem;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro", "Helvetica Neue", system-ui, sans-serif;
+  background: rgba(252, 252, 254, .94); color: #1d1d1f;
+  -webkit-backdrop-filter: blur(30px) saturate(1.8); backdrop-filter: blur(30px) saturate(1.8);
+  padding: 1.1rem 1.4rem; border-radius: 1.8rem;
+  border: 1px solid rgba(60, 60, 67, .18);
+  box-shadow: 0 18px 50px rgba(20, 30, 45, .30), 0 0 34px rgba(92, 195, 232, .22), 0 1px 0 rgba(255,255,255,.7) inset;
+  transform: translateY(-2.4rem) scale(.96); opacity: 0;
+  transition: transform .5s cubic-bezier(.22,1.2,.36,1), opacity .35s ease;
+  pointer-events: auto;
+}
+.dormi-toast.is-show { transform: translateY(0) scale(1); opacity: 1; }
+.dormi-toast__app {
+  flex: 0 0 auto; width: 3.6rem; height: 3.6rem; border-radius: .9rem; overflow: hidden;
+  background: linear-gradient(160deg, #5CC3E8, #314855);
+  display: inline-flex; align-items: center; justify-content: center;
+  line-height: 1; box-shadow: 0 2px 6px rgba(20,30,45,.18);
+}
+.dormi-toast__app img { width: 100%; height: 100%; object-fit: contain; background: #fff; }
+.dormi-toast__mono { font-family: Georgia, "Times New Roman", serif; font-style: italic; font-weight: 700; color: #fff; font-size: 2.1rem; }
+.dormi-toast__body { flex: 1 1 auto; display: flex; flex-direction: column; min-width: 0; }
+.dormi-toast__title { font-size: 1.45rem; font-weight: 700; letter-spacing: -.02em; line-height: 1.2; }
+.dormi-toast__msg { font-size: 1.4rem; font-weight: 400; color: #3c3c43; line-height: 1.3; }
+.dormi-toast__count { font-weight: 700; font-variant-numeric: tabular-nums; color: #E95F5C; letter-spacing: -.01em; }
+.dormi-toast__now { flex: 0 0 auto; align-self: flex-start; font-size: 1.15rem; color: #8a8a8e; margin-top: .2rem; }
+@media (prefers-color-scheme: dark) {
+  .dormi-toast { background: rgba(40, 40, 44, .82); color: #fff; border-color: rgba(255,255,255,.12); }
+  .dormi-toast__msg { color: #d0d0d5; }
+}
+/* En ordenador: abajo a la derecha y más grande */
+@media (min-width: 750px) {
+  #dormi-toast-wrap { top: auto; bottom: 3.6rem; left: auto; right: 2.8rem; align-items: flex-end; padding: 0; }
+  .dormi-toast {
+    width: auto; min-width: 34rem; max-width: 42rem;
+    padding: 1.5rem 1.9rem; gap: 1.4rem; border-radius: 2rem;
+    transform: translateY(2.4rem) scale(.96);
+  }
+  .dormi-toast__app { width: 4.6rem; height: 4.6rem; border-radius: 1.1rem; }
+  .dormi-toast__mono { font-size: 2.6rem; }
+  .dormi-toast__title { font-size: 1.7rem; }
+  .dormi-toast__msg { font-size: 1.55rem; }
+  .dormi-toast__now { font-size: 1.25rem; }
+}
+
+/* ---------- Ficha de producto estilo Sklum (ordenador) ---------- */
+@media (min-width: 990px) {
+  .product__media-list {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-auto-flow: row !important;
+    gap: 1rem !important;
+    width: 100% !important;
+  }
+  .product__media-list .product__media-item {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    left: auto !important;
+    transform: none !important;
+    grid-column: auto !important;
+    grid-row: auto !important;
+    scroll-snap-align: none !important;
+  }
+  .product__media-list .product__media-item .product__media,
+  .product__media-list .product__media-item .media {
+    position: relative !important;
+    aspect-ratio: 1 / 1 !important;
+    height: auto !important;
+    padding: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #f6f4f0;
+  }
+  .product__media-list .product__media-item .product__media::after,
+  .product__media-list .product__media-item .media::before { display: none !important; }
+  .product__media-list .product__media-item img {
+    position: absolute !important; inset: 0 !important;
+    width: 100% !important; height: 100% !important;
+    object-fit: cover !important; border-radius: 14px;
+  }
+  /* La 1ª foto (render del producto) completa, sin recorte, con poco margen */
+  .product__media-list .product__media-item:first-child img { object-fit: contain !important; padding: 1rem; }
+}
+/* Ficha de producto más ancha (pegada a los bordes, estilo Sklum) */
+@media (min-width: 990px) {
+  .template-product .page-width { max-width: 152rem; padding-left: 3rem; padding-right: 3rem; }
+}
+/* Selector de medidas: que envuelva limpio aunque haya muchas */
+.product-form__input { margin: 0 0 1.5rem; }
+.product-form__input--pill { display: flex; flex-wrap: wrap; gap: .8rem; }
+.product-form__input--pill input[type='radio'] + label { margin: 0; }
+/* Medidas como botones (pills) estilo Sklum */
+.product-form__input--pill input[type='radio'] + label {
+  border-radius: 9px;
+  border: 1px solid #d9d3c9;
+  padding: 1.1rem 1.7rem;
+  font-weight: 600;
+  color: #1d1d1f;
+  transition: all .15s ease;
+}
+.product-form__input--pill input[type='radio']:checked + label {
+  background: #1d1d1f;
+  color: #fff;
+  border-color: #1d1d1f;
+}
+.product-form__input--pill input[type='radio'] + label:hover { border-color: #1d1d1f; }
+/* Botón añadir al carrito negro a todo el ancho */
+.product-form__submit {
+  background: #1d1d1f !important;
+  color: #fff !important;
+  border: 0 !important;
+  border-radius: 10px !important;
+  font-weight: 700 !important;
+  font-size: 1.6rem !important;
+  padding: 1.7rem !important;
+  box-shadow: none !important;
+}
+.product-form__submit:not([disabled]):hover { background: #000 !important; transform: translateY(-1px); }
+.product-form__submit[disabled] { background: #b8b3ab !important; color: #fff !important; }
+
+/* ---------- Logo de la cabecera más grande ---------- */
+.header__heading-logo-wrapper { display: inline-flex; align-items: center; }
+.header__heading-logo { width: auto !important; height: 5rem !important; max-width: 30rem; }
+.scrolled-past-header .header__heading-logo { height: 4rem !important; }
+@media (max-width: 749px) {
+  .header__heading-logo { height: 3.8rem !important; max-width: 20rem; }
+}
+
+/* ---------- Tipografía con jerarquía ---------- */
+h1, h2, .h1, .h2 {
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+h3, h4, .h3, .h4 {
+  letter-spacing: -0.01em;
+}
+
+/* ---------- Botones más sólidos ---------- */
+.button,
+.shopify-payment-button__button--unbranded {
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: transform 0.18s var(--pro-ease), box-shadow 0.18s var(--pro-ease), background 0.18s var(--pro-ease);
+}
+.button:not([disabled]):hover {
+  transform: translateY(-2px);
+  box-shadow: var(--pro-shadow);
+}
+.button--primary {
+  min-height: 5rem;
+}
+
+/* ---------- Tarjetas de producto más premium ---------- */
+.card-wrapper {
+  transition: transform 0.22s var(--pro-ease);
+}
+.card-wrapper:hover {
+  transform: translateY(-4px);
+}
+.card__media,
+.card .media {
+  border-radius: var(--pro-radius-sm);
+  overflow: hidden;
+}
+.card__information {
+  padding-top: 1.4rem;
+}
+.card__heading {
+  letter-spacing: -0.01em;
+}
+.price {
+  font-weight: 600;
+}
+
+/* ---------- Encabezados de sección centrados ---------- */
+.title-wrapper-with-link .title,
+.collection__title .title {
+  letter-spacing: -0.02em;
+}
+
+/* ---------- Reutilizables para secciones a medida ---------- */
+.pro-eyebrow {
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: rgb(var(--color-button));
+  margin: 0 0 1.2rem;
+}
+.pro-icon {
+  display: inline-flex;
+  width: 2.6rem;
+  height: 2.6rem;
+  flex: 0 0 auto;
+}
+.pro-icon svg { width: 100%; height: 100%; display: block; }
+
+/* ---------- Bundle Colchón + Canapé (en la caja de compra) ---------- */
+.cbundle {
+  margin-top: 1.2rem;
+  padding: 1.6rem;
+  border: 1px solid rgba(233, 95, 92, .4);
+  border-radius: 16px;
+  background: rgba(233, 95, 92, .07);
+}
+.cbundle__head {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  font-size: 1.4rem;
+  line-height: 1.45;
+  margin: 0 0 1.4rem;
+}
+.cbundle__ico { font-size: 2.2rem; line-height: 1; }
+.cbundle__step {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  opacity: .7;
+  margin: 1.2rem 0 .8rem;
+}
+.cbundle__canapes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.cbundle__canape {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .6rem;
+  padding: .8rem;
+  cursor: pointer;
+  border: 2px solid rgba(var(--color-foreground), .12);
+  border-radius: 12px;
+  background: rgb(var(--color-background));
+  transition: border-color .15s ease, transform .15s ease;
+}
+.cbundle__canape:hover { transform: translateY(-2px); }
+.cbundle__canape input { position: absolute; opacity: 0; pointer-events: none; }
+.cbundle__canape:has(input:checked) {
+  border-color: rgb(var(--color-button));
+  box-shadow: 0 0 0 1px rgb(var(--color-button));
+}
+.cbundle__canape-media {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f4f7f8;
+}
+.cbundle__canape-media img { width: 100%; height: 100%; object-fit: contain; }
+.cbundle__canape-name { font-size: 1.25rem; font-weight: 600; text-align: center; line-height: 1.2; }
+
+.cbundle__size {
+  width: 100%;
+  min-height: 4.8rem;
+  padding: 0 1.2rem;
+  font-size: 1.45rem;
+  font-family: inherit;
+  color: rgb(var(--color-foreground));
+  background: rgb(var(--color-background));
+  border: 1.5px solid rgba(var(--color-foreground), .25);
+  border-radius: 10px;
+}
+.cbundle__note { font-size: 1.3rem; opacity: .85; margin: 1rem 0 0; }
+.cbundle__add { width: 100%; min-height: 5rem; margin-top: 1.2rem; }
+.cbundle__add:disabled { opacity: .5; cursor: not-allowed; }
+.cbundle__cart {
+  display: block;
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: 600;
+  font-size: 1.35rem;
+  color: rgb(var(--color-button));
+}
+
+/* ---------- Mega menú con fotos (por dureza) ---------- */
+.mega-menu__content { padding-top: 3.4rem !important; padding-bottom: 3.8rem !important; border-radius: 0 0 20px 20px; box-shadow: 0 24px 44px rgba(20, 30, 45, .12); border-top: 1px solid rgba(20, 30, 45, .06); }
+.mega-menu__inner { display: flex; align-items: center; justify-content: center; gap: 4.5rem; }
+.mega-menu__list { gap: 5.5rem !important; justify-content: center; margin: 0 !important; }
+.mega-menu__list > li { min-width: 31rem; }
+/* Tarjeta de colección en el desplegable */
+.mega-menu__promo {
+  flex: 0 0 24rem; display: block; text-decoration: none;
+  border-radius: 16px; overflow: hidden; background: #f6f2ec;
+  border: 1px solid #e7ded1; box-shadow: 0 12px 30px rgba(20, 40, 55, .1);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.mega-menu__promo:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(20, 40, 55, .16); }
+.mega-menu__promo-media { display: block; aspect-ratio: 4 / 3; background: #fff; }
+.mega-menu__promo-media img { width: 100%; height: 100%; object-fit: contain; padding: 1rem; }
+.mega-menu__promo-body { padding: 1.2rem 1.6rem 1.5rem; }
+.mega-menu__promo-title { display: block; font-weight: 800; font-size: 1.6rem; color: #314855; }
+.mega-menu__promo-cta { display: block; margin-top: .3rem; font-size: 1.3rem; color: #ef8b34; font-weight: 700; }
+@media (max-width: 1100px) { .mega-menu__promo { display: none; } }
+.mega-menu__list li .mega-menu__link--level-2 {
+  font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  font-size: 1.3rem; color: rgb(var(--color-button));
+  margin-bottom: 1.4rem; padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(var(--color-foreground), .1);
+}
+.mega-prod-grid {
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none;
+}
+.mega-prod-grid > li { margin: 0 0 1rem; }
+.mega-prod {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  min-width: 31rem;
+  padding: 1rem 1.2rem;
+  border-radius: 16px;
+  text-decoration: none;
+  transition: background .18s ease, transform .18s ease;
+}
+.mega-prod:hover { background: rgba(var(--color-foreground), .05); transform: translateY(-1px); }
+.mega-prod__img {
+  flex: 0 0 auto;
+  width: 6.8rem;
+  height: 6.8rem;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #f4f7f8;
+}
+.mega-prod__img img { width: 100%; height: 100%; object-fit: contain; padding: 4px; }
+.mega-prod__text { display: flex; flex-direction: column; gap: .3rem; }
+.mega-prod__name { font-size: 1.7rem; font-weight: 600; color: rgb(var(--color-foreground)); line-height: 1.15; letter-spacing: -.01em; }
+.mega-prod__sum { font-size: 1.25rem; color: rgba(var(--color-foreground), .62); line-height: 1.3; }
+
+/* ---------- Cross-sell en el carrito (Combina bien con) ---------- */
+.cart-xsell {
+  margin: 0 0 1.2rem;
+  padding: 1.4rem;
+  border: 1px solid rgba(233, 95, 92, .35);
+  border-radius: 12px;
+  background: rgba(233, 95, 92, .06);
+}
+.cart-xsell__title { font-size: 1.3rem; font-weight: 700; margin: 0 0 1rem; }
+.cart-xsell__item { display: flex; align-items: center; gap: 1.2rem; }
+.cart-xsell__media { flex: 0 0 auto; width: 6rem; height: 6rem; border-radius: 8px; overflow: hidden; background: #f4f7f8; }
+.cart-xsell__media img { width: 100%; height: 100%; object-fit: contain; padding: 2px; }
+.cart-xsell__info { flex: 1 1 auto; display: flex; flex-direction: column; gap: .2rem; }
+.cart-xsell__name { font-size: 1.4rem; font-weight: 600; }
+.cart-xsell__price { font-size: 1.25rem; opacity: .85; }
+.cart-xsell__add {
+  flex: 0 0 auto; cursor: pointer; font-family: inherit;
+  background: rgb(var(--color-button)); color: rgb(var(--color-button-label, 255 255 255));
+  border: 0; border-radius: 8px; padding: 1rem 1.6rem; font-weight: 600; font-size: 1.3rem;
+}
+.cart-xsell__add:disabled { opacity: .6; }
+.cart-xsell__add { transition: transform .12s ease, filter .12s ease; }
+.cart-xsell__add:hover { transform: translateY(-1px); filter: brightness(1.05); }
+
+/* ---------- Carrito (drawer) más premium ---------- */
+.cart-drawer .drawer__inner { border-radius: 0; }
+.cart-drawer .drawer__header { padding-bottom: 1.6rem; margin-bottom: .4rem; border-bottom: 1px solid rgba(49, 72, 85, .12); }
+.cart-drawer .drawer__heading { font-weight: 800; letter-spacing: -.01em; }
+.cart-drawer .cart-item { padding: 1.6rem 0; }
+.cart-drawer .cart-item__image { border-radius: 14px; border: 1px solid #ece7df; background: #fff; box-shadow: 0 4px 12px rgba(20, 40, 55, .06); }
+.cart-drawer .cart-item__name { font-weight: 700; }
+.cart-drawer .cart-item__discounted-prices .cart-item__final-price { color: var(--pro-coral, #E95F5C); }
+.cart-drawer .discounts__discount { color: #2f9fc4; font-weight: 600; }
+.cart-drawer .cart-quantity { border-radius: 999px; overflow: hidden; }
+.cart-drawer .totals__total { font-weight: 800; font-size: 1.7rem; }
+.cart-drawer .totals__total-value { font-weight: 800; font-size: 1.9rem; }
+.cart-drawer .cart__checkout-button {
+  border-radius: 14px; font-weight: 800; font-size: 1.6rem; padding: 1.6rem;
+  transition: transform .12s ease, filter .12s ease;
+}
+.cart-drawer .cart__checkout-button:hover { transform: translateY(-1px); filter: brightness(1.06); }
+.cart-trust {
+  list-style: none; margin: 1.4rem 0 .4rem; padding: 1.4rem 0 0;
+  border-top: 1px solid rgba(49, 72, 85, .12);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 1.4rem;
+}
+.cart-trust__item { display: flex; align-items: center; gap: .7rem; font-size: 1.2rem; color: #4a5a63; font-weight: 600; line-height: 1.25; }
+.cart-trust__ico { font-size: 1.6rem; line-height: 1; flex: 0 0 auto; }
+
+/* ---------- Menú móvil con foto + badge (estilo Liroon) ---------- */
+.menu-drawer__menu-item.drawer-prod {
+  display: flex !important;
+  align-items: center;
+  gap: 1.2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.drawer-prod__img {
+  flex: 0 0 auto;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f4f7f8;
+}
+.drawer-prod__img img { width: 100%; height: 100%; object-fit: contain; padding: 2px; }
+.drawer-prod__name { flex: 1 1 auto; font-size: 1.5rem; font-weight: 500; }
+.drawer-prod__badge {
+  flex: 0 0 auto;
+  background: #e0322f;
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  padding: .3rem .8rem;
+  border-radius: 6px;
+}
+.drawer-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem 2.4rem;
+  padding: 1.6rem 0;
+  margin-bottom: .8rem;
+  border-top: 1px solid rgba(var(--color-foreground), .1);
+  border-bottom: 1px solid rgba(var(--color-foreground), .1);
+}
+.drawer-contact__item { font-size: 1.5rem; font-weight: 600; text-decoration: none; color: rgb(var(--color-foreground)); }
+.menu-drawer__group-label {
+  list-style: none;
+  padding: 1.4rem 0 .4rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: rgba(var(--color-foreground), .55);
+}
+
+/* ---------- Header un poco más refinado (estilo Emma) ---------- */
+.header {
+  backdrop-filter: saturate(1.1);
+}
+/* "Ofertas" destacado en naranja como el "VER REBAJAS" de Emma */
+#HeaderMenu-ofertas,
+.header__menu-item[href$="/collections/colchones"]:first-of-type {
+  color: #ef8b34 !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+}
+#HeaderMenu-ofertas span { color: #ef8b34 !important; }
+.header__heading-logo { max-height: 4.4rem; width: auto; }
+/* ---------- Menú superior premium ---------- */
+.header__inline-menu .list-menu--inline { gap: 2.8rem; }
+.header__inline-menu .header__menu-item {
+  position: relative;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: .005em;
+  color: #3a4750;
+  padding: .5rem 0;
+  transition: color .2s ease;
+}
+.header__inline-menu .header__menu-item:hover { color: #314855; }
+.header__inline-menu .header__menu-item::after {
+  content: ""; position: absolute; left: 0; right: 100%; bottom: -.1rem;
+  height: 2px; border-radius: 2px; background: #ef8b34;
+  transition: right .28s cubic-bezier(.4, 0, .2, 1);
+}
+.header__inline-menu .header__menu-item:hover::after,
+.header__inline-menu details[open] > .header__menu-item::after,
+.header__inline-menu .header__menu-item.header__active-menu-item::after { right: 0; }
+.header__inline-menu details[open] > .header__menu-item .svg-wrapper,
+.header__inline-menu details[open] > .header__menu-item svg { transform: rotate(180deg); }
+.header__inline-menu .header__menu-item .svg-wrapper { transition: transform .22s ease; }
+
+/* ---------- Detalles de acordeones (FAQ / tabs) ---------- */
+.accordion summary,
+.collapsible-content .accordion__title {
+  letter-spacing: -0.005em;
+}
+
+/* ---------- Mejores separadores y foco accesible ---------- */
+:focus-visible {
+  outline: 2px solid rgb(var(--color-button));
+  outline-offset: 2px;
+}

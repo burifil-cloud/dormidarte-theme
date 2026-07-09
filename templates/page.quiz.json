@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "quiz": {
+      "type": "quiz-colchon",
+      "settings": {
+        "eyebrow": "Test en 1 minuto",
+        "heading": "Encuentra tu colchón ideal",
+        "subheading": "Responde 4 preguntas y te recomendamos el colchón perfecto para tu descanso.",
+        "start_label": "Empezar test",
+        "time_label": "Menos de 1 minuto · Sin registro",
+        "result_eyebrow": "Por tus respuestas, creemos que te encaja"
+      }
+    }
+  },
+  "order": ["quiz"]
+}

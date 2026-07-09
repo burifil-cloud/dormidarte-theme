@@ -1,0 +1,51 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "band": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": { "type": "heading", "settings": { "heading": "30 noches de prueba. Sin riesgo.", "heading_size": "h1" } },
+        "text": { "type": "text", "settings": { "text": "<p>Queremos que aciertes. Duerme en tu colchón durante 30 noches: si no es para ti, lo recogemos gratis y te devolvemos el 100% de tu dinero. Y si todo va bien, tienes 3 años de garantía.</p>" } }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-4",
+        "full_width": true,
+        "padding_top": 52,
+        "padding_bottom": 52
+      }
+    },
+    "info": {
+      "type": "collapsible-content",
+      "blocks": {
+        "d1": { "type": "collapsible_row", "settings": { "heading": "¿Cómo funciona la prueba de 30 noches?", "row_content": "<p>Prueba tu colchón en casa hasta 30 noches. Te recomendamos darle al menos 3-4 semanas de adaptación. Si aun así no te convence, contáctanos y lo gestionamos sin complicaciones.</p>" } },
+        "d2": { "type": "collapsible_row", "settings": { "heading": "¿Cómo devuelvo mi colchón?", "row_content": "<p>Escríbenos a través de la página de contacto indicando tu número de pedido. Organizamos la <strong>recogida gratuita</strong> en tu domicilio, sin que tengas que empaquetar nada.</p>" } },
+        "d3": { "type": "collapsible_row", "settings": { "heading": "¿Cuándo recibo el reembolso?", "row_content": "<p>Una vez recogido el colchón, tramitamos el <strong>reembolso del 100%</strong> en un plazo de 5-10 días laborables por el mismo método de pago.</p>" } },
+        "d4": { "type": "collapsible_row", "settings": { "heading": "¿Qué cubre la garantía de 3 años?", "row_content": "<p>Cubre defectos de fabricación de materiales y estructura: hundimientos anómalos, deformaciones o fallos de costura en condiciones normales de uso. No cubre el desgaste natural ni daños por mal uso.</p>" } },
+        "d5": { "type": "collapsible_row", "settings": { "heading": "¿Y el resto de productos?", "row_content": "<p>Almohadas, textil y muebles disponen de 14 días para devolución en su estado original, además de la garantía legal frente a defectos de fabricación.</p>" } }
+      },
+      "block_order": ["d1", "d2", "d3", "d4", "d5"],
+      "settings": {
+        "caption": "",
+        "heading": "Devoluciones y garantía",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "row",
+        "color_scheme": "scheme-1",
+        "container_color_scheme": "scheme-2",
+        "open_first_collapsible_row": true,
+        "padding_top": 24,
+        "padding_bottom": 48
+      }
+    }
+  },
+  "order": ["main", "band", "info"]
+}

@@ -1,0 +1,565 @@
+{{ 'section-quiz-colchon.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign qhandles = 'prestance,colchon-iris-muelles-ensacados,prestance-plus,carbon,aloevera-doble-cara,beginn,sahara-dual,blue-vi' | split: ','
+-%}
+
+<span id="quiz" class="quizc-anchor" aria-hidden="true"></span>
+<div class="quizc" id="quizc-{{ section.id }}" data-quiz>
+  <div class="quizc__inner">
+
+    {%- comment -%} Top bar: progress + back/restart {%- endcomment -%}
+    <div class="quizc__topbar">
+      <button type="button" class="quizc__nav quizc__back" data-back hidden>&lsaquo; Atrás</button>
+      <div class="quizc__progress"><span class="quizc__progress-bar" data-progress></span></div>
+      <button type="button" class="quizc__nav quizc__restart" data-restart hidden>Reiniciar &#8635;</button>
+    </div>
+
+    {%- comment -%} INTRO {%- endcomment -%}
+    <section class="quizc__screen is-active" data-screen="intro">
+      <p class="quizc__eyebrow">{{ section.settings.eyebrow }}</p>
+      <h2 class="quizc__title">{{ section.settings.heading }}</h2>
+      <p class="quizc__sub">{{ section.settings.subheading }}</p>
+      <button type="button" class="quizc__cta" data-start>{{ section.settings.start_label }}</button>
+      <p class="quizc__meta">{{ section.settings.time_label }}</p>
+    </section>
+
+    {%- comment -%} Q1 · SIZE {%- endcomment -%}
+    <section class="quizc__screen" data-screen="size">
+      <h2 class="quizc__title">¿Qué medida estás buscando?</h2>
+      <p class="quizc__hint">Elige una</p>
+      <div class="quizc__pills">
+        <button type="button" class="quizc__pill" data-size="90×190" data-std="1">90 × 190 cm</button>
+        <button type="button" class="quizc__pill" data-size="135×190" data-std="1">135 × 190 cm</button>
+        <button type="button" class="quizc__pill" data-size="140×200" data-std="1">140 × 200 cm</button>
+        <button type="button" class="quizc__pill" data-size="150×190" data-std="1">150 × 190 cm</button>
+        <button type="button" class="quizc__pill" data-size="80×190" data-std="0">80 × 190 cm</button>
+        <button type="button" class="quizc__pill" data-size="90×200" data-std="0">90 × 200 cm</button>
+        <button type="button" class="quizc__pill" data-size="105×190" data-std="0">105 × 190 cm</button>
+        <button type="button" class="quizc__pill" data-size="135×200" data-std="0">135 × 200 cm</button>
+        <button type="button" class="quizc__pill" data-size="150×200" data-std="0">150 × 200 cm</button>
+        <button type="button" class="quizc__pill" data-size="160×200" data-std="0">160 × 200 cm</button>
+        <button type="button" class="quizc__pill" data-size="180×200" data-std="0">180 × 200 cm</button>
+        <button type="button" class="quizc__pill" data-size="200×200" data-std="0">200 × 200 cm</button>
+      </div>
+    </section>
+
+    {%- comment -%} Q2 · FIRMNESS {%- endcomment -%}
+    <section class="quizc__screen" data-screen="firm">
+      <h2 class="quizc__title">¿Qué firmeza prefieres?</h2>
+      <p class="quizc__hint">Elige una</p>
+      <div class="quizc__cards">
+        <button type="button" class="quizc__card-opt" data-firm="blando"><span class="quizc__ico">{% render 'pro-icon', name: 'feather' %}</span><span>Blando</span><small>Acogida mullida</small></button>
+        <button type="button" class="quizc__card-opt" data-firm="medio"><span class="quizc__ico">{% render 'pro-icon', name: 'moon' %}</span><span>Medio</span><small>Equilibrado</small></button>
+        <button type="button" class="quizc__card-opt" data-firm="firme"><span class="quizc__ico">{% render 'pro-icon', name: 'shield' %}</span><span>Firme</span><small>Soporte sólido</small></button>
+        <button type="button" class="quizc__card-opt" data-firm="sin"><span class="quizc__ico">{% render 'pro-icon', name: 'sparkle' %}</span><span>No sé</span><small>Recomiéndame</small></button>
+      </div>
+    </section>
+
+    {%- comment -%} Q3 · POSITION {%- endcomment -%}
+    <section class="quizc__screen" data-screen="pos">
+      <h2 class="quizc__title">¿En qué postura sueles dormir?</h2>
+      <p class="quizc__hint">Elige una</p>
+      <div class="quizc__cards quizc__cards--3">
+        <button type="button" class="quizc__card-opt" data-pos="arriba"><span>Boca arriba</span></button>
+        <button type="button" class="quizc__card-opt" data-pos="lado"><span>De lado</span></button>
+        <button type="button" class="quizc__card-opt" data-pos="abajo"><span>Boca abajo</span></button>
+      </div>
+    </section>
+
+    {%- comment -%} Q4 · PRIORITIES (multi) {%- endcomment -%}
+    <section class="quizc__screen" data-screen="prio">
+      <h2 class="quizc__title">¿Qué es lo más importante para ti?</h2>
+      <p class="quizc__hint">Puedes elegir varias · o ninguna</p>
+      <div class="quizc__pills">
+        <button type="button" class="quizc__pill" data-prio="frescor">Frescor / temperatura</button>
+        <button type="button" class="quizc__pill" data-prio="soporte">Soporte y firmeza</button>
+        <button type="button" class="quizc__pill" data-prio="confort">Comodidad envolvente</button>
+        <button type="button" class="quizc__pill" data-prio="natural">Materiales naturales</button>
+      </div>
+      <button type="button" class="quizc__cta" data-finish>Continuar</button>
+    </section>
+
+    {%- comment -%} BUDGET {%- endcomment -%}
+    <section class="quizc__screen" data-screen="budget">
+      <h2 class="quizc__title">¿Cuál es tu presupuesto?</h2>
+      <p class="quizc__hint">Selecciona tu rango</p>
+      <p class="quizc__budget-val" data-budget-val>Tu elección: —</p>
+      <div class="quizc__budget-row">
+        <span class="quizc__budget-end" data-range-lmin>—</span>
+        <div class="quizc__range2">
+          <div class="quizc__range2-fill" data-fill></div>
+          <input type="range" class="quizc__range2-input" data-bmin aria-label="Mínimo">
+          <input type="range" class="quizc__range2-input" data-bmax aria-label="Máximo">
+        </div>
+        <span class="quizc__budget-end" data-range-lmax>—</span>
+      </div>
+      <button type="button" class="quizc__cta" data-budget-next>Ver mi colchón ideal</button>
+    </section>
+
+    {%- comment -%} LEAD CAPTURE {%- endcomment -%}
+    <section class="quizc__screen" data-screen="lead">
+      <h2 class="quizc__title">Ya casi está</h2>
+      <p class="quizc__sub">Déjanos tus datos y te mostramos tu colchón ideal. También te enviaremos la recomendación y ofertas exclusivas.</p>
+      {%- form 'contact', id: 'QuizcLeadForm', class: 'quizc__form' -%}
+        <input type="text" name="contact[Nombre]" class="quizc__input" placeholder="Tu nombre" autocomplete="name" data-lead-name>
+        <input type="email" name="contact[email]" class="quizc__input" placeholder="Tu email *" autocomplete="email" required data-lead-email>
+        <input type="tel" name="contact[Telefono]" class="quizc__input" placeholder="Tu teléfono *" autocomplete="tel" required data-lead-phone>
+        <input type="hidden" name="contact[Colchon recomendado]" data-lead-interest>
+        <input type="hidden" name="contact[body]" data-lead-body>
+        <label class="quizc__consent"><input type="checkbox" data-lead-consent checked> Acepto recibir mi recomendación y comunicaciones de Dormidarte.</label>
+        <p class="quizc__error" data-lead-error hidden>Por favor, introduce un email y un teléfono válidos.</p>
+        <button type="submit" class="quizc__cta">Ver mi colchón ideal</button>
+        <p class="quizc__meta">🔒 Tus datos están seguros. No hacemos spam.</p>
+      {%- endform -%}
+    </section>
+
+    {%- comment -%} RESULT {%- endcomment -%}
+    <section class="quizc__screen" data-screen="result">
+      <p class="quizc__eyebrow" data-result-eyebrow>{{ section.settings.result_eyebrow }}</p>
+      <h2 class="quizc__title">Tu colchón ideal</h2>
+      <div class="quizc__result-main" data-main></div>
+      <h3 class="quizc__others-title" data-others-title hidden>También te encajan</h3>
+      <div class="quizc__others" data-others></div>
+      <button type="button" class="quizc__restart-link" data-restart>Volver a empezar</button>
+    </section>
+
+  </div>
+
+  {%- comment -%} Hidden data: real products + matching metadata {%- endcomment -%}
+  <div id="quizc-data-{{ section.id }}" hidden>
+    {%- for h in qhandles -%}
+      {%- assign product = all_products[h] -%}
+      {%- if product == blank -%}{%- continue -%}{%- endif -%}
+      {%- assign mcom = '0' -%}
+      {%- case h -%}
+        {%- when 'prestance' -%}{%- assign mfirm = 'medio' -%}{%- assign mpos = 'arriba lado' -%}{%- assign mtags = 'soporte' -%}{%- assign mreason = 'Muelles ensacados con 7 zonas de confort: soporte firme y equilibrado.' -%}
+        {%- when 'colchon-iris-muelles-ensacados' -%}{%- assign mfirm = 'medio' -%}{%- assign mpos = 'arriba lado abajo' -%}{%- assign mtags = 'frescor soporte' -%}{%- assign mcom = '1' -%}{%- assign mreason = 'Disponible en todas las medidas. Muelles ensacados + viscoelástica que se adapta a ti, sin transferir movimiento.' -%}
+        {%- when 'prestance-plus' -%}{%- assign mfirm = 'medio' -%}{%- assign mpos = 'lado arriba' -%}{%- assign mtags = 'confort' -%}{%- assign mreason = 'Muelles ensacados y topper viscoelástico para una acogida extra mullida.' -%}
+        {%- when 'carbon' -%}{%- assign mfirm = 'blando' -%}{%- assign mpos = 'lado arriba' -%}{%- assign mtags = 'frescor confort' -%}{%- assign mreason = 'Acogida suave con tecnología de carbono y termorregulación.' -%}
+        {%- when 'aloevera-doble-cara' -%}{%- assign mfirm = 'firme' -%}{%- assign mpos = 'abajo arriba' -%}{%- assign mtags = 'natural soporte' -%}{%- assign mreason = 'Doble cara con tejido de Aloe Vera y soporte firme y equilibrado.' -%}
+        {%- when 'beginn' -%}{%- assign mfirm = 'medio' -%}{%- assign mpos = 'arriba lado' -%}{%- assign mtags = 'natural frescor' -%}{%- assign mreason = 'Materiales 100% naturales (lana, algodón y coco), transpirable en ambas caras.' -%}
+        {%- when 'craft-deluxe' -%}{%- assign mfirm = 'blando' -%}{%- assign mpos = 'lado' -%}{%- assign mtags = 'confort' -%}{%- assign mreason = '35 cm y acogida suave-media: máxima comodidad envolvente.' -%}
+        {%- when 'sahara-dual' -%}{%- assign mfirm = 'medio' -%}{%- assign mpos = 'arriba lado' -%}{%- assign mtags = 'natural frescor' -%}{%- assign mreason = 'Doble cara verano/invierno (algodón y lana) para cada estación.' -%}
+        {%- when 'blue-vi' -%}{%- assign mfirm = 'medio' -%}{%- assign mpos = 'arriba lado' -%}{%- assign mtags = 'frescor soporte' -%}{%- assign mreason = 'Muelles ensacados con 7 zonas y termorregulación natural: descanso profundo.' -%}
+        {%- else -%}{%- assign mfirm = 'medio' -%}{%- assign mpos = 'arriba lado' -%}{%- assign mtags = 'soporte' -%}{%- assign mreason = product.title -%}
+      {%- endcase -%}
+      {%- case h -%}
+        {%- when 'prestance' -%}{%- assign mbars = '60,70,65,60' -%}{%- assign mspecs = 'Núcleo: muelles ensacados|7 zonas de confort|Tejido de viscosa|Altura: 25 cm' -%}{%- assign msum = 'Soporte envolvente con muelles ensacados y 7 zonas de confort.' -%}
+        {%- when 'colchon-iris-muelles-ensacados' -%}{%- assign mbars = '60,75,85,55' -%}{%- assign mspecs = 'Núcleo: muelles + viscoelástica|Sin transferencia de movimiento|Base 3D transpirable|Disponible en todas las medidas' -%}{%- assign msum = 'Muelles ensacados y viscoelástica premium, sin transferencia de movimiento.' -%}
+        {%- when 'prestance-plus' -%}{%- assign mbars = '60,80,70,72' -%}{%- assign mspecs = 'Núcleo: muelles ensacados|Topper viscoelástico|7 zonas de confort|Altura: 28 cm' -%}{%- assign msum = 'Con topper viscoelástico integrado para una acogida extra mullida.' -%}
+        {%- when 'carbon' -%}{%- assign mbars = '40,55,85,68' -%}{%- assign mspecs = 'Núcleo: alta resiliencia|Tecnología de carbono|Termorregulación|Altura: 27 cm' -%}{%- assign msum = 'Soporte firme con tecnología de carbono y termorregulación.' -%}
+        {%- when 'aloevera-doble-cara' -%}{%- assign mbars = '85,65,75,55' -%}{%- assign mspecs = 'Núcleo: soporte equilibrado|Doble cara reversible|Tejido con Aloe Vera|Uso diario, gran durabilidad' -%}{%- assign msum = 'Doble cara reversible con tejido de Aloe Vera, fresco y equilibrado.' -%}
+        {%- when 'beginn' -%}{%- assign mbars = '65,60,90,55' -%}{%- assign mspecs = 'Núcleo natural|Lana, algodón y coco|Doble cara|Alta transpirabilidad' -%}{%- assign msum = 'Materiales 100% naturales: lana, algodón y coco, transpirable.' -%}
+        {%- when 'sahara-dual' -%}{%- assign mbars = '60,60,80,68' -%}{%- assign mspecs = 'Doble cara: algodón / lana|Cara de verano fresca|Cara de invierno cálida|Altura: 27 cm' -%}{%- assign msum = 'Doble cara verano/invierno con algodón y lana.' -%}
+        {%- when 'blue-vi' -%}{%- assign mbars = '60,70,85,68' -%}{%- assign mspecs = 'Núcleo: muelles ensacados|7 zonas de confort|Termorregulación natural|Altura: 27 cm' -%}{%- assign msum = 'Muelles ensacados con 7 zonas de confort y termorregulación natural.' -%}
+        {%- else -%}{%- assign mbars = '60,60,60,60' -%}{%- assign mspecs = '' -%}{%- assign msum = mreason -%}
+      {%- endcase -%}
+      <div class="quizc-card"
+        data-bars="{{ mbars }}"
+        data-specs="{{ mspecs | escape }}"
+        data-summary="{{ msum | escape }}"
+        data-handle="{{ h }}"
+        data-firm="{{ mfirm }}"
+        data-pos="{{ mpos }}"
+        data-tags="{{ mtags }}"
+        data-comodin="{{ mcom }}"
+        data-url="{{ product.url }}"
+        data-title="{{ product.title | escape }}"
+        data-reason="{{ mreason | escape }}"
+        data-img="{{ product.featured_image | image_url: width: 600 }}"
+        data-price="{{ product.price | money }}"
+        data-compare="{% if product.compare_at_price > product.price %}{{ product.compare_at_price | money }}{% endif %}"
+        data-variants='[{% for v in product.variants %}{"id":{{ v.id }},"t":{{ v.title | json }},"p":{{ v.price | money | json }},"pn":{{ v.price }},"c":{% if v.compare_at_price > v.price %}{{ v.compare_at_price | money | json }}{% else %}""{% endif %}}{% unless forloop.last %},{% endunless %}{% endfor %}]'
+      ></div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{%- comment -%} Formularios REALES de Shopify (con protección anti-spam) enviados a iframes ocultos {%- endcomment -%}
+<iframe name="quizc-sink-1" class="quizc-sink" tabindex="-1" aria-hidden="true"></iframe>
+<iframe name="quizc-sink-2" class="quizc-sink" tabindex="-1" aria-hidden="true"></iframe>
+
+<div class="quizc-hidden-forms" aria-hidden="true">
+  {%- form 'customer', id: 'QuizcCustomerForm' -%}
+    <input type="hidden" name="contact[tags]" value="quiz-colchon" data-qcc="tags">
+    <input type="hidden" name="contact[email]" data-qcc="email">
+    <input type="hidden" name="contact[first_name]" data-qcc="name">
+    <button type="submit" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px">Enviar</button>
+  {%- endform -%}
+</div>
+
+<script>
+  (function () {
+    var root = document.getElementById('quizc-{{ section.id }}');
+    if (!root) return;
+    var STD = ['90×190', '135×190', '140×200', '150×190'];
+    var state = { size: null, sizeStd: true, firm: null, pos: null, prios: [] };
+    var order = ['intro', 'size', 'firm', 'pos', 'prio', 'budget', 'lead', 'result'];
+    var idx = 0;
+
+    var screens = {};
+    root.querySelectorAll('[data-screen]').forEach(function (s) { screens[s.getAttribute('data-screen')] = s; });
+    var bar = root.querySelector('[data-progress]');
+    var backBtn = root.querySelector('[data-back]');
+    var restartBtns = root.querySelectorAll('[data-restart]');
+
+    var cards = [].map.call(root.querySelectorAll('#quizc-data-{{ section.id }} .quizc-card'), function (el) {
+      return {
+        handle: el.dataset.handle, firm: el.dataset.firm,
+        pos: (el.dataset.pos || '').split(' '), tags: (el.dataset.tags || '').split(' '),
+        comodin: el.dataset.comodin === '1', url: el.dataset.url, title: el.dataset.title,
+        reason: el.dataset.reason, img: el.dataset.img, price: el.dataset.price, compare: el.dataset.compare,
+        summary: el.dataset.summary || '',
+        bars: (el.dataset.bars || '').split(',').map(function (n) { return parseInt(n, 10) || 0; }),
+        specs: (el.dataset.specs || '').split('|').filter(Boolean),
+        variants: (function () { try { return JSON.parse(el.dataset.variants || '[]'); } catch (e) { return []; } })()
+      };
+    });
+
+    function show(i) {
+      idx = i;
+      var name = order[i];
+      Object.keys(screens).forEach(function (k) { screens[k].classList.toggle('is-active', k === name); });
+      bar.style.width = (i / (order.length - 1) * 100) + '%';
+      backBtn.hidden = (i === 0);
+      restartBtns.forEach(function (b) { b.hidden = (i === 0); });
+    }
+    function next() { if (idx < order.length - 1) show(idx + 1); }
+
+    root.querySelector('[data-start]').addEventListener('click', function () { show(1); });
+    backBtn.addEventListener('click', function () { if (idx > 0) show(idx - 1); });
+    restartBtns.forEach(function (b) { b.addEventListener('click', reset); });
+
+    function reset() {
+      state = { size: null, sizeStd: true, firm: null, pos: null, prios: [] };
+      root.querySelectorAll('.is-selected').forEach(function (e) { e.classList.remove('is-selected'); });
+      show(0);
+    }
+
+    // Single-select handlers (auto-advance)
+    screens.size.querySelectorAll('[data-size]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        state.size = btn.getAttribute('data-size');
+        state.sizeStd = btn.getAttribute('data-std') === '1';
+        markSel(screens.size, btn); next();
+      });
+    });
+    screens.firm.querySelectorAll('[data-firm]').forEach(function (btn) {
+      btn.addEventListener('click', function () { state.firm = btn.getAttribute('data-firm'); markSel(screens.firm, btn); next(); });
+    });
+    screens.pos.querySelectorAll('[data-pos]').forEach(function (btn) {
+      btn.addEventListener('click', function () { state.pos = btn.getAttribute('data-pos'); markSel(screens.pos, btn); next(); });
+    });
+    // Multi-select priorities
+    screens.prio.querySelectorAll('[data-prio]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var v = btn.getAttribute('data-prio');
+        var i = state.prios.indexOf(v);
+        if (i === -1) { state.prios.push(v); btn.classList.add('is-selected'); }
+        else { state.prios.splice(i, 1); btn.classList.remove('is-selected'); }
+      });
+    });
+    root.querySelector('[data-finish]').addEventListener('click', function () { show(order.indexOf('budget')); initBudget(); });
+
+    // ---- Budget (psicológico): mínimo = precio del colchón recomendado ----
+    var bFill = root.querySelector('[data-fill]');
+    var bMin = root.querySelector('[data-bmin]'), bMax = root.querySelector('[data-bmax]');
+    var bVal = root.querySelector('[data-budget-val]');
+    var bLmin = root.querySelector('[data-range-lmin]'), bLmax = root.querySelector('[data-range-lmax]');
+    function priceNum(p) { var n = parseFloat((p || '').replace(/[^0-9,.]/g, '').replace(/\./g, '').replace(',', '.')); return isNaN(n) ? 0 : n; }
+    function eur(n) { return Math.round(n).toLocaleString('es-ES') + ' €'; }
+    function initBudget() {
+      window._quizRec = recommend();
+      var m = window._quizRec.main;
+      var vr = findVariant(m, state.size);
+      var rec = priceNum(vr ? vr.p : m.price) || 200;
+      var lo = Math.max(1, Math.round(rec));
+      var hi = Math.round(rec + 700);
+      [bMin, bMax].forEach(function (el) { el.min = lo; el.max = hi; el.step = 10; });
+      bMin.value = Math.min(lo + 40, hi);   // punto bajo = precio mínimo + 40 €
+      bMax.value = Math.min(lo + 400, hi);  // punto alto (más caro)
+      bLmin.textContent = eur(lo); bLmax.textContent = eur(hi);
+      updateBudget();
+    }
+    function updateBudget() {
+      var a = +bMin.value, b = +bMax.value;
+      if (a > b) { var t = a; a = b; b = t; }
+      var lo = +bMin.min, hi = +bMin.max, range = (hi - lo) || 1;
+      var pa = (a - lo) / range * 100, pb = (b - lo) / range * 100;
+      bFill.style.left = pa + '%';
+      bFill.style.width = (pb - pa) + '%';
+      bVal.textContent = 'Tu elección: ' + eur(a) + ' - ' + eur(b);
+    }
+    bMin.addEventListener('input', updateBudget);
+    bMax.addEventListener('input', updateBudget);
+    root.querySelector('[data-budget-next]').addEventListener('click', function () { show(order.indexOf('lead')); });
+
+    function setVal(form, sel, val) { var el = form && form.querySelector(sel); if (el) el.value = val; }
+    var WA_PHONE = {{ section.settings.lead_wa_phone | default: '' | json }};
+    var WA_KEY = {{ section.settings.lead_wa_apikey | default: '' | json }};
+    var LEAD_PROXY = {{ section.settings.lead_proxy_url | default: '' | json }};
+    var TG_TOKEN = {{ section.settings.tg_token | default: '' | json }};
+    var TG_CHAT = {{ section.settings.tg_chat | default: '' | json }};
+    function leadMessage(name, email, phone, interest) {
+      return '🛏️ Nuevo lead Dormidarte\n' +
+        'Nombre: ' + (name || '-') + '\n' +
+        'Email: ' + (email || '-') + '\n' +
+        'Tel: ' + (phone || '-') + '\n' +
+        'Colchón: ' + (interest || '-') + '\n' +
+        'Medida: ' + (state.size || '-') + '\n' +
+        'Firmeza: ' + (state.firm || '-') + ' · Postura: ' + (state.pos || '-') + ' · Prioridades: ' + (state.prios.join(', ') || '-');
+    }
+    function notifyMobile(name, email, phone, interest) {
+      var msg = leadMessage(name, email, phone, interest);
+      // Preferente: proxy (token oculto). Si no hay proxy, envío directo a Telegram.
+      try {
+        if (LEAD_PROXY) {
+          fetch(LEAD_PROXY, { method: 'POST', mode: 'no-cors', keepalive: true, headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ text: msg }) }).catch(function () {});
+        } else if (TG_TOKEN && TG_CHAT) {
+          var i1 = new Image();
+          i1.src = 'https://api.telegram.org/bot' + encodeURIComponent(TG_TOKEN) + '/sendMessage?chat_id=' + encodeURIComponent(TG_CHAT) + '&text=' + encodeURIComponent(msg);
+        }
+      } catch (e) {}
+      // WhatsApp (CallMeBot) opcional
+      try {
+        if (WA_PHONE && WA_KEY) {
+          var i2 = new Image();
+          i2.src = 'https://api.callmebot.com/whatsapp.php?phone=' + encodeURIComponent(WA_PHONE) + '&apikey=' + encodeURIComponent(WA_KEY) + '&text=' + encodeURIComponent(msg);
+        }
+      } catch (e) {}
+    }
+    function submitCustomer(name, email, phone, interest) {
+      try {
+        var uf = document.getElementById('QuizcCustomerForm');
+        if (!uf) return;
+        setVal(uf, '[data-qcc="email"]', email);
+        setVal(uf, '[data-qcc="name"]', name);
+        setVal(uf, '[data-qcc="tags"]', 'quiz-colchon');
+        uf.setAttribute('target', 'quizc-sink-2');
+        var btn = uf.querySelector('button[type="submit"]');
+        if (uf.requestSubmit && btn) { uf.requestSubmit(btn); }
+        else if (uf.requestSubmit) { uf.requestSubmit(); }
+        else { uf.submit(); }
+      } catch (e) {}
+    }
+
+    // El formulario de datos ES el formulario de contacto REAL de Shopify.
+    // Al enviarlo (clic real del usuario) pasa la protección anti-spam; lo dirigimos
+    // a un iframe oculto para no salir de la página, y mostramos el resultado.
+    var leadForm = document.getElementById('QuizcLeadForm');
+    if (leadForm) leadForm.addEventListener('submit', function (e) {
+      var name = ((leadForm.querySelector('[data-lead-name]') || {}).value || '').trim();
+      var email = ((leadForm.querySelector('[data-lead-email]') || {}).value || '').trim();
+      var phone = ((leadForm.querySelector('[data-lead-phone]') || {}).value || '').trim();
+      var consentEl = leadForm.querySelector('[data-lead-consent]');
+      var consent = consentEl ? consentEl.checked : true;
+      var okEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      var okPhone = phone.replace(/[^0-9]/g, '').length >= 7;
+      var err = root.querySelector('[data-lead-error]');
+      if (!okEmail || !okPhone) { e.preventDefault(); if (err) err.hidden = false; return; }
+      if (err) err.hidden = true;
+      var rec = window._quizRec || recommend();
+      var interest = rec.main ? rec.main.title : '';
+      notifyMobile(name, email, phone, interest);
+      setVal(leadForm, '[data-lead-interest]', interest);
+      setVal(leadForm, '[data-lead-body]', 'Lead del quiz. Colchón recomendado: ' + interest + '. Medida: ' + (state.size || '') + ' · Firmeza: ' + (state.firm || '') + ' · Postura: ' + (state.pos || '') + ' · Prioridades: ' + state.prios.join(', '));
+      leadForm.setAttribute('target', 'quizc-sink-1'); // enviar sin navegar
+      if (consent) submitCustomer(name, email, phone, interest);
+      // NO hacemos preventDefault: el formulario real se envía a la tienda
+      render(rec.main, rec.others);
+      setTimeout(function () { show(order.indexOf('result')); }, 20);
+    });
+
+    function markSel(screen, btn) {
+      screen.querySelectorAll('.is-selected').forEach(function (e) { e.classList.remove('is-selected'); });
+      btn.classList.add('is-selected');
+    }
+
+    function recommend() {
+      var main, others = [];
+      if (!state.sizeStd) {
+        main = cards.filter(function (c) { return c.comodin; })[0] || cards[0];
+        others = []; // en medidas especiales solo el Iris (los demás no vienen en esa medida)
+      } else {
+        var scored = cards.map(function (c) {
+          var s = 0;
+          if (state.firm && state.firm !== 'sin' && c.firm === state.firm) s += 4;
+          if (state.pos && c.pos.indexOf(state.pos) !== -1) s += 2;
+          state.prios.forEach(function (t) { if (c.tags.indexOf(t) !== -1) s += 1; });
+          if (c.comodin) s -= 0.5; // prefer a specialised model when the size is standard
+          return { c: c, s: s };
+        });
+        scored.sort(function (a, b) { return b.s - a.s; });
+        main = scored[0].c;
+        // Otras recomendaciones: SIEMPRE más caras que la principal (upsell), de la más cercana hacia arriba
+        var mv = findVariant(main, state.size);
+        var mp = priceNum(mv ? mv.p : main.price);
+        var higher = [];
+        cards.forEach(function (c) {
+          if (c === main || c.comodin) return;
+          var v = findVariant(c, state.size);
+          var p = priceNum(v ? v.p : c.price);
+          if (p > mp) higher.push({ c: c, p: p });
+        });
+        higher.sort(function (a, b) { return a.p - b.p; });
+        others = higher.slice(0, 2).map(function (x) { return x.c; });
+      }
+      return { main: main, others: others };
+    }
+
+    function parseSize(s) { var m = (s || '').match(/\d+/g); return (m && m.length >= 2) ? [Number(m[0]), Number(m[1])] : null; }
+    function findVariant(c, size) {
+      var want = parseSize(size);
+      if (!want || !c.variants) return null;
+      for (var i = 0; i < c.variants.length; i++) {
+        var g = parseSize(c.variants[i].t);
+        if (g && g[0] === want[0] && g[1] === want[1]) return c.variants[i];
+      }
+      return null;
+    }
+    function personalReason() {
+      var parts = [];
+      if (state.pos === 'lado') parts.push('sueles dormir de lado');
+      else if (state.pos === 'arriba') parts.push('sueles dormir boca arriba');
+      else if (state.pos === 'abajo') parts.push('sueles dormir boca abajo');
+      if (state.firm === 'blando') parts.push('prefieres una acogida blanda y envolvente');
+      else if (state.firm === 'medio') parts.push('prefieres una firmeza media');
+      else if (state.firm === 'firme') parts.push('prefieres un colchón firme');
+      var map = { frescor: 'buscas frescor', soporte: 'quieres buen soporte', confort: 'valoras el confort envolvente', natural: 'prefieres materiales naturales' };
+      state.prios.forEach(function (t) { if (map[t]) parts.push(map[t]); });
+      if (!parts.length) return 'Es la opción que mejor encaja con lo que buscas.';
+      return 'Te lo recomendamos porque ' + parts.join(', ') + '.';
+    }
+    function money2(n) { return n.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '€'; }
+    var BAR_LABELS = ['Firmeza', 'Adaptabilidad', 'Transpiración', 'Grosor'];
+
+    function smallCardHTML(c) {
+      var vr = findVariant(c, state.size);
+      var priceStr = vr ? vr.p : c.price;
+      var compareStr = vr ? vr.c : c.compare;
+      var url = c.url + (vr ? (c.url.indexOf('?') > -1 ? '&' : '?') + 'variant=' + vr.id : '');
+      var price = '<span class="quizc__price-now">' + priceStr + '</span>';
+      if (compareStr) price = '<span class="quizc__price-was">' + compareStr + '</span> ' + price;
+      return '' +
+        '<div class="quizc__rc">' +
+          '<a class="quizc__rc-media" href="' + url + '"><img src="' + c.img + '" alt="' + c.title + '"></a>' +
+          '<div class="quizc__rc-body">' +
+            '<h4 class="quizc__rc-title">' + c.title + '</h4>' +
+            '<p class="quizc__rc-reason">' + c.reason + '</p>' +
+            '<div class="quizc__price">' + price + '</div>' +
+            '<a class="quizc__cta quizc__cta--buy" href="' + url + '">Ver colchón</a>' +
+          '</div>' +
+        '</div>';
+    }
+
+    function bigCardHTML(c) {
+      var vr = findVariant(c, state.size);
+      var url = c.url + (vr ? (c.url.indexOf('?') > -1 ? '&' : '?') + 'variant=' + vr.id : '');
+      var buyUrl = '/discount/10MICOLCHON?redirect=' + encodeURIComponent(url);
+      var pn = vr ? vr.pn : null;                 // céntimos
+      var cn = vr && vr.c ? priceNum(vr.c) : 0;   // compare €
+      var pEur = pn != null ? pn / 100 : priceNum(c.price);
+
+      // Badge de ahorro
+      var save = '<div class="quizc__pcd-saves">';
+      if (cn > pEur) save += '<span class="quizc__pcd-save">Ahorra un ' + Math.round((cn - pEur) / cn * 100) + '%</span>';
+      save += '<span class="quizc__pcd-save2">Ahorra ahora un 10% más</span></div>';
+
+      // Barras
+      var bars = c.bars.map(function (v, i) {
+        return '<div class="quizc__pcd-bar"><span class="quizc__pcd-bl">' + BAR_LABELS[i] + '</span>' +
+          '<span class="quizc__pcd-bt"><span class="quizc__pcd-bf" style="width:' + v + '%"></span></span></div>';
+      }).join('');
+
+      // Specs
+      var specs = c.specs.length ? '<ul class="quizc__pcd-specs">' + c.specs.map(function (s) { return '<li>' + s + '</li>'; }).join('') + '</ul>' : '';
+
+      // 3 precios
+      var deal = money2(pEur * 0.9);
+      var rows = '';
+      if (cn > pEur) rows += '<div class="quizc__pr"><span class="quizc__pr-lab">Precio medio hace 30 días</span><span class="quizc__pr-was">' + (vr ? vr.c : c.compare) + '</span></div>';
+      rows += '<div class="quizc__pr"><span class="quizc__pr-lab">Precio hoy</span><span class="quizc__pr-now">' + (vr ? vr.p : c.price) + '</span></div>';
+      rows += '<div class="quizc__pr quizc__pr--deal"><span class="quizc__pr-lab">Precio con descuento para ti</span><span class="quizc__pr-deal">' + deal + '</span></div>';
+
+      var permes = money2(pEur * 0.9 / 12);
+
+      return '' +
+        '<div class="quizc__rc quizc__rc--big quizc__pcd">' +
+          '<div class="quizc__pcd-top">' +
+            '<h4 class="quizc__pcd-title">' + c.title + '</h4>' +
+            (c.summary ? '<p class="quizc__pcd-desc">' + c.summary + '</p>' : '') +
+            save +
+          '</div>' +
+          '<div class="quizc__pcd-cols">' +
+            '<div class="quizc__pcd-col-a">' +
+              '<a class="quizc__pcd-media" href="' + buyUrl + '"><img src="' + c.img + '" alt="' + c.title + '"></a>' +
+              '<div class="quizc__pcd-bars">' + bars + '</div>' +
+              specs +
+            '</div>' +
+            '<div class="quizc__pcd-col-b">' +
+              '<p class="quizc__size">Tu medida: <strong>' + (state.size || '') + '</strong></p>' +
+              '<div class="quizc__prices">' + rows + '</div>' +
+              '<div class="quizc__code">' +
+                '<span class="quizc__code-txt">🎁 Código: <strong>10MICOLCHON</strong> <em>−10%</em></span>' +
+                '<button type="button" class="quizc__copy" data-copy="10MICOLCHON">Copiar</button>' +
+              '</div>' +
+              '<p class="quizc__pcd-finance">o desde <strong>' + permes + '/mes</strong> con el descuento · hasta 12 meses</p>' +
+              '<div class="quizc__why"><span class="quizc__why-ico">💡</span><span class="quizc__why-txt">' + personalReason() + '</span></div>' +
+              '<a class="quizc__cta quizc__cta--buy" href="' + buyUrl + '">Comprar con −10%</a>' +
+              '<p class="quizc__pcd-ship">● Entrega gratis en 24-72h · No acumulable</p>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+    }
+
+    function cardHTML(c, big) { return big ? bigCardHTML(c) : smallCardHTML(c); }
+
+    function render(main, others) {
+      root.querySelector('[data-main]').innerHTML = cardHTML(main, true);
+      var ot = root.querySelector('[data-others]');
+      var oh = root.querySelector('[data-others-title]');
+      if (others.length) {
+        oh.hidden = false;
+        ot.innerHTML = others.map(function (c) { return cardHTML(c, false); }).join('');
+      } else { oh.hidden = true; ot.innerHTML = ''; }
+    }
+
+    root.addEventListener('click', function (e) {
+      var cb = e.target.closest ? e.target.closest('.quizc__copy') : null;
+      if (!cb) return;
+      var code = cb.getAttribute('data-copy');
+      try { if (navigator.clipboard) { navigator.clipboard.writeText(code); } } catch (err) {}
+      var t = cb.textContent; cb.textContent = '¡Copiado!';
+      if (window.dormiToast) window.dormiToast('Código ' + code + ' copiado', { icon: '📋' });
+      setTimeout(function () { cb.textContent = t; }, 1600);
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Quiz encuentra tu colchón",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Test en 1 minuto" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "Encuentra tu colchón ideal" },
+    { "type": "text", "id": "subheading", "label": "Subtítulo", "default": "Responde 4 preguntas y te recomendamos el colchón perfecto para ti." },
+    { "type": "text", "id": "start_label", "label": "Texto botón inicio", "default": "Empezar test" },
+    { "type": "text", "id": "time_label", "label": "Texto duración", "default": "Menos de 1 minuto · Sin registro" },
+    { "type": "text", "id": "result_eyebrow", "label": "Texto sobre resultado", "default": "Por tus respuestas, creemos que te encaja" },
+    { "type": "header", "content": "Aviso al móvil por Telegram" },
+    { "type": "text", "id": "tg_token", "label": "Telegram · Bot token" },
+    { "type": "text", "id": "tg_chat", "label": "Telegram · Chat ID" },
+    { "type": "text", "id": "lead_proxy_url", "label": "URL de proxy (opcional, más seguro)", "info": "Si la rellenas, se usa el proxy en vez del token directo." },
+    { "type": "header", "content": "Aviso al WhatsApp (CallMeBot · alternativo)" },
+    { "type": "paragraph", "content": "Opcional. Si prefieres WhatsApp: guarda el número de CallMeBot (ver su web callmebot.com), envíale 'I allow callmebot to send me messages to me' y te da un apikey. Pega tu teléfono y el apikey." },
+    { "type": "text", "id": "lead_wa_phone", "label": "WhatsApp · Tu teléfono (código país, sin +)", "info": "Ej: 34659856895" },
+    { "type": "text", "id": "lead_wa_apikey", "label": "WhatsApp · Apikey de CallMeBot" }
+  ],
+  "presets": [
+    { "name": "Quiz encuentra tu colchón" }
+  ]
+}
+{% endschema %}

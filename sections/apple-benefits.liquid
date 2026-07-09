@@ -1,0 +1,121 @@
+{{ 'section-apple-benefits.css' | asset_url | stylesheet_tag }}
+
+<div class="apbf color-{{ section.settings.color_scheme }}">
+  <div class="apbf__wrap page-width section-{{ section.id }}-padding">
+    <div class="apbf__grid">
+
+      <div class="apbf__feature">
+        <div class="apbf__feature-body">
+          {%- if section.settings.eyebrow != blank -%}<p class="apbf__eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+          {%- if section.settings.heading != blank -%}
+            <h2 class="apbf__feature-title">{{ section.settings.heading }}{% if section.settings.heading_highlight != blank %} <span class="apbf__hl">{{ section.settings.heading_highlight }}</span>{% endif %}</h2>
+          {%- endif -%}
+          {%- if section.settings.subheading != blank -%}<p class="apbf__feature-sub">{{ section.settings.subheading }}</p>{%- endif -%}
+          {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+            <a href="{{ section.settings.button_link }}" class="apbf__feature-btn">{{ section.settings.button_label }}</a>
+          {%- endif -%}
+        </div>
+        {%- if section.settings.image != blank -%}
+          <div class="apbf__feature-media">{{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', class: 'apbf__feature-img', alt: section.settings.heading | escape }}</div>
+        {%- elsif section.settings.image_asset != blank -%}
+          <div class="apbf__feature-media"><img class="apbf__feature-img" src="{{ section.settings.image_asset | asset_url }}" alt="{{ section.settings.heading | escape }}" loading="lazy" width="1000" height="750"></div>
+        {%- endif -%}
+      </div>
+
+      {%- for block in section.blocks -%}
+        <div class="apbf__card apbf__c--{{ block.settings.color }}" {{ block.shopify_attributes }}>
+          <span class="apbf__ico">{% render 'pro-icon', name: block.settings.icon %}</span>
+          <div class="apbf__card-text">{{ block.settings.text }}</div>
+        </div>
+      {%- endfor -%}
+
+    </div>
+  </div>
+</div>
+
+{% style %}
+  .section-{{ section.id }}-padding { padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px; padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px; }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding { padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px; }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Ventajas (estilo Apple)",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 9,
+  "settings": [
+    { "type": "header", "content": "Tarjeta grande (izquierda)" },
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "COMPRA SIN RIESGO" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "Descansa con" },
+    { "type": "text", "id": "heading_highlight", "label": "Título · palabra destacada (color)", "default": "total tranquilidad." },
+    { "type": "text", "id": "subheading", "label": "Subtítulo", "default": "Todo lo que necesitas para comprar tu colchón sin preocuparte por nada." },
+    { "type": "text", "id": "button_label", "label": "Botón · texto", "default": "Ver colchones" },
+    { "type": "url", "id": "button_link", "label": "Botón · enlace" },
+    { "type": "text", "id": "image_asset", "label": "Imagen (assets)", "info": "Ej: hero-blu.jpg", "default": "hero-blu.jpg" },
+    { "type": "image_picker", "id": "image", "label": "Imagen (opcional, desde archivos)" },
+    { "type": "header", "content": "Estilo" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Esquema de color", "default": "scheme-2" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Espaciado superior", "default": 56 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Espaciado inferior", "default": 56 }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Ventaja",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icono",
+          "default": "shield",
+          "options": [
+            { "value": "shield", "label": "Escudo (garantía)" },
+            { "value": "truck", "label": "Camión (envío)" },
+            { "value": "card", "label": "Tarjeta (pago)" },
+            { "value": "moon", "label": "Luna (prueba)" },
+            { "value": "medal", "label": "Medalla (calidad)" },
+            { "value": "check-circle", "label": "Check (reembolso)" },
+            { "value": "headset", "label": "Atención (soporte)" },
+            { "value": "clock", "label": "Reloj (rapidez)" },
+            { "value": "refresh", "label": "Renovar" },
+            { "value": "tag", "label": "Etiqueta (oferta)" },
+            { "value": "leaf", "label": "Hoja (natural)" },
+            { "value": "star", "label": "Estrella" }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "color",
+          "label": "Color del icono y palabras",
+          "default": "bluewood",
+          "options": [
+            { "value": "bluewood", "label": "Azul corporativo" },
+            { "value": "turquesa", "label": "Turquesa" },
+            { "value": "coral", "label": "Coral" },
+            { "value": "naranja", "label": "Naranja" },
+            { "value": "verde", "label": "Verde" },
+            { "value": "morado", "label": "Morado" }
+          ]
+        },
+        { "type": "richtext", "id": "text", "label": "Texto", "info": "Pon en negrita las palabras que quieras resaltar en color.", "default": "<p><strong>3 años de garantía</strong> frente a defectos de fabricación.</p>" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ventajas (estilo Apple)",
+      "blocks": [
+        { "type": "benefit", "settings": { "icon": "shield", "color": "bluewood", "text": "<p><strong>3 años de garantía</strong> frente a defectos de fabricación." } },
+        { "type": "benefit", "settings": { "icon": "truck", "color": "verde", "text": "<p><strong>Envío gratis en 24-72h</strong> con seguro de mercancía." } },
+        { "type": "benefit", "settings": { "icon": "card", "color": "turquesa", "text": "<p>Paga en <strong>3 plazos sin intereses</strong>, o hasta 12 meses." } },
+        { "type": "benefit", "settings": { "icon": "moon", "color": "coral", "text": "<p><strong>30 noches de prueba</strong> en casa. Si no es tu colchón, lo recogemos gratis." } },
+        { "type": "benefit", "settings": { "icon": "check-circle", "color": "naranja", "text": "<p><strong>Reembolso del 100%</strong> si cambias de opinión, sin preguntas." } },
+        { "type": "benefit", "settings": { "icon": "headset", "color": "morado", "text": "<p><strong>Atención cercana</strong> y servicio las 24h." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

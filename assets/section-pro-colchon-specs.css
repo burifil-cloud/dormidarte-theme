@@ -1,0 +1,70 @@
+.cspecs { --bw: #314855; --tq: #5CC3E8; }
+.cspecs__heading { text-align: center; font-size: clamp(2.2rem, 2.4vw, 2.8rem); margin: 0 0 3.5rem; }
+
+.cspecs__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 4vw, 4.5rem);
+  align-items: center;
+  max-width: 92rem;
+  margin: 0 auto;
+}
+
+/* Spec tiles */
+.cspecs__tiles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
+}
+.cspecs__tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: .5rem;
+  padding: 2rem 1.2rem;
+  background: rgb(var(--color-background));
+  border: 1px solid rgba(28,40,55,.08);
+  border-radius: 14px;
+}
+.cspecs__ico { width: 3rem; height: 3rem; color: var(--bw); }
+.cspecs__ico .pro-icon { width: 100%; height: 100%; }
+.cspecs__tile-label { font-size: 1.15rem; text-transform: uppercase; letter-spacing: .08em; opacity: .6; }
+.cspecs__tile-val { font-size: 1.5rem; font-weight: 600; color: var(--bw); line-height: 1.2; }
+
+/* Bars */
+.cspecs__bars { display: flex; flex-direction: column; gap: 1.6rem; }
+.cspecs__bar-label { display: block; font-size: 1.35rem; font-weight: 500; color: var(--bw); margin-bottom: .6rem; }
+.cspecs__bar-track { display: block; height: 8px; border-radius: 999px; background: #e2e8ec; overflow: hidden; }
+.cspecs__bar-fill { display: block; height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--bw), var(--tq)); }
+
+/* Sizes */
+.cspecs__sizes { text-align: center; margin-top: 3.5rem; }
+.cspecs__sizes-label { display: block; font-size: 1.2rem; text-transform: uppercase; letter-spacing: .1em; opacity: .6; margin-bottom: 1.2rem; }
+.cspecs__pills { display: flex; flex-wrap: wrap; justify-content: center; gap: .8rem; }
+.cspecs__pill {
+  font-size: 1.35rem;
+  padding: .7rem 1.4rem;
+  border-radius: 999px;
+  background: rgb(var(--color-background));
+  border: 1.5px solid rgba(28,40,55,.15);
+  color: var(--bw);
+}
+.cspecs__pill.is-out { opacity: .4; text-decoration: line-through; }
+
+/* Trust */
+.cspecs__trust {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.4rem 3rem;
+  margin-top: 3.5rem;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(28,40,55,.1);
+}
+.cspecs__trust-item { display: flex; align-items: center; gap: .8rem; font-size: 1.4rem; font-weight: 500; }
+.cspecs__trust-item .cspecs__ico { width: 2.4rem; height: 2.4rem; color: var(--tq); }
+
+@media screen and (max-width: 749px) {
+  .cspecs__grid { grid-template-columns: 1fr; }
+}

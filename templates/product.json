@@ -1,0 +1,385 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "Dormidarte ®",
+            "text_style": "uppercase"
+          }
+        },
+        "title": {
+          "type": "title"
+        },
+        "rating": {
+          "type": "rating"
+        },
+        "price": {
+          "type": "price"
+        },
+        "highlight": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>Envío gratis 24-72h</strong> · Devolución fácil · Pago seguro · Paga a plazos",
+            "text_style": "body"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector"
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "guarantee": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"display:flex;gap:12px;align-items:center;border:1px solid rgba(92,195,232,.5);border-radius:14px;padding:14px 16px;margin-top:14px;background:rgba(92,195,232,.12)\"><span style=\"font-size:26px;line-height:1\">🛡️</span><span style=\"font-size:1.4rem;line-height:1.4\"><strong>Compra sin riesgo.</strong> Pago 100% seguro, envío gratis y devolución fácil.</span></div>"
+          }
+        },
+        "promo": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"display:flex;gap:12px;align-items:center;border:1px solid rgba(233,95,92,.4);border-radius:14px;padding:14px 16px;margin-top:12px;background:rgba(233,95,92,.1)\"><span style=\"font-size:24px;line-height:1\">🎁</span><span style=\"font-size:1.4rem;line-height:1.4\"><strong>Colchón + canapé = 10% de descuento.</strong> Añade también un canapé y el 10% se aplica solo, automáticamente, en el carrito.</span></div>"
+          }
+        },
+        "trust_icons": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "horizontal",
+            "icon_1": "truck",
+            "heading_1": "Envío gratis 24-72h",
+            "icon_2": "return",
+            "heading_2": "Devolución fácil",
+            "icon_3": "lock",
+            "heading_3": "Pago 100% seguro"
+          }
+        },
+        "payments": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "horizontal",
+            "icon_1": "check_mark",
+            "heading_1": "+1.200 clientes felices",
+            "icon_2": "star",
+            "heading_2": "Valoración 4,8/5",
+            "icon_3": "heart",
+            "heading_3": "Atención cercana"
+          }
+        },
+        "description": {
+          "type": "description"
+        },
+        "tab_envio": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Envío y entrega",
+            "icon": "truck",
+            "content": "<p><strong>Envío gratuito</strong> a la península en <strong>24-72h</strong>, con seguimiento hasta tu casa. Recibirás un email en cuanto tu pedido salga de nuestro almacén.</p>"
+          }
+        },
+        "tab_devolucion": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Devoluciones y garantía",
+            "icon": "return",
+            "content": "<p>Dispones de 14 días para devoluciones en su estado original. Todos nuestros productos cuentan con la garantía legal frente a defectos de fabricación. En colchones, además, 30 noches de prueba.</p>"
+          }
+        },
+        "tab_pago": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Pago y financiación",
+            "icon": "lock",
+            "content": "<p>Pago 100% seguro y cifrado. Puedes pagar con tarjeta, PayPal o Bizum, y <strong>financiar tu compra a plazos</strong> en el momento del pago.</p>"
+          }
+        },
+        "complementary": {
+          "type": "complementary",
+          "settings": {
+            "product_list_heading": "Complétalo con",
+            "make_collapsible_row": true,
+            "icon": "star",
+            "products_to_show": 3,
+            "pagination_style": "dots"
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Compartir"
+          }
+        },
+        "size_warn": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"display:flex;gap:8px;align-items:flex-start;border:1px solid rgba(239,139,52,.45);border-radius:10px;padding:9px 11px;margin-top:12px;background:rgba(239,139,52,.09)\"><span style=\"font-size:15px;line-height:1.3\">⚠️</span><span style=\"font-size:1.15rem;line-height:1.35;color:#8a5a1c\"><strong style=\"color:#c9761f\">Asegúrate de elegir el tamaño correcto.</strong> 1 de cada 4 clientes se equivoca al escogerlo.</span></div>"
+          }
+        },
+        "whatsapp_help": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<a href=\"https://wa.me/34614414925?text=Hola%2C%20tengo%20una%20duda%20sobre%20un%20producto%20de%20Dormidarte.\" target=\"_blank\" rel=\"noopener\" style=\"display:flex;gap:14px;align-items:center;border:1px solid #e6e0d6;border-radius:16px;padding:15px 17px;margin-top:16px;background:#fff;text-decoration:none\"><span style=\"flex:0 0 auto;width:46px;height:46px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center\"><svg width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"#fff\"><path d=\"M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.14c-.24.68-1.42 1.32-1.95 1.36-.5.04-.5.4-3.16-.66-2.66-1.06-4.35-3.8-4.48-3.98-.13-.18-1.08-1.44-1.08-2.75s.69-1.95.93-2.22c.24-.26.53-.33.7-.33.18 0 .35 0 .5.01.16.01.38-.06.59.45.24.58.82 2 .89 2.14.07.14.12.31.02.49-.09.18-.14.29-.28.45-.14.16-.29.36-.42.48-.14.14-.28.29-.12.57.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.18.69-.8.87-1.08.18-.28.36-.23.6-.14.24.09 1.55.73 1.81.86.26.13.44.2.5.31.06.11.06.64-.18 1.32Z\"/></svg></span><span style=\"line-height:1.4\"><strong style=\"font-size:1.5rem;color:#314855\">¿Tienes dudas?</strong><br><span style=\"font-size:1.35rem;color:#5b6a72\">Habla con un asesor por <strong style=\"color:#25D366\">WhatsApp</strong>: te ayudamos gratis y sin compromiso.</span></span></a>"
+          }
+        },
+        "financing_badge": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"margin-top:14px\"><div style=\"display:flex;align-items:center;gap:9px;flex-wrap:wrap\"><span style=\"font-size:1.3rem;color:#5b6a72;font-weight:600\">Paga a plazos con</span><span style=\"display:inline-flex;align-items:center;background:#FFB3C7;color:#17120f;border-radius:7px;padding:3px 11px;font-weight:800;font-size:1.35rem\">Klarna</span><span style=\"color:#F5333F;font-weight:800;font-size:1.6rem;letter-spacing:-.03em;line-height:1\">pepper</span></div><div style=\"font-size:1.25rem;color:#8a8378;margin-top:6px\"><strong style=\"color:#314855\">3 meses sin intereses</strong> con Klarna &middot; o hasta <strong style=\"color:#314855\">12 meses</strong> con Pepper</div></div>"
+          }
+        },
+        "rating_static": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"display:flex;align-items:center;gap:8px;margin:8px 0 2px\"><span style=\"color:#f5a623;font-size:1.6rem;letter-spacing:1px;line-height:1\">★★★★★</span><span style=\"font-size:1.3rem;color:#5b6a72\"><strong style=\"color:#1d1d1f\">4,8</strong> · <a href=\"#\" style=\"color:#5b6a72;text-decoration:underline\">213 opiniones</a></span></div>"
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "rating",
+        "price",
+        "rating_static",
+        "highlight",
+        "variant_picker",
+        "size_warn",
+        "quantity_selector",
+        "buy_buttons",
+        "financing_badge",
+        "promo",
+        "guarantee",
+        "trust_icons",
+        "whatsapp_help",
+        "payments",
+        "description",
+        "tab_envio",
+        "tab_devolucion",
+        "tab_pago",
+        "complementary",
+        "share"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_position": "left",
+        "gallery_layout": "stacked",
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "image_zoom": "lightbox",
+        "mobile_thumbnails": "show",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "trust_signals": {
+      "type": "trust-signals",
+      "blocks": {
+        "t1": {
+          "type": "badge",
+          "settings": {
+            "emoji": "🚚",
+            "title": "Envío gratis 24-72h",
+            "text": "Con seguimiento a tu casa"
+          }
+        },
+        "t2": {
+          "type": "badge",
+          "settings": {
+            "emoji": "↩️",
+            "title": "Devolución fácil",
+            "text": "14 días · 30 noches en colchones"
+          }
+        },
+        "t3": {
+          "type": "badge",
+          "settings": {
+            "emoji": "🛡️",
+            "title": "Garantía",
+            "text": "Respaldamos cada producto"
+          }
+        },
+        "t4": {
+          "type": "badge",
+          "settings": {
+            "emoji": "💳",
+            "title": "Paga a plazos",
+            "text": "Financiación sin intereses"
+          }
+        },
+        "t5": {
+          "type": "badge",
+          "settings": {
+            "emoji": "🔒",
+            "title": "Pago 100% seguro",
+            "text": "Cifrado y protegido"
+          }
+        },
+        "t6": {
+          "type": "badge",
+          "settings": {
+            "emoji": "💬",
+            "title": "Atención cercana",
+            "text": "Te ayudamos a elegir"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5",
+        "t6"
+      ],
+      "settings": {
+        "heading": "Comprar en Dormidarte es fácil y seguro",
+        "show_rating": true,
+        "rating_score": "4,8",
+        "rating_count": "basado en +1.200 reseñas verificadas",
+        "show_payments": true,
+        "payment_text": "Pago 100% seguro y cifrado",
+        "color_scheme": "scheme-2",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "por_que": {
+      "type": "multicolumn",
+      "blocks": {
+        "p1": {
+          "type": "column",
+          "settings": {
+            "title": "💶 Precio justo",
+            "text": "<p>Calidad premium sin el sobreprecio de las grandes marcas.</p>"
+          }
+        },
+        "p2": {
+          "type": "column",
+          "settings": {
+            "title": "✨ Calidad de verdad",
+            "text": "<p>Materiales seleccionados, pensados para durar.</p>"
+          }
+        },
+        "p3": {
+          "type": "column",
+          "settings": {
+            "title": "🤝 Sin riesgo",
+            "text": "<p>Devolución fácil y garantía en todos los productos.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "settings": {
+        "title": "Por qué elegir Dormidarte",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 24,
+        "padding_bottom": 40
+      }
+    },
+    "faq": {
+      "type": "collapsible-content",
+      "blocks": {
+        "f1": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "¿Cuánto tarda el envío?",
+            "row_content": "<p>Envío gratuito en 24-72h a península, con seguimiento hasta tu casa.</p>"
+          }
+        },
+        "f2": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "¿Puedo devolverlo?",
+            "row_content": "<p>Sí, dispones de 14 días para devoluciones en su estado original. En colchones, 30 noches de prueba con recogida gratuita.</p>"
+          }
+        },
+        "f3": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "¿Qué garantía tiene?",
+            "row_content": "<p>Todos nuestros productos cuentan con garantía frente a defectos de fabricación.</p>"
+          }
+        },
+        "f4": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "¿Puedo pagar a plazos?",
+            "row_content": "<p>Sí. En el momento del pago podrás financiar tu compra en cómodos plazos.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4"
+      ],
+      "settings": {
+        "caption": "",
+        "heading": "Preguntas frecuentes",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "row",
+        "color_scheme": "scheme-1",
+        "container_color_scheme": "scheme-2",
+        "open_first_collapsible_row": false,
+        "padding_top": 24,
+        "padding_bottom": 40
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "También te puede interesar",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "main",
+    "trust_signals",
+    "por_que",
+    "faq",
+    "related-products"
+  ]
+}

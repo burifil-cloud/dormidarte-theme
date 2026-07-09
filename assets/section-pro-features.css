@@ -1,0 +1,99 @@
+.pro-features__head {
+  text-align: center;
+  max-width: 60rem;
+  margin: 0 auto 4rem;
+}
+.pro-features__heading {
+  font-size: clamp(2.4rem, 2.6vw, 3rem);
+  margin: 0;
+}
+.pro-features__sub {
+  font-size: 1.55rem;
+  opacity: 0.75;
+  margin: 1.2rem 0 0;
+}
+
+.pro-features__grid {
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 4), 1fr);
+  gap: 2rem;
+}
+
+/* ---- Card layout ---- */
+.pro-features__grid--cards .pro-features__item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.4rem;
+  padding: 2.6rem 2.2rem;
+  background: #f5f5f7;
+  border: 0;
+  border-radius: 18px;
+  box-shadow: none;
+  transition: transform 0.22s var(--pro-ease), background 0.22s var(--pro-ease);
+}
+.pro-features__grid--cards .pro-features__item:hover {
+  transform: translateY(-3px);
+  background: #efeff1;
+}
+.pro-features__grid--cards .pro-features__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.8rem;
+  height: 4.8rem;
+  border-radius: 13px;
+  background: #ffffff;
+  color: #314855;
+}
+.pro-features__grid--cards .pro-features__icon .pro-icon { width: 2.8rem; height: 2.8rem; }
+
+/* ---- Bar layout ---- */
+.pro-features__grid--bar {
+  gap: 1.6rem;
+}
+.pro-features__grid--bar .pro-features__item {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  padding: 1.7rem 1.9rem;
+  border-radius: 16px;
+  background: rgba(var(--color-foreground), 0.035);
+  transition: background .2s ease;
+}
+.pro-features__grid--bar .pro-features__item:hover { background: rgba(var(--color-foreground), 0.06); }
+.pro-features__grid--bar .pro-features__icon {
+  color: rgb(var(--color-button));
+  flex: 0 0 auto;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 4.2rem; height: 4.2rem; border-radius: 12px;
+  background: rgba(var(--color-button), 0.1);
+}
+.pro-features__grid--bar .pro-features__icon .pro-icon { width: 2.8rem; height: 2.8rem; }
+
+/* ---- Shared text ---- */
+.pro-features__title {
+  font-weight: 600;
+  font-size: 1.65rem;
+  margin: 0 0 0.3rem;
+  line-height: 1.25;
+}
+.pro-features__desc {
+  font-size: 1.35rem;
+  opacity: 0.72;
+  margin: 0;
+  line-height: 1.45;
+}
+.pro-features__pays { display: inline-flex; align-items: center; gap: .6rem; margin-top: .8rem; }
+.pay-chip { display: inline-flex; align-items: center; font-weight: 800; line-height: 1; border-radius: 6px; }
+.pay-chip--klarna { background: #FFB3C7; color: #17120f; padding: 3px 8px; font-size: 1.15rem; }
+.pay-chip--pepper { color: #F5333F; font-size: 1.4rem; letter-spacing: -.03em; }
+
+@media screen and (max-width: 989px) {
+  .pro-features__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media screen and (max-width: 599px) {
+  .pro-features__grid--cards { grid-template-columns: 1fr 1fr; }
+  .pro-features__grid--cards .pro-features__item { padding: 2rem 1.4rem; }
+  .pro-features__grid--bar { grid-template-columns: 1fr; }
+}

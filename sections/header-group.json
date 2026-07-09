@@ -1,0 +1,71 @@
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "settings": {
+        "color_scheme": "scheme-3",
+        "show_line_separator": false,
+        "show_social": false,
+        "auto_rotate": true,
+        "change_slides_speed": 5,
+        "enable_country_selector": false,
+        "enable_language_selector": false
+      },
+      "blocks": {
+        "a1": {
+          "type": "announcement",
+          "settings": {
+            "text": "🌙 Prueba tu colchón 30 noches · Devolución gratis",
+            "text_alignment": "center",
+            "color_scheme": "scheme-3",
+            "link": "/pages/devoluciones-y-garantia"
+          }
+        },
+        "a2": {
+          "type": "announcement",
+          "settings": {
+            "text": "🚚 Envío gratis en 24-72h a toda la península",
+            "text_alignment": "center",
+            "color_scheme": "scheme-3",
+            "link": "/collections/colchones"
+          }
+        },
+        "a3": {
+          "type": "announcement",
+          "settings": {
+            "text": "💳 Paga a plazos sin intereses",
+            "text_alignment": "center",
+            "color_scheme": "scheme-3",
+            "link": ""
+          }
+        }
+      },
+      "block_order": ["a1", "a2", "a3"]
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "menu_color_scheme": "scheme-1",
+        "logo_position": "top-center",
+        "menu": "main-menu",
+        "menu_type_desktop": "mega",
+        "sticky_header_type": "always",
+        "show_line_separator": true,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "enable_customer_avatar": true,
+        "mobile_logo_position": "center",
+        "margin_bottom": 0,
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}

@@ -1,0 +1,148 @@
+/* ===== Colchones — tarjetas detalladas (estilo Liroon, colores Dormidarte) ===== */
+.pcd-wrap { --bw: #314855; --tq: #5CC3E8; --coral: #E95F5C; }
+.pcd-head { text-align: center; margin-bottom: 4rem; }
+.pcd-heading { font-size: clamp(2.6rem, 3.6vw, 4rem); margin: 0; }
+
+.pcd-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 4), 1fr);
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.pcd {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 26px rgba(28, 40, 55, .1);
+  border: 1px solid rgba(28, 40, 55, .06);
+}
+
+/* Header band (corporate bluewood) */
+.pcd__top {
+  position: relative;
+  background: var(--bw);
+  color: #fff;
+  padding: 1.8rem 1.6rem 2.2rem;
+  text-align: center;
+}
+.pcd__title { font-size: 1.9rem; margin: 0 0 .5rem; color: #fff; letter-spacing: -.01em; }
+.pcd__desc { font-size: 1.3rem; line-height: 1.4; opacity: .9; margin: 0; }
+.pcd__save {
+  position: absolute;
+  left: 50%;
+  bottom: -1.3rem;
+  transform: translateX(-50%);
+  background: var(--coral);
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  padding: .5rem 1.2rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(233, 95, 92, .35);
+}
+
+.pcd__media {
+  display: block;
+  padding: 2.6rem 1.6rem 1.4rem;
+  background: #fff;
+}
+.pcd__media img { width: 100%; height: auto; object-fit: contain; aspect-ratio: 3 / 2; }
+
+/* Rating bars */
+.pcd__bars { padding: .4rem 1.8rem 1.4rem; }
+.pcd__bar { margin-bottom: 1rem; }
+.pcd__bar:last-child { margin-bottom: 0; }
+.pcd__bar-label {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--bw);
+  margin-bottom: .5rem;
+}
+.pcd__bar-track {
+  display: block;
+  height: 7px;
+  border-radius: 999px;
+  background: #e7ebee;
+  overflow: hidden;
+}
+.pcd__bar-fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--bw), var(--tq));
+}
+
+/* Spec rows */
+.pcd__specs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid rgba(28, 40, 55, .08);
+}
+.pcd__specs li {
+  text-align: center;
+  font-size: 1.35rem;
+  padding: 1.1rem 1.4rem;
+  border-bottom: 1px solid rgba(28, 40, 55, .08);
+  color: #3a4653;
+}
+
+/* Price + CTA */
+.pcd__price {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: .8rem;
+  padding: 1.6rem 1.4rem .4rem;
+}
+.pcd__price-now { font-size: 1.9rem; font-weight: 700; color: var(--bw); }
+.pcd__price-was { font-size: 1.4rem; text-decoration: line-through; color: #a9b2ba; }
+.pcd__finance {
+  text-align: center;
+  font-size: 1.25rem;
+  color: var(--tq);
+  font-weight: 600;
+  margin: .4rem 1.4rem 0;
+}
+.pcd__btn {
+  display: block;
+  margin: 1rem 1.4rem 0;
+  padding: 1.3rem;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #fff;
+  background: var(--bw);
+  border-radius: 10px;
+  transition: background .18s ease, transform .18s ease;
+}
+.pcd__btn:hover { background: #26394a; transform: translateY(-2px); }
+.pcd__btn--deal {
+  margin-top: .8rem;
+  background: #ef8b34;
+  font-size: 1.4rem;
+}
+.pcd__btn--deal:hover { background: #db7722; }
+.pcd__ship {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #2e9e5b;
+  margin: 1.1rem 0 1.6rem;
+}
+
+.pcd-cta { text-align: center; margin-top: 4rem; }
+
+@media screen and (max-width: 989px) {
+  .pcd-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media screen and (max-width: 599px) {
+  .pcd-grid { grid-template-columns: 1fr; }
+}

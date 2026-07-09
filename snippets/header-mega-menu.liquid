@@ -1,0 +1,156 @@
+{% comment %}
+  Renders a megamenu for the header.
+
+  Usage:
+  {% render 'header-mega-menu' %}
+{% endcomment %}
+
+<nav class="header__inline-menu">
+  <ul class="list-menu list-menu--inline" role="list">
+    {%- for link in section.settings.menu.links -%}
+      <li>
+        {%- if link.links != blank -%}
+          <header-menu>
+            <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu">
+              <summary
+                id="HeaderMenu-{{ link.handle }}"
+                class="header__menu-item list-menu__item link focus-inset"
+              >
+                <span
+                  {%- if link.child_active %}
+                    class="header__active-menu-item"
+                  {% endif %}
+                >
+                  {{- link.title | escape -}}
+                </span>
+                {{- 'icon-caret.svg' | inline_asset_content -}}
+              </summary>
+              <div
+                id="MegaMenu-Content-{{ forloop.index }}"
+                class="mega-menu__content color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup"
+                tabindex="-1"
+              >
+                {%- liquid
+                  assign promo_col = blank
+                  if link.url contains '/collections/'
+                    assign promo_handle = link.url | split: '/collections/' | last | split: '?' | first
+                    assign promo_col = collections[promo_handle]
+                  endif
+                -%}
+                <div class="mega-menu__inner page-width">
+                <ul
+                  class="mega-menu__list{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}"
+                  role="list"
+                >
+                  {%- for childlink in link.links -%}
+                    {%- liquid
+                      assign ch_is_product = false
+                      if childlink.url contains '/products/'
+                        assign ch_is_product = true
+                        assign ch_handle = childlink.url | split: '/products/' | last | split: '?' | first
+                        assign ch_product = all_products[ch_handle]
+                      endif
+                    -%}
+                    <li>
+                      {%- if ch_is_product -%}
+                        <a href="{{ childlink.url }}" class="mega-prod link{% if childlink.current %} mega-menu__link--active{% endif %}">
+                          <span class="mega-prod__img">{% if ch_product.featured_image != blank %}<img src="{{ ch_product.featured_image | image_url: width: 200 }}" alt="{{ childlink.title | escape }}" width="90" height="90" loading="lazy">{% endif %}</span>
+                          <span class="mega-prod__name">{{ childlink.title | escape }}</span>
+                        </a>
+                      {%- else -%}
+                        <a
+                          id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                          href="{{ childlink.url }}"
+                          class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
+                          {% if childlink.current %}
+                            aria-current="page"
+                          {% endif %}
+                        >
+                          {{ childlink.title | escape }}
+                        </a>
+                        {%- if childlink.links != blank -%}
+                          <ul class="list-unstyled mega-prod-grid" role="list">
+                            {%- for grandchildlink in childlink.links -%}
+                              {%- liquid
+                                assign gc_handle = grandchildlink.url | split: '/products/' | last | split: '?' | first
+                                assign gc_product = all_products[gc_handle]
+                                case gc_handle
+                                  when 'prestance'
+                                    assign gc_sum = '25 cm · Media · Muelles ensacados'
+                                  when 'colchon-iris-muelles-ensacados'
+                                    assign gc_sum = 'Media · Todas las medidas'
+                                  when 'prestance-plus'
+                                    assign gc_sum = '28 cm · Media · Topper viscoelástico'
+                                  when 'carbon'
+                                    assign gc_sum = '27 cm · Blanda · Termorregulación'
+                                  when 'aloevera-doble-cara'
+                                    assign gc_sum = 'Firme · Doble cara · Aloe Vera'
+                                  when 'beginn'
+                                    assign gc_sum = 'Media · Natural · Lana y coco'
+                                  when 'sahara-dual'
+                                    assign gc_sum = '27 cm · Media · Verano/Invierno'
+                                  when 'blue-vi'
+                                    assign gc_sum = '27 cm · Media · 7 zonas'
+                                  else
+                                    assign gc_sum = ''
+                                endcase
+                              -%}
+                              <li>
+                                <a
+                                  id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                  href="{{ grandchildlink.url }}"
+                                  class="mega-prod link{% if grandchildlink.current %} mega-menu__link--active{% endif %}"
+                                  {% if grandchildlink.current %}
+                                    aria-current="page"
+                                  {% endif %}
+                                >
+                                  <span class="mega-prod__img">{% if gc_product.featured_image != blank %}<img src="{{ gc_product.featured_image | image_url: width: 200 }}" alt="{{ grandchildlink.title | escape }}" width="90" height="90" loading="lazy">{% endif %}</span>
+                                  <span class="mega-prod__text"><span class="mega-prod__name">{{ grandchildlink.title | escape }}</span>{% if gc_sum != blank %}<small class="mega-prod__sum">{{ gc_sum }}</small>{% endif %}</span>
+                                </a>
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        {%- endif -%}
+                      {%- endif -%}
+                    </li>
+                  {%- endfor -%}
+                </ul>
+                {%- if promo_col != blank and link.levels == 1 -%}
+                  {%- assign promo_img = promo_col.image -%}
+                  {%- if promo_img == blank -%}{%- assign promo_img = promo_col.products.first.featured_image -%}{%- endif -%}
+                  <a class="mega-menu__promo" href="{{ link.url }}">
+                    <span class="mega-menu__promo-media">{% if promo_img != blank %}<img src="{{ promo_img | image_url: width: 600 }}" alt="{{ link.title | escape }}" width="240" height="180" loading="lazy">{% endif %}</span>
+                    <span class="mega-menu__promo-body">
+                      <span class="mega-menu__promo-title">{{ link.title | escape }}</span>
+                      <span class="mega-menu__promo-cta">Ver toda la colección →</span>
+                    </span>
+                  </a>
+                {%- endif -%}
+                </div>
+              </div>
+            </details>
+          </header-menu>
+        {%- else -%}
+          {%- assign top_url = link.url -%}
+          {%- if link.title == 'Ofertas' -%}{%- assign top_url = '/#quiz' -%}{%- endif -%}
+          <a
+            id="HeaderMenu-{{ link.handle }}"
+            href="{{ top_url }}"
+            class="header__menu-item list-menu__item link link--text focus-inset"
+            {% if link.current %}
+              aria-current="page"
+            {% endif %}
+          >
+            <span
+              {%- if link.current %}
+                class="header__active-menu-item"
+              {% endif %}
+            >
+              {{- link.title | escape -}}
+            </span>
+          </a>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+</nav>

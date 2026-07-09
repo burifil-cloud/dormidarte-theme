@@ -1,0 +1,152 @@
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "scheme-2"
+      }
+    },
+    "gallery": {
+      "type": "pro-colchones",
+      "blocks": {
+        "c1": {
+          "type": "colchon",
+          "settings": {
+            "product": "prestance",
+            "front_asset": "capas-prestance.png",
+            "hover_asset": "life-prestance-1.jpg",
+            "tagline": "Muelles ensacados"
+          }
+        },
+        "c2": {
+          "type": "colchon",
+          "settings": {
+            "product": "colchon-iris-muelles-ensacados",
+            "front_asset": "capas-iris.png",
+            "hover_asset": "life-iris-1.jpg",
+            "tagline": "Mejor precio"
+          }
+        },
+        "c3": {
+          "type": "colchon",
+          "settings": {
+            "product": "prestance-plus",
+            "front_asset": "capas-prestance-plus.png",
+            "hover_asset": "life-prestance-plus-1.jpg",
+            "tagline": "Con topper"
+          }
+        },
+        "c4": {
+          "type": "colchon",
+          "settings": {
+            "product": "carbon",
+            "front_asset": "capas-carbon.png",
+            "hover_asset": "life-carbon-1.jpg",
+            "tagline": "Termorregulación"
+          }
+        },
+        "c5": {
+          "type": "colchon",
+          "settings": {
+            "product": "aloevera-doble-cara",
+            "front_asset": "capas-aloevera.png",
+            "hover_asset": "life-aloevera-1.jpg",
+            "tagline": "Doble cara"
+          }
+        },
+        "c6": {
+          "type": "colchon",
+          "settings": {
+            "product": "beginn",
+            "front_asset": "capas-beginn.png",
+            "hover_asset": "life-beginn-1.jpg",
+            "tagline": "100% natural"
+          }
+        },
+        "c8": {
+          "type": "colchon",
+          "settings": {
+            "product": "sahara-dual",
+            "front_asset": "capas-sahara-dual.png",
+            "hover_asset": "life-sahara-dual-1.jpg",
+            "tagline": "Verano / Invierno"
+          }
+        },
+        "c9": {
+          "type": "colchon",
+          "settings": {
+            "product": "blue-vi",
+            "front_asset": "capas-blue-vi.png",
+            "hover_asset": "life-blue-vi-1.jpg",
+            "tagline": "7 zonas de confort"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c8",
+        "c9"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "",
+        "columns": 3,
+        "button_label": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 32,
+        "padding_bottom": 24
+      }
+    },
+    "reassurance": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Compra con total tranquilidad",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>30 noches de prueba · 3 años de garantía · Envío gratis 24-72h · Paga a plazos. Si tu colchón no es para ti, lo recogemos gratis y te devolvemos el dinero.</p>"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Encuentra tu colchón ideal",
+            "button_link": "/#quiz",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-4",
+        "full_width": true,
+        "padding_top": 52,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "gallery",
+    "reassurance"
+  ]
+}

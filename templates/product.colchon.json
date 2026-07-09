@@ -1,0 +1,628 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "Dormidarte ®",
+            "text_style": "uppercase"
+          }
+        },
+        "title": {
+          "type": "title"
+        },
+        "rating": {
+          "type": "rating"
+        },
+        "price": {
+          "type": "price"
+        },
+        "highlight": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>Prueba 30 noches</strong> · Envío gratis 24-72h · Garantía de 3 años · Paga a plazos sin intereses",
+            "text_style": "body"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector"
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "trust_icons": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "horizontal",
+            "icon_1": "stopwatch",
+            "heading_1": "30 noches de prueba",
+            "icon_2": "truck",
+            "heading_2": "Envío gratis 24-72h",
+            "icon_3": "lock",
+            "heading_3": "3 años de garantía"
+          }
+        },
+        "tab_ideal": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "¿Para quién es ideal?",
+            "icon": "heart",
+            "content": "<p>Pensado para quien busca un descanso adaptable, fresco y con un soporte firme pero acogedor. Ideal si:</p><ul><li>Duermes de lado, boca arriba o cambias de postura durante la noche.</li><li>Notas calor al dormir y quieres una superficie transpirable.</li><li>Buscas aliviar la presión en hombros, cadera y zona lumbar.</li><li>Compartes cama y no quieres notar los movimientos de tu pareja.</li></ul>"
+          }
+        },
+        "tab_composicion": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Composición y capas",
+            "icon": "leaf",
+            "content": "<p>Un colchón multicapa diseñado para equilibrar frescura, adaptabilidad y soporte:</p><ul><li><strong>Funda elástica transpirable</strong> — suave al tacto y desenfundable para lavar.</li><li><strong>Látex natural (5 cm)</strong> — elasticidad y frescura de origen natural.</li><li><strong>Espuma viscoelástica \"Nube\" (3 cm)</strong> — se adapta a tu cuerpo y libera presión.</li><li><strong>Núcleo HR con 5 zonas de confort (17 cm)</strong> — soporte ergonómico según la zona del cuerpo.</li><li><strong>Base técnica antideslizante</strong> — estabilidad y durabilidad.</li></ul><p>Altura total aproximada: <strong>25 cm</strong>.</p>"
+          }
+        },
+        "tab_firmeza": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Firmeza y sensación",
+            "icon": "silhouette",
+            "content": "<p>Firmeza <strong>media-alta (7/10)</strong>: un punto de apoyo sólido con una capa de acogida mullida. Ni demasiado duro ni demasiado blando — el equilibrio que buscan la mayoría de los durmientes.</p><p>La combinación de látex y viscoelástica reparte el peso y mantiene la columna alineada en cualquier postura.</p>"
+          }
+        },
+        "tab_dimensiones": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Dimensiones, peso y medidas",
+            "icon": "ruler",
+            "content": "<p>Disponible en todas las medidas estándar, desde 80x180 hasta 200x200 cm.</p><ul><li>Altura total: 25 cm (±1 cm).</li><li>Peso aproximado: entre 18 y 40 kg según la medida.</li><li>Se entrega enrollado y comprimido en una caja para facilitar el transporte.</li></ul><p>¿Dudas con tu medida? Escríbenos y te ayudamos a elegir.</p>"
+          }
+        },
+        "tab_envio": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Envío y entrega",
+            "icon": "truck",
+            "content": "<p><strong>Envío gratuito</strong> a toda la península en <strong>24-72h</strong>. Recibirás tu colchón enrollado en una caja manejable.</p><p>Solo tienes que colocarlo sobre tu base, retirar el plástico y verás cómo recupera su forma en pocas horas. Listo para dormir esa misma noche.</p>"
+          }
+        },
+        "tab_garantia": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Garantía y prueba de 30 noches",
+            "icon": "lock",
+            "content": "<p><strong>30 noches de prueba:</strong> duerme en tu colchón durante 30 noches. Si no es para ti, lo recogemos y te devolvemos el dinero. Sin preguntas.</p><p><strong>3 años de garantía:</strong> respaldamos la durabilidad de nuestros materiales frente a defectos de fabricación.</p>"
+          }
+        },
+        "description": {
+          "type": "description"
+        },
+        "complementary": {
+          "type": "complementary",
+          "settings": {
+            "product_list_heading": "Complétalo con",
+            "make_collapsible_row": true,
+            "icon": "star",
+            "products_to_show": 3,
+            "pagination_style": "dots"
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Compartir"
+          }
+        },
+        "inventory": {
+          "type": "inventory",
+          "settings": {
+            "text_style": "subtitle",
+            "inventory_threshold": 12,
+            "show_inventory_quantity": true
+          }
+        },
+        "payments": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "horizontal",
+            "icon_1": "lock",
+            "heading_1": "Pago 100% seguro",
+            "icon_2": "return",
+            "heading_2": "Devolución gratis",
+            "icon_3": "check_mark",
+            "heading_3": "+1.200 clientes felices"
+          }
+        },
+        "guarantee": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"display:flex;gap:12px;align-items:center;border:1px solid rgba(92,195,232,.5);border-radius:14px;padding:14px 16px;margin-top:14px;background:rgba(92,195,232,.12)\"><span style=\"font-size:26px;line-height:1\">🌙</span><span style=\"font-size:1.4rem;line-height:1.4\"><strong>30 noches de prueba en casa.</strong> Si no es tu colchón, lo recogemos gratis y te devolvemos el 100%.</span></div>"
+          }
+        },
+        "size_warn": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"display:flex;gap:8px;align-items:flex-start;border:1px solid rgba(239,139,52,.45);border-radius:10px;padding:9px 11px;margin-top:12px;background:rgba(239,139,52,.09)\"><span style=\"font-size:15px;line-height:1.3\">⚠️</span><span style=\"font-size:1.15rem;line-height:1.35;color:#8a5a1c\"><strong style=\"color:#c9761f\">Asegúrate de elegir el tamaño correcto.</strong> 1 de cada 4 clientes se equivoca al escogerlo.</span></div>"
+          }
+        },
+        "whatsapp_help": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<a href=\"https://wa.me/34614414925?text=Hola%2C%20tengo%20una%20duda%20sobre%20un%20producto%20de%20Dormidarte.\" target=\"_blank\" rel=\"noopener\" style=\"display:flex;gap:14px;align-items:center;border:1px solid #e6e0d6;border-radius:16px;padding:15px 17px;margin-top:16px;background:#fff;text-decoration:none\"><span style=\"flex:0 0 auto;width:46px;height:46px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center\"><svg width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"#fff\"><path d=\"M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.14c-.24.68-1.42 1.32-1.95 1.36-.5.04-.5.4-3.16-.66-2.66-1.06-4.35-3.8-4.48-3.98-.13-.18-1.08-1.44-1.08-2.75s.69-1.95.93-2.22c.24-.26.53-.33.7-.33.18 0 .35 0 .5.01.16.01.38-.06.59.45.24.58.82 2 .89 2.14.07.14.12.31.02.49-.09.18-.14.29-.28.45-.14.16-.29.36-.42.48-.14.14-.28.29-.12.57.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.18.69-.8.87-1.08.18-.28.36-.23.6-.14.24.09 1.55.73 1.81.86.26.13.44.2.5.31.06.11.06.64-.18 1.32Z\"/></svg></span><span style=\"line-height:1.4\"><strong style=\"font-size:1.5rem;color:#314855\">¿Tienes dudas?</strong><br><span style=\"font-size:1.35rem;color:#5b6a72\">Habla con un asesor por <strong style=\"color:#25D366\">WhatsApp</strong>: te ayudamos gratis y sin compromiso.</span></span></a>"
+          }
+        },
+        "financing_badge": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"margin-top:14px\"><div style=\"display:flex;align-items:center;gap:9px;flex-wrap:wrap\"><span style=\"font-size:1.3rem;color:#5b6a72;font-weight:600\">Paga a plazos con</span><span style=\"display:inline-flex;align-items:center;background:#FFB3C7;color:#17120f;border-radius:7px;padding:3px 11px;font-weight:800;font-size:1.35rem\">Klarna</span><span style=\"color:#F5333F;font-weight:800;font-size:1.6rem;letter-spacing:-.03em;line-height:1\">pepper</span></div><div style=\"font-size:1.25rem;color:#8a8378;margin-top:6px\"><strong style=\"color:#314855\">3 meses sin intereses</strong> con Klarna &middot; o hasta <strong style=\"color:#314855\">12 meses</strong> con Pepper</div></div>"
+          }
+        },
+        "rating_static": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"display:flex;align-items:center;gap:8px;margin:8px 0 2px\"><span style=\"color:#f5a623;font-size:1.6rem;letter-spacing:1px;line-height:1\">★★★★★</span><span style=\"font-size:1.3rem;color:#5b6a72\"><strong style=\"color:#1d1d1f\">4,8</strong> · <a href=\"#\" style=\"color:#5b6a72;text-decoration:underline\">213 opiniones</a></span></div>"
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "rating",
+        "price",
+        "rating_static",
+        "highlight",
+        "variant_picker",
+        "size_warn",
+        "inventory",
+        "quantity_selector",
+        "buy_buttons",
+        "financing_badge",
+        "guarantee",
+        "trust_icons",
+        "whatsapp_help",
+        "payments",
+        "tab_ideal",
+        "tab_composicion",
+        "tab_firmeza",
+        "tab_dimensiones",
+        "tab_envio",
+        "tab_garantia",
+        "description",
+        "complementary",
+        "share"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_position": "left",
+        "gallery_layout": "stacked",
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "image_zoom": "lightbox",
+        "mobile_thumbnails": "show",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "beneficios": {
+      "type": "multicolumn",
+      "blocks": {
+        "col1": {
+          "type": "column",
+          "settings": {
+            "title": "🌙 Alineación ergonómica",
+            "text": "<p>5 zonas de confort que sostienen cada parte del cuerpo y mantienen tu columna alineada.</p>"
+          }
+        },
+        "col2": {
+          "type": "column",
+          "settings": {
+            "title": "❄️ Fresco toda la noche",
+            "text": "<p>Látex natural y funda transpirable que regulan la temperatura para que no pases calor.</p>"
+          }
+        },
+        "col3": {
+          "type": "column",
+          "settings": {
+            "title": "🌿 Materiales de calidad",
+            "text": "<p>Látex natural y espumas certificadas, hipoalergénicas y libres de sustancias nocivas.</p>"
+          }
+        },
+        "col4": {
+          "type": "column",
+          "settings": {
+            "title": "🤝 Descanso sin molestias",
+            "text": "<p>Absorbe los movimientos: si tu pareja se mueve, tú sigues durmiendo tranquilo.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "col1",
+        "col2",
+        "col3",
+        "col4"
+      ],
+      "settings": {
+        "title": "Por qué dormirás mejor",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 4,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 40,
+        "padding_bottom": 20
+      }
+    },
+    "capas": {
+      "type": "multicolumn",
+      "blocks": {
+        "l1": {
+          "type": "column",
+          "settings": {
+            "title": "1 · Funda elástica",
+            "text": "<p>Suave, transpirable y desenfundable para lavar cuando lo necesites.</p>"
+          }
+        },
+        "l2": {
+          "type": "column",
+          "settings": {
+            "title": "2 · Látex natural · 5 cm",
+            "text": "<p>Elasticidad y frescura natural que se adapta sin darte calor.</p>"
+          }
+        },
+        "l3": {
+          "type": "column",
+          "settings": {
+            "title": "3 · Viscoelástica \"Nube\" · 3 cm",
+            "text": "<p>Se amolda a tu cuerpo y libera la presión en hombros y cadera.</p>"
+          }
+        },
+        "l4": {
+          "type": "column",
+          "settings": {
+            "title": "4 · Núcleo HR 5 zonas · 17 cm",
+            "text": "<p>Soporte ergonómico firme, diferente según cada zona del cuerpo.</p>"
+          }
+        },
+        "l5": {
+          "type": "column",
+          "settings": {
+            "title": "5 · Base técnica",
+            "text": "<p>Estabilidad y durabilidad, con superficie antideslizante.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "l1",
+        "l2",
+        "l3",
+        "l4",
+        "l5"
+      ],
+      "settings": {
+        "title": "Así está construido tu colchón",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 5,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "",
+        "color_scheme": "scheme-2",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 20,
+        "padding_bottom": 40
+      }
+    },
+    "garantia_band": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Pruébalo 30 noches. Sin riesgo.",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Queremos que aciertes. Duerme en tu colchón durante 30 noches: si no es para ti, lo recogemos gratis y te devolvemos el dinero. Y si todo va bien —que irá— tienes 3 años de garantía.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-4",
+        "full_width": true,
+        "padding_top": 52,
+        "padding_bottom": 52
+      }
+    },
+    "faq": {
+      "type": "collapsible-content",
+      "blocks": {
+        "q1": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "¿Sobre qué base o somier puedo usarlo?",
+            "row_content": "<p>Funciona sobre cualquier base firme y plana: somier de láminas, canapé o base tapizada. Evita bases con láminas muy separadas.</p>"
+          }
+        },
+        "q2": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "¿Cuánto tarda en recuperar su forma?",
+            "row_content": "<p>Al desenrollarlo empieza a expandirse enseguida. En pocas horas está listo, y alcanza su firmeza óptima en 24-72h.</p>"
+          }
+        },
+        "q3": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "¿Hay que darle la vuelta o rotarlo?",
+            "row_content": "<p>No hace falta darle la vuelta. Recomendamos rotarlo cabeza-pies cada 3-4 meses para un desgaste uniforme.</p>"
+          }
+        },
+        "q4": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "¿Cómo lo limpio?",
+            "row_content": "<p>La funda es desenfundable y lavable a máquina en frío. Aspira la superficie de vez en cuando y ventila la habitación.</p>"
+          }
+        },
+        "q5": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "¿Qué firmeza tiene?",
+            "row_content": "<p>Firmeza media-alta (7/10): soporte sólido con una capa de acogida mullida. El equilibrio ideal para la mayoría.</p>"
+          }
+        },
+        "q6": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "¿Cuánto mide de alto?",
+            "row_content": "<p>25 cm de altura total (±1 cm), repartidos en 5 capas.</p>"
+          }
+        },
+        "q7": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "¿Cómo funciona la prueba de 30 noches?",
+            "row_content": "<p>Duerme en él hasta 30 noches. Si no te convence, contáctanos: lo recogemos gratis y te devolvemos el 100% del importe.</p>"
+          }
+        },
+        "q8": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "¿Cuándo y cómo llega mi pedido?",
+            "row_content": "<p>Envío gratuito en 24-72h a península. Llega enrollado en una caja fácil de manejar hasta tu habitación.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q6",
+        "q7",
+        "q8"
+      ],
+      "settings": {
+        "caption": "",
+        "heading": "Preguntas frecuentes",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "row",
+        "color_scheme": "scheme-1",
+        "container_color_scheme": "scheme-2",
+        "open_first_collapsible_row": false,
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "trust_signals": {
+      "type": "trust-signals",
+      "blocks": {
+        "t1": {
+          "type": "badge",
+          "settings": {
+            "emoji": "🌙",
+            "title": "30 noches de prueba",
+            "text": "Devolución gratis si no te convence"
+          }
+        },
+        "t2": {
+          "type": "badge",
+          "settings": {
+            "emoji": "🛡️",
+            "title": "3 años de garantía",
+            "text": "Respaldamos su durabilidad"
+          }
+        },
+        "t3": {
+          "type": "badge",
+          "settings": {
+            "emoji": "🚚",
+            "title": "Envío gratis 24-72h",
+            "text": "Con seguimiento a tu casa"
+          }
+        },
+        "t4": {
+          "type": "badge",
+          "settings": {
+            "emoji": "💳",
+            "title": "Paga a plazos",
+            "text": "Financiación sin intereses"
+          }
+        },
+        "t5": {
+          "type": "badge",
+          "settings": {
+            "emoji": "🇪🇺",
+            "title": "Fabricación europea",
+            "text": "Materiales certificados"
+          }
+        },
+        "t6": {
+          "type": "badge",
+          "settings": {
+            "emoji": "↩️",
+            "title": "Recogida gratuita",
+            "text": "Sin empaquetar nada"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5",
+        "t6"
+      ],
+      "settings": {
+        "heading": "Miles de personas ya duermen mejor",
+        "show_rating": true,
+        "rating_score": "4,8",
+        "rating_count": "basado en +1.200 reseñas verificadas",
+        "show_payments": true,
+        "payment_text": "Pago 100% seguro y cifrado",
+        "color_scheme": "scheme-2",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "comparison": {
+      "type": "comparison-table",
+      "blocks": {
+        "c1": {
+          "type": "row",
+          "settings": {
+            "feature": "Precio",
+            "us_text": "De fábrica",
+            "them_text": "Con sobreprecio"
+          }
+        },
+        "c2": {
+          "type": "row",
+          "settings": {
+            "feature": "Prueba en casa",
+            "us_text": "30 noches",
+            "them_text": "Sin prueba"
+          }
+        },
+        "c3": {
+          "type": "row",
+          "settings": {
+            "feature": "Garantía",
+            "us_text": "3 años",
+            "them_text": "2 años"
+          }
+        },
+        "c4": {
+          "type": "row",
+          "settings": {
+            "feature": "Envío",
+            "us_text": "Gratis 24-72h",
+            "them_text": "De pago / lento"
+          }
+        },
+        "c5": {
+          "type": "row",
+          "settings": {
+            "feature": "Materiales premium",
+            "us_text": "",
+            "them_text": "Varía"
+          }
+        },
+        "c6": {
+          "type": "row",
+          "settings": {
+            "feature": "Devolución gratuita",
+            "us_text": "",
+            "them_text": ""
+          }
+        },
+        "c7": {
+          "type": "row",
+          "settings": {
+            "feature": "Pago a plazos",
+            "us_text": "Sin intereses",
+            "them_text": "No siempre"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7"
+      ],
+      "settings": {
+        "heading": "¿Por qué comprar en Dormidarte?",
+        "subheading": "La misma calidad que las grandes marcas, sin pagar de más.",
+        "us_label": "Dormidarte",
+        "them_label": "Tienda tradicional",
+        "color_scheme": "scheme-1",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "También te puede interesar",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "main",
+    "beneficios",
+    "capas",
+    "trust_signals",
+    "garantia_band",
+    "comparison",
+    "faq",
+    "related-products"
+  ]
+}

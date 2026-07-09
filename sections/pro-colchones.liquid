@@ -1,0 +1,171 @@
+{{ 'section-pro-colchones.css' | asset_url | stylesheet_tag }}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="pcd-wrap page-width section-{{ section.id }}-padding">
+    {%- if section.settings.eyebrow != blank or section.settings.heading != blank -%}
+      <div class="pcd-head">
+        {%- if section.settings.eyebrow != blank -%}<span class="pro-eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+        {%- if section.settings.heading != blank -%}<h2 class="pcd-heading">{{ section.settings.heading }}</h2>{%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="pcd-grid" style="--cols: {{ section.settings.columns }};">
+      {%- for block in section.blocks -%}
+        {%- assign product = all_products[block.settings.product] -%}
+        {%- if product == blank -%}{%- continue -%}{%- endif -%}
+        {%- liquid
+          assign h = block.settings.product
+          assign img = block.settings.front_asset
+          assign barlabels = 'Firmeza,Adaptabilidad,Transpiración,Grosor' | split: ','
+          case h
+            when 'prestance'
+              assign bars = '60,70,65,60' | split: ','
+              assign desc = 'Soporte envolvente con muelles ensacados y 7 zonas de confort.'
+              assign specs = 'Núcleo: muelles ensacados|7 zonas de confort|Tejido de viscosa|Altura: 25 cm' | split: '|'
+            when 'colchon-iris-muelles-ensacados'
+              assign bars = '60,75,85,55' | split: ','
+              assign desc = 'Muelles ensacados y viscoelástica premium, sin transferencia de movimiento.'
+              assign specs = 'Núcleo: muelles + viscoelástica|Sin transferencia de movimiento|Base 3D transpirable|Disponible en todas las medidas' | split: '|'
+            when 'prestance-plus'
+              assign bars = '60,80,70,72' | split: ','
+              assign desc = 'Con topper viscoelástico integrado para una acogida extra mullida.'
+              assign specs = 'Núcleo: muelles ensacados|Topper viscoelástico|7 zonas de confort|Altura: 28 cm' | split: '|'
+            when 'carbon'
+              assign bars = '40,55,85,68' | split: ','
+              assign desc = 'Soporte firme con tecnología de carbono y termorregulación.'
+              assign specs = 'Núcleo: alta resiliencia|Tecnología de carbono|Termorregulación|Altura: 27 cm' | split: '|'
+            when 'aloevera-doble-cara'
+              assign bars = '85,65,75,55' | split: ','
+              assign desc = 'Doble cara reversible con tejido de Aloe Vera, fresco y equilibrado.'
+              assign specs = 'Núcleo: soporte equilibrado|Doble cara reversible|Tejido con Aloe Vera|Uso diario, gran durabilidad' | split: '|'
+            when 'beginn'
+              assign bars = '65,60,90,55' | split: ','
+              assign desc = 'Materiales 100% naturales: lana, algodón y coco, transpirable.'
+              assign specs = 'Núcleo natural|Lana, algodón y coco|Doble cara|Alta transpirabilidad' | split: '|'
+            when 'craft-deluxe'
+              assign bars = '45,85,70,100' | split: ','
+              assign desc = '35 cm de acogida suave-media sobre núcleo de muelles ensacados.'
+              assign specs = 'Núcleo: muelles ensacados|Composición multicapa|Acogida suave-media|Altura: 35 cm' | split: '|'
+            when 'sahara-dual'
+              assign bars = '60,60,80,68' | split: ','
+              assign desc = 'Doble cara verano/invierno con algodón y lana.'
+              assign specs = 'Doble cara: algodón / lana|Cara de verano fresca|Cara de invierno cálida|Altura: 27 cm' | split: '|'
+            when 'blue-vi'
+              assign bars = '60,70,85,68' | split: ','
+              assign desc = 'Muelles ensacados con 7 zonas de confort y termorregulación natural.'
+              assign specs = 'Núcleo: muelles ensacados|7 zonas de confort|Termorregulación natural|Altura: 27 cm' | split: '|'
+            when 'canape-noblia'
+              assign barlabels = 'Robustez,Almacenaje,Altura,Ventilación' | split: ','
+              assign bars = '85,90,75,80' | split: ','
+              assign desc = 'Canapé abatible robusto, con gran capacidad de almacenaje.'
+              assign specs = 'Apertura abatible|Gran almacenaje|Estructura reforzada|Base transpirable' | split: '|'
+            when 'canape-magna'
+              assign barlabels = 'Robustez,Almacenaje,Altura,Ventilación' | split: ','
+              assign bars = '80,80,70,75' | split: ','
+              assign desc = 'Canapé práctico y resistente con buen almacenaje.'
+              assign specs = 'Apertura abatible|Buen almacenaje|Estructura resistente|Ventilación' | split: '|'
+            when 'canape-imperial'
+              assign barlabels = 'Robustez,Almacenaje,Altura,Ventilación' | split: ','
+              assign bars = '90,85,80,80' | split: ','
+              assign desc = 'Canapé premium en madera, máxima robustez y almacenaje.'
+              assign specs = 'Madera de calidad|Máximo almacenaje|Apertura abatible|Base ventilada' | split: '|'
+            else
+              assign bars = '60,60,60,60' | split: ','
+              assign desc = block.settings.tagline
+              assign specs = '' | split: '|'
+          endcase
+          assign savings = 0
+          if product.compare_at_price > product.price
+            assign savings = product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price
+          endif
+        -%}
+        <div class="pcd" {{ block.shopify_attributes }}>
+          <div class="pcd__top">
+            <h3 class="pcd__title">{{ product.title }}</h3>
+            {%- if desc != blank -%}<p class="pcd__desc">{{ desc }}</p>{%- endif -%}
+            {%- if savings > 0 -%}<span class="pcd__save">Ahorra un {{ savings }}%</span>{%- endif -%}
+          </div>
+          <a href="{{ product.url }}" class="pcd__media">
+            {%- if img != blank -%}
+              <img src="{{ img | asset_url }}" alt="{{ product.title | escape }}" width="600" height="400" loading="lazy">
+            {%- elsif product.featured_image != blank -%}
+              <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title | escape }}" width="600" height="400" loading="lazy">
+            {%- endif -%}
+          </a>
+          <div class="pcd__bars">
+            {%- for b in bars -%}
+              <div class="pcd__bar">
+                <span class="pcd__bar-label">{{ barlabels[forloop.index0] }}</span>
+                <span class="pcd__bar-track"><span class="pcd__bar-fill" style="width: {{ b }}%;"></span></span>
+              </div>
+            {%- endfor -%}
+          </div>
+          {%- if specs.size > 0 -%}
+            <ul class="pcd__specs">
+              {%- for s in specs -%}<li>{{ s }}</li>{%- endfor -%}
+            </ul>
+          {%- endif -%}
+          <div class="pcd__price">
+            <span class="pcd__price-now">Desde {{ product.price | money }}</span>
+            {%- if product.compare_at_price > product.price -%}<span class="pcd__price-was">{{ product.compare_at_price | money }}</span>{%- endif -%}
+          </div>
+          {%- assign permes = product.price | divided_by: 12 -%}
+          <p class="pcd__finance">o desde {{ permes | money }}/mes · hasta 12 meses</p>
+          <a href="{{ product.url }}" class="pcd__btn">Ver producto</a>
+          {%- unless h contains 'canape' -%}<a href="/#quiz" class="pcd__btn pcd__btn--deal">🎁 Consigue un 10% de descuento más</a>{%- endunless -%}
+          <p class="pcd__ship">● Entrega gratis en 24-72h</p>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+      <div class="pcd-cta"><a href="{{ section.settings.button_link }}" class="button button--primary">{{ section.settings.button_label }}</a></div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% style %}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Colchones (galería)",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "Nuestros colchones" },
+    { "type": "range", "id": "columns", "min": 2, "max": 4, "step": 1, "label": "Columnas", "default": 4 },
+    { "type": "text", "id": "button_label", "label": "Botón · texto", "default": "Ver todos los colchones" },
+    { "type": "url", "id": "button_link", "label": "Botón · enlace" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Esquema de color", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Espaciado superior", "default": 56 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Espaciado inferior", "default": 56 }
+  ],
+  "blocks": [
+    {
+      "type": "colchon",
+      "name": "Colchón",
+      "settings": [
+        { "type": "product", "id": "product", "label": "Producto" },
+        { "type": "text", "id": "front_asset", "label": "Foto del colchón (assets)", "info": "Ej: capas-carbon.png" },
+        { "type": "text", "id": "hover_asset", "label": "Foto extra (no usada en este diseño)" },
+        { "type": "text", "id": "tagline", "label": "Etiqueta" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Colchones (galería)" }
+  ]
+}
+{% endschema %}

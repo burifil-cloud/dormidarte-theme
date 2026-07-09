@@ -1,0 +1,29 @@
+{
+  "sections": {
+    "hero": {
+      "type": "home-hero",
+      "settings": {
+        "image_asset": "hero-blu.jpg",
+        "height": 70,
+        "overlay_opacity": 45,
+        "content_alignment": "center",
+        "eyebrow": "Error 404",
+        "heading": "Esta página se fue a dormir 😴",
+        "subheading": "<p>No encontramos lo que buscabas… pero tu mejor descanso sí te espera.</p>",
+        "button_1_label": "Volver al inicio",
+        "button_1_link": "/",
+        "button_2_label": "Ver colchones",
+        "button_2_link": "/collections/colchones",
+        "color_scheme": "scheme-3",
+        "show_usp": false
+      }
+    },
+    "main": {
+      "type": "main-404"
+    }
+  },
+  "order": [
+    "hero",
+    "main"
+  ]
+}
