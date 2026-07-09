@@ -1,0 +1,36 @@
+{%- comment -%} Migas de pan (breadcrumbs) visibles + BreadcrumbList JSON-LD para Google {%- endcomment -%}
+{%- liquid
+  assign origin = request.origin
+  assign is_product = false
+  assign is_collection = false
+  if template contains 'product'
+    assign is_product = true
+    assign col = product.collections.first
+  elsif template contains 'collection'
+    assign is_collection = true
+  endif
+-%}
+{%- if is_product or is_collection -%}
+  <nav class="pro-crumb page-width" aria-label="breadcrumb">
+    <ol>
+      <li><a href="{{ routes.root_url }}">Inicio</a></li>
+      {%- if is_product -%}
+        {%- if col != blank -%}<li><a href="{{ col.url }}">{{ col.title }}</a></li>{%- endif -%}
+        <li><span aria-current="page">{{ product.title }}</span></li>
+      {%- elsif is_collection -%}
+        <li><span aria-current="page">{{ collection.title }}</span></li>
+      {%- endif -%}
+    </ol>
+  </nav>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+  {"@type":"ListItem","position":1,"name":"Inicio","item":"{{ origin }}{{ routes.root_url }}"}
+  {%- if is_product -%}
+    {%- if col != blank -%},{"@type":"ListItem","position":2,"name":{{ col.title | json }},"item":"{{ origin }}{{ col.url }}"}{%- endif -%}
+    ,{"@type":"ListItem","position":{% if col != blank %}3{% else %}2{% endif %},"name":{{ product.title | json }},"item":"{{ origin }}{{ product.url }}"}
+  {%- elsif is_collection -%}
+    ,{"@type":"ListItem","position":2,"name":{{ collection.title | json }},"item":"{{ origin }}{{ collection.url }}"}
+  {%- endif -%}
+  ]}
+  </script>
+{%- endif -%}

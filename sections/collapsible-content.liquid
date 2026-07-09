@@ -106,6 +106,21 @@
   </div>
 </div>
 
+{%- assign faq_rows = 0 -%}
+{%- for block in section.blocks -%}{%- if block.type == 'collapsible_row' and block.settings.row_content != blank -%}{%- assign faq_rows = faq_rows | plus: 1 -%}{%- endif -%}{%- endfor -%}
+{%- if faq_rows > 0 -%}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{%- assign first_done = false -%}
+{%- for block in section.blocks -%}{%- if block.type == 'collapsible_row' and block.settings.row_content != blank -%}
+{%- if first_done %},{% endif -%}
+{"@type":"Question","name":{{ block.settings.heading | strip_html | json }},"acceptedAnswer":{"@type":"Answer","text":{{ block.settings.row_content | strip_html | strip_newlines | json }}}}
+{%- assign first_done = true -%}
+{%- endif -%}{%- endfor -%}
+]}
+</script>
+{%- endif -%}
+
 {% schema %}
 {
   "name": "t:sections.collapsible_content.name",

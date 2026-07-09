@@ -1,3 +1,10 @@
+{%- comment -%} Noindex de páginas basura de apps antiguas (SEO) {%- endcomment -%}
+{%- if request.page_type == 'page' -%}
+  {%- assign noindex_pages = 'search-results-page,find-a-store,md-help-center,avada-faqs,pipeda-privacy-policy,appi-privacy-policy,lgpd-privacy-policy,ccpa-privacy-policy,gdpr' | split: ',' -%}
+  {%- if noindex_pages contains page.handle -%}
+    <meta name="robots" content="noindex, follow">
+  {%- endif -%}
+{%- endif -%}
 {%- liquid
   assign og_title = page_title | default: shop.name
   assign og_url = canonical_url | default: request.origin
