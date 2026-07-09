@@ -119,7 +119,7 @@
         "drop_countdown": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div style=\"display:flex;align-items:center;gap:8px;border:1px solid rgba(233,95,92,.4);background:rgba(233,95,92,.08);border-radius:12px;padding:11px 14px;margin:0 0 14px;font-size:1.35rem;color:#a12f2c\"><span style=\"font-size:18px\">⏳</span> La oferta termina en <b class=\"dropc\" style=\"font-variant-numeric:tabular-nums;font-weight:800;margin-left:2px\">--:--:--</b></div><script>(function(){var s=document.currentScript;var el=s.previousElementSibling.querySelector(\".dropc\");function t(){var n=new Date();var e=new Date(n.getFullYear(),n.getMonth(),n.getDate(),23,59,59);var x=Math.max(0,Math.floor((e-n)/1000));var h=Math.floor(x/3600),m=Math.floor(x%3600/60),c=x%60;el.textContent=(h<10?\"0\":\"\")+h+\":\"+(m<10?\"0\":\"\")+m+\":\"+(c<10?\"0\":\"\")+c;}t();setInterval(t,1000);})();</script>"
+            "custom_liquid": "<div style=\"display:flex;align-items:center;gap:8px;border:1px solid rgba(233,95,92,.4);background:rgba(233,95,92,.08);border-radius:12px;padding:11px 14px;margin:0 0 14px;font-size:1.35rem;color:#a12f2c\"><span style=\"font-size:18px\">⏳</span> La oferta termina en <b class=\"dropc\" style=\"font-variant-numeric:tabular-nums;font-weight:800;margin-left:2px\">--:--:--</b></div><script>(function(){var s=document.currentScript;var el=s.previousElementSibling.querySelector(\".dropc\");function g(){var n=new Date();var t=new Date(n.getFullYear(),n.getMonth(),7,0,0,0);if(n>=t)t=new Date(n.getFullYear(),n.getMonth()+1,7,0,0,0);return t;}function t(){var x=Math.max(0,Math.floor((g()-new Date())/1000));var d=Math.floor(x/86400),h=Math.floor(x%86400/3600),m=Math.floor(x%3600/60),c=x%60;el.textContent=(d>0?d+\"d \":\"\")+(h<10?\"0\":\"\")+h+\":\"+(m<10?\"0\":\"\")+m+\":\"+(c<10?\"0\":\"\")+c;}t();setInterval(t,1000);})();</script>"
           }
         },
         "drop_stock": {
@@ -168,59 +168,6 @@
         "padding_bottom": 12
       }
     },
-    "strong": {
-      "type": "pro-features",
-      "blocks": {
-        "sp1": {
-          "type": "feature",
-          "settings": {
-            "icon": "coil",
-            "title": "Muelles independientes",
-            "text": "Sin transferencia de movimiento"
-          }
-        },
-        "sp2": {
-          "type": "feature",
-          "settings": {
-            "icon": "thermometer",
-            "title": "Tejido 3D transpirable",
-            "text": "Ventilación constante, sin humedad"
-          }
-        },
-        "sp3": {
-          "type": "feature",
-          "settings": {
-            "icon": "feather",
-            "title": "Viscoelástica premium",
-            "text": "Adaptabilidad y alivio de presión"
-          }
-        },
-        "sp4": {
-          "type": "feature",
-          "settings": {
-            "icon": "tag",
-            "title": "La mejor relación calidad-precio",
-            "text": "Confort premium sin pagar de más"
-          }
-        }
-      },
-      "block_order": [
-        "sp1",
-        "sp2",
-        "sp3",
-        "sp4"
-      ],
-      "settings": {
-        "eyebrow": "Lo que lo hace especial",
-        "heading": "Puntos fuertes del Iris",
-        "subheading": "",
-        "layout": "cards",
-        "columns": 4,
-        "color_scheme": "scheme-1",
-        "padding_top": 56,
-        "padding_bottom": 24
-      }
-    },
     "specs": {
       "type": "pro-colchon-specs",
       "settings": {
@@ -228,56 +175,6 @@
         "color_scheme": "scheme-2",
         "padding_top": 40,
         "padding_bottom": 48
-      }
-    },
-    "capas": {
-      "type": "home-feature",
-      "settings": {
-        "image_asset": "capas-iris.png",
-        "image_position": "left",
-        "eyebrow": "Composición",
-        "heading": "Cómo está hecho el Iris",
-        "text": "<ul><li><strong>Muelles ensacados independientes</strong> para soporte ergonómico.</li><li><strong>Viscoelástica premium</strong> que se adapta y libera presión.</li><li><strong>Tejido stretch de alto gramaje</strong> para suavidad inmediata.</li><li><strong>Base de Elocell Plus + tejido 3D transpirable</strong> que elimina la humedad y ventila.</li></ul>",
-        "button_label": "",
-        "button_link": "",
-        "color_scheme": "scheme-1",
-        "padding_top": 40,
-        "padding_bottom": 56
-      }
-    },
-    "lifestyle": {
-      "type": "pro-lifestyle",
-      "blocks": {
-        "s1": {
-          "type": "scene",
-          "settings": {
-            "image_asset": "life-iris-1.jpg",
-            "kicker": "En tu dormitorio",
-            "title": "Muelles independientes",
-            "text": "<p>Sin transferencia de movimiento. Un descanso premium que además viste tu habitación.</p>"
-          }
-        },
-        "s2": {
-          "type": "scene",
-          "settings": {
-            "image_asset": "life-iris-2.jpg",
-            "kicker": "Detalle",
-            "title": "Tejido 3D transpirable",
-            "text": "<p>Ventilación constante, sin humedad.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "s1",
-        "s2"
-      ],
-      "settings": {
-        "eyebrow": "Cómo queda en casa",
-        "heading": "El Iris en tu dormitorio",
-        "subheading": "",
-        "color_scheme": "scheme-2",
-        "padding_top": 56,
-        "padding_bottom": 56
       }
     },
     "trust_signals": {
@@ -486,9 +383,6 @@
   "order": [
     "main",
     "specs",
-    "strong",
-    "capas",
-    "lifestyle",
     "trust_signals",
     "comparison",
     "faq",

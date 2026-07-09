@@ -30,12 +30,11 @@
   (function () {
     var el = document.currentScript.parentNode.querySelector('.dropc');
     if (!el) return;
+    function tgt() { var n = new Date(); var t = new Date(n.getFullYear(), n.getMonth(), 7, 0, 0, 0); if (n >= t) t = new Date(n.getFullYear(), n.getMonth() + 1, 7, 0, 0, 0); return t; }
     function t() {
-      var n = new Date();
-      var e = new Date(n.getFullYear(), n.getMonth(), n.getDate(), 23, 59, 59);
-      var x = Math.max(0, Math.floor((e - n) / 1000));
-      var h = Math.floor(x / 3600), m = Math.floor(x % 3600 / 60), c = x % 60;
-      el.textContent = (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m + ':' + (c < 10 ? '0' : '') + c;
+      var x = Math.max(0, Math.floor((tgt() - new Date()) / 1000));
+      var d = Math.floor(x / 86400), h = Math.floor(x % 86400 / 3600), m = Math.floor(x % 3600 / 60), c = x % 60;
+      el.textContent = (d > 0 ? d + 'd ' : '') + (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m + ':' + (c < 10 ? '0' : '') + c;
     }
     t(); setInterval(t, 1000);
   })();
