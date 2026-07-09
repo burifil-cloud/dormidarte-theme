@@ -1,0 +1,46 @@
+.liqb {
+  position: relative;
+  background: radial-gradient(120% 120% at 50% 0%, #2a1512 0%, #17100e 60%, #120b0a 100%);
+  color: #fff;
+  overflow: hidden;
+}
+.liqb__marquee { background: linear-gradient(90deg, #E95F5C, #ef8b34); overflow: hidden; white-space: nowrap; }
+.liqb__track { display: inline-flex; will-change: transform; animation: liqb-scroll 26s linear infinite; }
+.liqb__seg { display: inline-block; padding: 9px 0; font-weight: 800; font-size: 1.3rem; letter-spacing: .1em; color: #fff; }
+@keyframes liqb-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+.liqb__inner { text-align: center; position: relative; z-index: 1; }
+.liqb__eyebrow { color: #ff9d5c; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; font-size: 1.25rem; margin: 0 0 1.3rem; }
+.liqb__title {
+  font-size: clamp(3.2rem, 6.5vw, 6rem);
+  font-weight: 900; line-height: 1; margin: 0 0 1.4rem; letter-spacing: -.02em; color: #fff;
+}
+.liqb__title .hl {
+  background: linear-gradient(90deg, #ef8b34, #E95F5C);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+.liqb__sub { font-size: 1.7rem; color: rgba(255, 255, 255, .78); margin: 0 auto 2.6rem; max-width: 62rem; line-height: 1.5; }
+.liqb__count {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(255, 255, 255, .07); border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: 99px; padding: 1.1rem 2.2rem; font-size: 1.55rem; margin-bottom: 2.6rem;
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+}
+.liqb__count b { color: #ff8f5a; font-variant-numeric: tabular-nums; font-weight: 800; font-size: 2rem; letter-spacing: .02em; }
+.liqb__btn {
+  display: inline-block; background: linear-gradient(90deg, #E95F5C, #ef8b34); color: #fff;
+  font-weight: 800; font-size: 1.7rem; padding: 1.6rem 3.6rem; border-radius: 99px; text-decoration: none;
+  box-shadow: 0 12px 30px rgba(233, 95, 92, .45); transition: transform .16s ease;
+  animation: liqb-pulse 2.2s ease-in-out infinite;
+}
+.liqb__btn:hover { transform: translateY(-2px) scale(1.02); }
+@keyframes liqb-pulse {
+  0%, 100% { box-shadow: 0 12px 30px rgba(233, 95, 92, .45); }
+  50% { box-shadow: 0 14px 50px rgba(239, 139, 52, .75); }
+}
+.liqb__note { margin: 2.2rem 0 0; font-size: 1.3rem; color: rgba(255, 255, 255, .6); }
+
+@media (prefers-reduced-motion: reduce) {
+  .liqb__track { animation: none; }
+  .liqb__btn { animation: none; }
+}

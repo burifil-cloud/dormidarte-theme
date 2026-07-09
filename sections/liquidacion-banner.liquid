@@ -1,0 +1,71 @@
+{{ 'section-liquidacion-banner.css' | asset_url | stylesheet_tag }}
+
+<div class="liqb">
+  <div class="liqb__marquee" aria-hidden="true">
+    <div class="liqb__track">
+      {%- assign phrase = section.settings.ticker_text -%}
+      {%- for i in (1..2) -%}
+        <span class="liqb__seg">{% for j in (1..4) %}{{ phrase }} · {% endfor %}</span>
+      {%- endfor -%}
+    </div>
+  </div>
+
+  <div class="liqb__inner page-width section-{{ section.id }}-padding">
+    {%- if section.settings.eyebrow != blank -%}<p class="liqb__eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+    {%- if section.settings.heading != blank -%}
+      <h2 class="liqb__title">{{ section.settings.heading }}{% if section.settings.heading_hl != blank %} <span class="hl">{{ section.settings.heading_hl }}</span>{% endif %}</h2>
+    {%- endif -%}
+    {%- if section.settings.subheading != blank -%}<p class="liqb__sub">{{ section.settings.subheading }}</p>{%- endif -%}
+    {%- if section.settings.show_countdown -%}
+      <div class="liqb__count"><span>⏳ Termina en</span> <b class="dropc">--:--:--</b></div>
+    {%- endif -%}
+    {%- if section.settings.button_label != blank -%}
+      <a href="{{ section.settings.button_link | default: '/collections/liquidacion' }}" class="liqb__btn">{{ section.settings.button_label }}</a>
+    {%- endif -%}
+    {%- if section.settings.note != blank -%}<p class="liqb__note">{{ section.settings.note }}</p>{%- endif -%}
+  </div>
+</div>
+
+<script>
+  (function () {
+    var el = document.currentScript.parentNode.querySelector('.dropc');
+    if (!el) return;
+    function t() {
+      var n = new Date();
+      var e = new Date(n.getFullYear(), n.getMonth(), n.getDate(), 23, 59, 59);
+      var x = Math.max(0, Math.floor((e - n) / 1000));
+      var h = Math.floor(x / 3600), m = Math.floor(x % 3600 / 60), c = x % 60;
+      el.textContent = (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m + ':' + (c < 10 ? '0' : '') + c;
+    }
+    t(); setInterval(t, 1000);
+  })();
+</script>
+
+{% style %}
+  .section-{{ section.id }}-padding { padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px; padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px; }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding { padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px; }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Banner de liquidación",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "ticker_text", "label": "Texto del ticker", "default": "🔥 LIQUIDACIÓN DE STOCK · ÚLTIMAS UNIDADES · PRECIOS DE DERRIBO" },
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "SOLO HASTA FIN DE EXISTENCIAS" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "Liquidación de stock" },
+    { "type": "text", "id": "heading_hl", "label": "Título · palabra destacada", "default": "hasta −80%" },
+    { "type": "text", "id": "subheading", "label": "Subtítulo", "default": "Colchones a precio de derribo, con las mismas garantías de siempre. Cuando se acaban, se acaban." },
+    { "type": "checkbox", "id": "show_countdown", "label": "Mostrar cuenta atrás", "default": true },
+    { "type": "text", "id": "button_label", "label": "Botón · texto", "default": "Ver la liquidación" },
+    { "type": "url", "id": "button_link", "label": "Botón · enlace" },
+    { "type": "text", "id": "note", "label": "Nota inferior", "default": "🌙 30 noches de prueba · 🚚 Envío gratis · 🛡️ 3 años de garantía · 💳 A plazos" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Espaciado superior", "default": 64 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Espaciado inferior", "default": 64 }
+  ],
+  "presets": [ { "name": "Banner de liquidación" } ]
+}
+{% endschema %}

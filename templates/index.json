@@ -244,6 +244,22 @@
         "padding_bottom": 32
       }
     },
+    "liquidacion": {
+      "type": "liquidacion-banner",
+      "settings": {
+        "ticker_text": "🔥 LIQUIDACIÓN DE STOCK · ÚLTIMAS UNIDADES · PRECIOS DE DERRIBO",
+        "eyebrow": "SOLO HASTA FIN DE EXISTENCIAS",
+        "heading": "Liquidación de stock",
+        "heading_hl": "hasta −80%",
+        "subheading": "Colchones a precio de derribo, con las mismas garantías de siempre. Cuando se acaban, se acaban.",
+        "show_countdown": true,
+        "button_label": "Ver la liquidación",
+        "button_link": "/collections/liquidacion",
+        "note": "🌙 30 noches de prueba · 🚚 Envío gratis · 🛡️ 3 años de garantía · 💳 A plazos",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
     "ventajas_apple": {
       "type": "apple-benefits",
       "blocks": {
@@ -273,6 +289,7 @@
     "hero",
     "usp_bar",
     "showcase",
+    "liquidacion",
     "colchones",
     "feature_materiales",
     "porque",
